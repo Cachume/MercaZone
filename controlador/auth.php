@@ -26,13 +26,48 @@
                     return;
                 }else{
                     $auth = Authmodel::loginUser($datos['correo'],$datos['password']);
-                    if(password_verify($datos['password'],$auth['contrasena'])){
-                        var_dump($auth);
-                        $_SESSION['id_user'] = $auth['id'];
-                        $_SESSION['correo'] = $auth['correo'];
-                        $_SESSION['cedula'] = $auth['cedula'];
-                        header('Location:/MercaZone');
-                        return;
+                    if ($auth){
+                        // var_dump($auth);
+                        if($auth['cuenta_bloqueada']){
+                            echo "<br>Cuenta bloqueda";
+                            $now = new DateTime();
+                            $bloqueo = new DateTime($auth['tiempo_bloqueo']);
+                            $intervalo = $bloqueo->diff($now)->i; // diferencia en minutos
+                            if ($intervalo < 1){
+                                $this->errores[] = "Cuenta bloqueada por 1 Minuto, intente mas tarde";
+                                $errores = $this->errores;
+                                require_once("views/auth.php");
+                                return;
+                            }else{
+                                Authmodel::desbloquearCuenta($datos['correo']);
+                                $auth['cuenta_bloqueada'] = 0;
+                                $auth['intentos_fallidos'] = 0;
+                            }
+                        }else{
+                            echo "no bloqueada<br>";
+                            if(password_verify($datos['password'],$auth['contrasena'])){
+                                Authmodel::actualizarIntentos($auth['correo'],0);
+                                $_SESSION['id_user'] = $auth['id'];
+                                $_SESSION['correo'] = $auth['correo'];
+                                $_SESSION['cedula'] = $auth['cedula'];
+                                header('Location:/MercaZone');
+                                return;
+                            }else{
+                                echo "contrasena no correcta<br>";
+                                $intentos = $auth['intentos_fallidos'] + 1;
+                                echo $intentos;
+                                if($intentos >= 3){
+                                    Authmodel::bloquearCuenta($datos['correo']);
+                                    $this->errores[] = "Cuenta bloqueada por 1 Minuto";
+                                }else{
+                                    Authmodel::actualizarIntentos($datos['correo'],$intentos);
+                                    $this->errores[] = "Correo o Contraseña Incorrectos.";
+                                }
+                                $errores = $this->errores;
+                                require_once("views/auth.php");
+                                return;
+                            }
+                        }
                     }else{
                         $this->errores[] = "Correo o Contraseña Incorrectos.";
                         $errores = $this->errores;

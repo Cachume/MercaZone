@@ -51,6 +51,41 @@
             return $usuario; 
         }
 
+         // Actualizar intentos fallidos
+        public static function actualizarIntentos($correo, $intentos) {
+            $db = self::conectar();
+            if (!$db) return false;
+
+            $stmt = $db->prepare("UPDATE usuarios SET intentos_fallidos = :intentos WHERE correo = :correo");
+            $stmt->bindParam(":intentos", $intentos, PDO::PARAM_INT);
+            $stmt->bindParam(":correo", $correo, PDO::PARAM_STR);
+
+            return $stmt->execute();
+        }
+
+        // Bloquear cuenta
+        public static function bloquearCuenta($correo) {
+            $db = self::conectar();
+            if (!$db) return false;
+
+            $stmt = $db->prepare("UPDATE usuarios SET cuenta_bloqueada = 1, tiempo_bloqueo = NOW() WHERE correo = :correo");
+            $stmt->bindParam(":correo", $correo, PDO::PARAM_STR);
+
+            return $stmt->execute();
+        }
+
+        // Desbloquear cuenta
+        public static function desbloquearCuenta($correo) {
+            $db = self::conectar();
+            if (!$db) return false;
+
+            $stmt = $db->prepare("UPDATE usuarios SET cuenta_bloqueada = 0, intentos_fallidos = 0, tiempo_bloqueo = NULL WHERE correo = :correo");
+            $stmt->bindParam(":correo", $correo, PDO::PARAM_STR);
+
+            return $stmt->execute();
+        }
+
+
     }
 
 ?>
