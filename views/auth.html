@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/auth.css">
+    <title>MercaZone | Autentificación</title>
+</head>
+<body>
+    <main class="main-auth">
+        <div class="auth-container">
+            <div class="auth-header">
+                    <h1>MercaZone</h1>
+                    <div class="auth-header-buttons">
+                        <button class="selected" id="login"><span class="material-symbols-outlined">account_circle</span>Iniciar Sesión</button>
+                    |
+                        <button id="register"><span class="material-symbols-outlined">person_add</span>Registrarse</button>
+                    </div>
+                    <p id="textform">Inicia sesión para continuar</p>
+                </div>
+                <div class="auth-info">
+                    <div class="auth-info-error">
+                        <h4>Error</h4>
+                        <p>Correo o Contraseña Incorrectos</p>
+                    </div>
+                </div>
+            <div class="auth-forms">
+                <form id="auth-login" class="auth-form auth-login hidden" action="/auth/login" method="POST">
+                    <div class="auth-input-group">
+                        <label for="email" class="auth-label"></label>
+                        <span class="material-symbols-outlined">email</span>
+                        <input type="email" id="email" name="email" class="auth-input" placeholder="Correo Electronico:" required>
+                    </div>
+                    <div class="auth-input-group">
+                        <label for="password" class="auth-label"></label>
+                        <span class="material-symbols-outlined">key</span>
+                        <input type="password" id="password" name="password" class="auth-input" placeholder="Contraseña:" required>
+                    </div>
+                    <div class="auth-forgot">
+                        <a href="/auth/forgot-password">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <button type="submit" class="auth-button">Iniciar sesión</button>
+                </form>
+                <form id="auth-register" class="auth-form auth-register" action="/auth/register" method="POST">
+                     <div class="auth-input-group">
+                        <label for="email" class="auth-label"></label>
+                        <span class="material-symbols-outlined">badge</span>
+                        <input type="number" id="email" name="cedula" class="auth-input" placeholder="Cedula de Identidad:" required>
+                    </div>
+                    <div class="auth-input-group">
+                        <label for="email" class="auth-label"></label>
+                        <span class="material-symbols-outlined">email</span>
+                        <input type="email" id="email" name="emailr" class="auth-input" placeholder="Correo Electronico:" required>
+                    </div>
+                    <div class="auth-input-group">
+                        <label for="password" class="auth-label"></label>
+                        <span class="material-symbols-outlined">key</span>
+                        <input type="password" id="password" name="passwordr" class="auth-input" placeholder="Contraseña:" required>
+                    </div>
+                    <div class="auth-input-group">
+                        <label for="password" class="auth-label"></label>
+                        <span class="material-symbols-outlined">key</span>
+                        <input type="password" id="password" name="passwordcr" class="auth-input" placeholder="Confirmar Contraseña:" required>
+                    </div>
+                    <div class="auth-forgot">
+                        <a href="/auth/forgot-password"></a>
+                    </div>
+                    <button type="submit" class="auth-button" name="registro">Registrarme</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="../js/auth.js"></script>
+</body>
+</html>
