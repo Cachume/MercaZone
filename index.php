@@ -1,18 +1,6 @@
 <?php
 session_start();
-include 'modelo/conexiondb.php';
-
-if(isset($_SESSION['baneado']) && $_SESSION['baneado']==1){
-    if (isset($_GET['ban']) && $_GET['ban']=="salir") {
-        session_destroy();
-        header("location: index.php");
-    }else{
-        include 'controlador/baneado.php';
-        $ban =new baneadoController();
-        $ban->default();
-    }
-    exit();
-}
+// include 'modelo/conexiondb.php';
 // Enrutamiento
 $controllerName = isset($_GET['u']) ? $_GET['u'] : 'index';
 $method = isset($_GET['m']) ? $_GET['m'] : 'default';
@@ -20,7 +8,7 @@ $method = isset($_GET['m']) ? $_GET['m'] : 'default';
 // Mapeo de rutas a controladores
 $controllers = [
     'index' => 'IndexController',
-    'product' => 'ProductController',
+    'auth' => 'AuthController',
     'secciones' => 'SeccionesController',
     'inicio' => 'LoginController',
     'registro' => 'RegisController',

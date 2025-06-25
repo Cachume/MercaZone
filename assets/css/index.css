@@ -158,6 +158,32 @@
     gap: 10px;
 }
 
+.user-data{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: "Roboto", sans-serif;
+}
+
+.user-data-img img{
+    width: 40px;
+}
+
+.user-data-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.cedula{
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.correo{
+    font-size: 14px;
+    font-weight: bolder;
+}
+
 /* //Responsivo */
 @media only screen and (max-width: 770px) {
 
