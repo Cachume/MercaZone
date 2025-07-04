@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>MercaZone</title>
+</head>
+<body>
+    <header class="header-index">
+        <div class="header-index-top">
+            <button class="btn-menu" id="btn-menu">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            <a href="">
+                <span>Merca</span>
+                <span>Zone</span>
+            </a>
+            <button class="btn-account">
+                <span class="material-symbols-outlined">account_circle</span>
+            </button>
+            <div class="sub-menu-container" id="sub-menu-container">
+                <div class="sub-menu" id="sub-menu">
+                    <div class="sub-menu-title">
+                        <button class="btn-menu" id="btn-close">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                        <a href="">
+                            <span style="color: #03d26f;">Me</span>
+                            <span>nu</span>
+                        </a>
+                    </div>
+                    <div class="sub-menu-search">
+                        <input type="text" placeholder="Buscar...">
+                        <button class="btn-search">
+                            <span class="material-symbols-outlined">search</span>
+                        </button>
+                    </div>
+                    <ul class="sub-menu-list">
+                        <li><a href="">Inicio</a></li>
+                        <li><a href="">Productos</a></li>
+                        <li><a href="">Ofertas</a></li>
+                        <li><a href="">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="background"></div>
+            </div>
+        </div>
+    </header>
+    <main class="main-index">
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <img src="../img/banner.png" alt="Slide 1">
+                <img src="../img/banner2.png" alt="Slide 2">
+            </div>
+        </div>
+    </main>
+    <script src="../js/main.js"></script>
+</body>
+</html>

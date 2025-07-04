@@ -8,6 +8,20 @@
     --text-color: #f1f1f1;
     --link-color: #cef431;
 }
+
+.header-new{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 0.5fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    background: var(--primary-color);
+}
+
+.header-best{
+    display: none;
+}
+
 .header-top{
     display:flex;
     justify-content: space-between;
@@ -41,7 +55,7 @@
 }
 
 .header-top-center button{
-    background: var(--primary-color);
+    background: var(--secondary-color);
     border: none;
     color: var(--text-color);
     padding: 0px 20px;
