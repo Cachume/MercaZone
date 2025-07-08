@@ -191,11 +191,13 @@
 .cedula{
     font-size: 14px;
     font-weight: bolder;
+    display: none;
 }
 
 .correo{
     font-size: 14px;
     font-weight: bolder;
+    display: none;
 }
 
 /* //Responsivo */

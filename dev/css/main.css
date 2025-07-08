@@ -30,7 +30,7 @@
 
 }
 
-.header-index-top a{
+.header-index-top a, .header-title{
     display: flex;
     font-family: "Roboto", sans-serif;
     font-weight: 700;
@@ -39,7 +39,7 @@
     font-size: 2rem;
 }
 
-.header-index-top a span:last-child{
+.header-index-top a span:last-child, .header-title span:last-child{
     color: var(--text-color);
 }
 
@@ -174,4 +174,149 @@
     object-fit: cover;
     scroll-snap-align: start;
     flex: 1 0 100%;
+}
+
+.header-top-center{
+    display: flex;
+    justify-content: center;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.header-top-center input{
+    border: none;
+    outline: none;
+    background-color: white;
+    padding:10px 5px;
+    width: 400px;
+    max-width: 400px;
+}
+
+.header-top-center button{
+    background: var(--secondary-color);
+    border: none;
+    color: var(--text-color);
+    padding: 0px 20px;
+}
+
+.header-index-desktop{
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    height: 60px;
+    padding: 0% 20px;
+}
+
+.user-data{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "Roboto", sans-serif;
+}
+
+.user-data-img img{
+    width: 40px;
+    border-radius: 50px;
+}
+
+.user-data-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.cedula{
+    font-size: 14px;
+}
+
+.correo{
+    font-size: 14px;
+}
+
+.user-options{
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    font-family: "Roboto", sans-serif;
+    position: absolute;
+    right: 60px;
+    top: 32%;
+    transform: translateY(-50%);
+    background: #014651;
+    height: 300px;
+    width: 200px;
+    z-index: 10;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.user-options.active{
+    display: flex;
+}
+
+.user-data2{
+    display: flex;
+    font-family: "Roboto", sans-serif;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.user-data2-img img{
+    width: 40px;
+    border-radius: 50px;
+    margin-right: 0px;
+}
+
+.user-data2-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.user-options-list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.user-options-list li{
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.user-options-list li:last-child{
+    border-bottom: none;
+}
+
+.user-options-list a{
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: var(--text-color);
+}
+.user-options-list a:hover{
+    background: var(--secondary-color);
+}
+
+/* Propiedades Desktop */
+
+@media (min-width: 1025px) {
+
+    .header-index-desktop{
+        display: flex;
+    }
+
+    .btn-menu{
+        display: none;
+    }
+
+    .header-index-top{
+        padding: 0% 50px;
+        height: 70px;
+        display: none;
+    }
+
+    .header-index-top a{
+        display: none;
+    }
+
 }
