@@ -32,7 +32,7 @@
 
 .header-index-top a, .header-title{
     display: flex;
-    font-family: "Roboto", sans-serif;
+     
     font-weight: 700;
     text-decoration: none;
     color: var(--secondary-color);
