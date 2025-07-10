@@ -148,17 +148,51 @@
                     </form>
                 </section>
                 <section id="verification" class="profile-section-verification" data-section="true">
-                    <div class="verification-alert">
-                        <h3>📄 Verificación de Cuenta Requerida</h3>
-                        <p>Para garantizar la seguridad de tu cuenta y cumplir con nuestras políticas, es necesario que completes el proceso de verificación de identidad.</p>
-                        <p>
-                            Por favor, sube una copia clara de tu <strong>documento de identidad oficial</strong> (cédula, pasaporte o licencia de conducir).
-                        </p>
-                        <p class="confidential-text">
-                            🔐 Tu información será tratada con total confidencialidad y solo será utilizada para fines de verificación.
-                        </p>
-                        <button class="verify-btn">Iniciar Verificación</button>
-                    </div>
+                    <?php
+                        // var_dump($this->verificacion);
+                        if (is_null(value: $this->verificacion)) {
+                            // No ha enviado verificación aún
+                            echo '
+                            <div class="verification-alert">
+                                <h3>Verificación de Cuenta Requerida</h3>
+                                <p>Para garantizar la seguridad de tu cuenta y cumplir con nuestras políticas, es necesario que completes el proceso de verificación de identidad.</p>
+                                <p>
+                                    Por favor, sube una copia clara de tu <strong>documento de identidad oficial</strong> (cédula, pasaporte o licencia de conducir).
+                                </p>
+                                <p class="confidential-text">
+                                    Tu información será tratada con total confidencialidad y solo será utilizada para fines de verificación.
+                                </p>
+                                <button class="verify-btn">Iniciar Verificación</button>
+                            </div>';
+                        } elseif ($this->verificacion === 'pendiente') {
+                            // Verificación enviada pero aún no aceptada
+                            echo '
+                            <div class="verification-alert pending">
+                                <h3> Verificación en Proceso</h3>
+                                <p>Tu solicitud de verificación ha sido recibida correctamente y está siendo revisada por nuestro equipo.</p>
+                                <p>
+                                    Este proceso puede tardar hasta 48 horas hábiles. Te notificaremos por correo una vez que tu identidad sea verificada.
+                                </p>
+                                <p class="confidential-text">
+                                    Gracias por tu paciencia. Tu información está protegida y se maneja con absoluta confidencialidad.
+                                </p>
+                            </div>';
+                        } elseif ($this->verificacion === 'aceptado') {
+                            // Verificación aprobada
+                            echo '
+                            <div class="verification-alert success">
+                                <h3>Verificación Completada</h3>
+                                <p>Tu identidad ha sido verificada exitosamente.</p>
+                                <p>
+                                    Ahora puedes disfrutar de todas las funciones de la plataforma con total seguridad y confianza.
+                                </p>
+                                <p class="confidential-text">
+                                    ¡Gracias por completar el proceso de verificación!
+                                </p>
+                            </div>';
+                        }
+                    ?>
+
                 </section>
                 <section id="support" class="profile-section-problem" data-section="true">
                     <h3>Soporte</h3>

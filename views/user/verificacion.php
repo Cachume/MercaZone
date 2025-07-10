@@ -42,7 +42,7 @@
             <button class="verificatior-button">Regresar al Perfil</button>
         </div>
         <div class="verification-form">
-            <form id="verification-form" enctype="multipart/form-data">
+            <form id="verification-form" method="post" action="index.php?u=verificacion&m=enviar" enctype="multipart/form-data">
                 <!-- Tipo de documento -->
                 <label for="document-type">Tipo de Documento</label>
                 <select id="document-type" name="document-type" required onchange="toggleDocumentSides(this.value)">
