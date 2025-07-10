@@ -48,8 +48,11 @@
                             if(password_verify($datos['password'],$auth['contrasena'])){
                                 Authmodel::actualizarIntentos($auth['correo'],0);
                                 $_SESSION['id_user'] = $auth['id'];
+                                $_SESSION['nombre'] = $auth['nombre'];
+                                $_SESSION['apellidos'] = $auth['apellidos'];
                                 $_SESSION['correo'] = $auth['correo'];
                                 $_SESSION['cedula'] = $auth['cedula'];
+                                $_SESSION['rol'] = $auth['rol'];
                                 header('Location:/MercaZone');
                                 return;
                             }else{

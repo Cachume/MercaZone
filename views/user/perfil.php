@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="../css/normalize.css">
-    <link rel="stylesheet" href="../css/perfil.css">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="/MercaZone/assets/css/normalize.css">
+    <link rel="stylesheet" href="/MercaZone/assets/css/perfil.css">
+    <link rel="stylesheet" href="/MercaZone/assets/css/main.css">
     <title>MercaZone | Perfil</title>
 </head>
 <body>
@@ -60,12 +60,12 @@
                 </form>
                 <div class="user-data">
                         <div class="user-data-img">
-                            <img src="../img/albert.jpg" alt="" srcset="" id="user-img">
+                            <img src="/MercaZone/assets/img/albert.jpg" alt="" srcset="" id="user-img">
                         </div>
                         <div class="user-options" id="user-options">
                             <div class="user-data2">
                                 <div class="user-data2-img">
-                                    <img src="../img/albert.jpg" alt="" srcset="">
+                                    <img src="/MercaZone/assets/img/albert.jpg" alt="" srcset="">
                                 </div>
                                 <div class="user-data2-info">
                                     <span class="correo">Albert Josue</span>
@@ -105,27 +105,27 @@
                     <form>
                         <div class="profile-section-form-group">
                             <label for="name">Nombre:</label>
-                            <input type="text" id="name" name="name" value="Albert Josue" disabled>
+                            <input type="text" id="name" name="name" value="<?php echo $_SESSION['nombre'];?>" disabled>
                         </div>
                         <div class="profile-section-form-group">
                             <label for="email">Apellidos:</label>
-                            <input type="text" id="lastname" name="lastname" value="Quintero Colina" disabled>
+                            <input type="text" id="lastname" name="lastname" value="<?php echo $_SESSION['apellidos'];?>" disabled>
                         </div>
                         <div class="profile-section-form-group">
                             <label for="email">Correo Electrónico:</label>
-                            <input type="email" id="email" name="email" value="albert@example.com" disabled>
+                            <input type="email" id="email" name="email" value="<?php echo $_SESSION['correo'];?>" disabled>
                         </div>
                         <div class="profile-section-form-group">
                             <label for="email">Cedula de Identidad:</label>
-                            <input type="text" id="id" name="id" value="V-12345678" disabled>
+                            <input type="text" id="id" name="id" value="V-<?php echo $_SESSION['cedula'];?>" disabled>
                         </div>
                         <div class="profile-section-form-group">
                             <label for="email">Pais de Residencia:</label>
-                            <input type="text" id="country" name="country" value="Venezuela" disabled>
+                            <input type="text" id="country" name="country" value="" disabled>
                         </div>
                         <div class="profile-section-form-group">
                             <label for="email">Ciudad:</label>
-                            <input type="text" id="city" name="city" value="Barinas" disabled>
+                            <input type="text" id="city" name="city" value="" disabled>
                         </div>
                     </form>
                 </section>
@@ -170,33 +170,33 @@
             </div>
         </div>
     </main>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const links = document.querySelectorAll(".nav-link");
-    const sections = document.querySelectorAll('[data-section="true"]');
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const links = document.querySelectorAll(".nav-link");
+            const sections = document.querySelectorAll('[data-section="true"]');
 
-    links.forEach(link => {
-        link.addEventListener("click", (e) => {
-            e.preventDefault();
+            links.forEach(link => {
+                link.addEventListener("click", (e) => {
+                    e.preventDefault();
 
-            // Quitar clase activa de todos los enlaces
-            links.forEach(l => l.classList.remove("active"));
-            link.classList.add("active");
+                    // Quitar clase activa de todos los enlaces
+                    links.forEach(l => l.classList.remove("active"));
+                    link.classList.add("active");
 
-            // Ocultar todas las secciones
-            sections.forEach(section => section.style.display = "none");
+                    // Ocultar todas las secciones
+                    sections.forEach(section => section.style.display = "none");
 
-            // Mostrar la sección correspondiente
-            const targetId = link.getAttribute("href").substring(1);
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                targetSection.style.display = "flex";
-            }
+                    // Mostrar la sección correspondiente
+                    const targetId = link.getAttribute("href").substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.style.display = "flex";
+                    }
+                });
+            });
         });
-    });
-});
-</script>
+    </script>
 
-    <script src="../js/main.js"></script>
+    <script src="/MercaZone/assets/js/main.js"></script>
 </body>
 </html>

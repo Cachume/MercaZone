@@ -1,0 +1,93 @@
+/* Estilos para la tabla de catálogos */
+.tabla-catalogos {
+    margin-top: 30px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tabla-catalogos .header-tabla {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tabla-catalogos h2 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.btn-agregar {
+    background-color: #07f060;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bolder;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Estilos para los botones de acciones */
+.editar, .eliminar {
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.editar {
+    background-color: #09add6;
+    color: white;
+}
+
+.eliminar {
+    background-color: red;
+    color: white;
+}
+
+/* Estilos para los modales */
+.ventanatema {
+    display: none; /* Ocultar por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.ventanatema form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+}
+
+.botones-modal {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.botones-modal button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.botones-modal button[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+}
+
+.botones-modal button[type="button"] {
+    background-color: #f44336;
+    color: white;
+}
