@@ -11,14 +11,6 @@
                     </div>
                     <i class="fas fa-users fa-2x"></i>
                 </div>
-                <div class="tarjeta">
-                    <div>
-                        <h3>Total Ventas</h3>
-                        <p>$</p>
-                        <p>BS</p>
-                    </div>
-                    <i class="fas fa-dollar-sign fa-2x"></i>
-                </div>
             </div>
         </main>
     </div>

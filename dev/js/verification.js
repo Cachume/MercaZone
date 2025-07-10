@@ -15,3 +15,11 @@
     }
   }
 
+document.getElementById("start-verification").addEventListener("click", function(){
+  document.getElementById("verification-container").style.display = "none"
+  document.getElementById("verification-form-container").style.display = "flex"
+})
+
+document.getElementById("back-to-profile").addEventListener("click",function(){
+  window.location.href = "./index.php"
+})

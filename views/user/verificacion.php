@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <main class="verification-main">
+        <main class="verification-main">
         <div class="verification-title">
             <a href="">
                 <span>Merca</span>
@@ -18,7 +18,23 @@
             </a>
             <h2>Verificación de Identidad</h2>
         </div>
-        <div class="verification-container" style="display: none;">
+        <?php if (isset($_GET['r']) && $_GET['r'] === 'success'): ?>
+            <div class="verification-approved">
+                <h3>Verificación Aprobada</h3>
+                <p>Tu cuenta ha sido verificada exitosamente. Ya puedes acceder a todas las funciones de la plataforma sin restricciones.</p>
+                <p>Gracias por completar el proceso de verificación.</p>
+                <button class="return-button" onclick="window.location.href='index.php?u=perfil'">Ir a mi perfil</button>
+            </div>
+
+        <?php elseif (isset($_GET['r']) && $_GET['r'] === 'error'): ?>
+            <div class="verification-error">
+                <h3>Verificación Rechazada</h3>
+                <p>Tu solicitud de verificación no pudo ser aprobada. Es posible que la información o los documentos proporcionados no cumplan con los requisitos.</p>
+                <p>Por favor, revisa los datos e intenta nuevamente con documentos legibles y correctos.</p>
+                <button class="retry-button" onclick="window.location.href='index.php?u=verificacion'">Reintentar Verificación</button>
+            </div>
+        <?php else: ?>
+        <div class="verification-container" id="verification-container">
             <p>
                 Para proteger tu cuenta y brindarte acceso completo a nuestra plataforma, es necesario completar el
                 proceso de verificación de identidad.
@@ -38,10 +54,10 @@
             <p class="confidential-note">
                 🔐 Tu información solo será utilizada con fines de verificación de identidad.
             </p>
-            <button class="verification-button">Iniciar Verificación</button>
-            <button class="verificatior-button">Regresar al Perfil</button>
+            <button class="verification-button" id="start-verification">Iniciar Verificación</button>
+            <button class="verification-button" style="background: orange;" id="back-to-profile">Regresar al Perfil</button>
         </div>
-        <div class="verification-form">
+        <div class="verification-form" id="verification-form-container">
             <form id="verification-form" method="post" action="index.php?u=verificacion&m=enviar" enctype="multipart/form-data">
                 <!-- Tipo de documento -->
                 <label for="document-type">Tipo de Documento</label>
@@ -77,6 +93,7 @@
                 <button type="submit" class="verification-button">Enviar Verificación</button>
             </form>
         </div>
+     <?php endif; ?>
     </main>
     <script src="/MercaZone/assets/js/verification.js"></script>
 </body>

@@ -18,7 +18,7 @@
             </a>
             <h2>Verificación de Identidad</h2>
         </div>
-        <div class="verification-container" style="display: none;">
+        <div class="verification-container" id="verification-container">
             <p>
                 Para proteger tu cuenta y brindarte acceso completo a nuestra plataforma, es necesario completar el
                 proceso de verificación de identidad.
@@ -38,10 +38,10 @@
             <p class="confidential-note">
                 🔐 Tu información solo será utilizada con fines de verificación de identidad.
             </p>
-            <button class="verification-button">Iniciar Verificación</button>
-            <button class="verificatior-button">Regresar al Perfil</button>
+            <button class="verification-button" id="start-verification">Iniciar Verificación</button>
+            <button class="verification-button" id="back-to-profile">Regresar al Perfil</button>
         </div>
-        <div class="verification-form">
+        <div class="verification-form" id="verification-form-container">
             <form id="verification-form" enctype="multipart/form-data">
                 <!-- Tipo de documento -->
                 <label for="document-type">Tipo de Documento</label>

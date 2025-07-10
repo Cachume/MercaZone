@@ -85,12 +85,10 @@ class VerificacionController {
         ]);
 
         if ($resultado) {
-            echo "✅ Verificación enviada correctamente.";
+            header("Location: index.php?u=verificacion&r=success");
         } else {
-            echo "❌ Error al guardar: ";
+            header("Location: index.php?u=verificacion&r=error");
         }
-
-        require('views/user/verificacion.php');
     }
 
     // 🔒 Función privada para manejar archivos

@@ -90,7 +90,7 @@
                                 <p class="confidential-text">
                                     Tu información será tratada con total confidencialidad y solo será utilizada para fines de verificación.
                                 </p>
-                                <button class="verify-btn">Iniciar Verificación</button>
+                                <a class="verify-btn" href="index.php?u=verificacion">Iniciar Verificación</a>
                             </div>';
                         } elseif ($this->verificacion === 'pendiente') {
                             // Verificación enviada pero aún no aceptada
