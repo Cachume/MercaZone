@@ -6,6 +6,19 @@ class VerificacionController {
 
     public function __CONSTRUCT() {
         $this->mensajes = [];
+        if(!isset($_SESSION['id_user'])) {
+            $this->mensajes[] = "Usuario no autenticado.";
+            header("Location: index.php?u=auth");
+            exit();
+        } else {
+            // Verificar el estado de la verificación del usuario
+            $usuario_id = $_SESSION['id_user'];
+            $estado_verificacion = VerificacionModel::GetVerificacion(["usuario_id" => $usuario_id]);
+            if ($estado_verificacion == "pendiente" || $estado_verificacion == "aceptado") {
+                header("Location: index.php?u=perfil");
+                exit();
+            }
+        }
     }
 
     // Mostrar la vista del formulario
