@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="./views/admin/css/catalogo.css">
     <link rel="stylesheet" href="./views/admin/css/compras.css">
     <link rel="stylesheet" href="./views/admin/css/ajustes.css">
+    <link rel="stylesheet" href="./views/admin/css/verificacion.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
@@ -29,8 +30,8 @@
             <li><a href="index.php?u=admin&m=usuarios"><i class="fas fa-users"></i> Usuarios</a></li>
             <li><a href="index.php?u=admin&m=verificaciones"><i class="fas fa-check"></i>Verificaciones</a></li>
             <!-- <li><a href="compras.php?u=admin"><i class="fas fa-shopping-cart"></i> Compras</a></li>
-            <li><a href="ajustes.php?u=admin"><i class="fas fa-cog"></i> Ajustes</a></li>
-            <li><a href="salir.php?u=admin"><i class="fas fa-sign-out-alt"></i> Salir</a></li> -->
+            <li><a href="ajustes.php?u=admin"><i class="fas fa-cog"></i> Ajustes</a></li> -->
+            <li><a href="index.php"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
         </ul>
     </div>
     <div class="fondo-oscuro" id="fondoOscuro"></div>

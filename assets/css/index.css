@@ -47,22 +47,6 @@
     padding: 0px 20px;
 }
 
-.user-options{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-
-.user-options a{
-    text-decoration: none;
-}
-
-.user-options a span{
-    font-size: 29px;
-    color: var(--accent-color);
-}
-
 .icon-number{
     position: relative;
     top: -10px;

@@ -7,83 +7,11 @@
     <link rel="stylesheet" href="/MercaZone/assets/css/normalize.css">
     <link rel="stylesheet" href="/MercaZone/assets/css/perfil.css">
     <link rel="stylesheet" href="/MercaZone/assets/css/main.css">
+    <link rel="stylesheet" href="/MercaZone/assets/css/index.css">
     <title>MercaZone | Perfil</title>
 </head>
 <body>
-    <header class="header-index">
-        <div class="header-index-top">
-            <button class="btn-menu" id="btn-menu">
-                <span class="material-symbols-outlined">menu</span>
-            </button>
-            <a href="">
-                <span>Merca</span>
-                <span>Zone</span>
-            </a>
-            <button class="btn-account">
-                <span class="material-symbols-outlined">account_circle</span>
-            </button>
-            <div class="sub-menu-container" id="sub-menu-container">
-                <div class="sub-menu" id="sub-menu">
-                    <div class="sub-menu-title">
-                        <button class="btn-menu" id="btn-close">
-                            <span class="material-symbols-outlined">close</span>
-                        </button>
-                        <a href="">
-                            <span style="color: #03d26f;">Me</span>
-                            <span>nu</span>
-                        </a>
-                    </div>
-                    <div class="sub-menu-search">
-                        <input type="text" placeholder="Buscar...">
-                        <button class="btn-search">
-                            <span class="material-symbols-outlined">search</span>
-                        </button>
-                    </div>
-                    <ul class="sub-menu-list">
-                        <li><a href="">Inicio</a></li>
-                        <li><a href="">Productos</a></li>
-                        <li><a href="">Ofertas</a></li>
-                        <li><a href="">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="background"></div>
-            </div>
-        </div>
-        <div class="header-index-desktop">
-                <a href="" class="header-title">
-                    <span>Merca</span>
-                    <span>Zone</span>
-                </a>
-                <form class="header-top-center">
-                    <input type="search" placeholder="Buscar productos, marcas y más...">
-                    <button><span class="material-symbols-outlined">search</span></button>
-                </form>
-                <div class="user-data">
-                        <div class="user-data-img">
-                            <img src="/MercaZone/assets/img/albert.jpg" alt="" srcset="" id="user-img">
-                        </div>
-                        <div class="user-options" id="user-options">
-                            <div class="user-data2">
-                                <div class="user-data2-img">
-                                    <img src="/MercaZone/assets/img/albert.jpg" alt="" srcset="">
-                                </div>
-                                <div class="user-data2-info">
-                                    <span class="correo">Albert Josue</span>
-                                    <span class="cedula">Quintero Colina</span>
-                                </div>
-                            </div>
-                            <ul class="user-options-list">
-                                <li><a href="index.php?u=auth&m=perfil">Perfil</a></li>
-                                <li><a href="index.php?u=auth&m=carrito">Carrito</a></li>
-                                <li><a href="index.php?u=auth&m=ordenes">Ordenes</a></li>
-                                <li><a href="index.php?u=auth&m=salir">Cerrar sesión</a></li>
-                                <li><a href="index.php?u=auth&m=soporte">Soporte</a></li>
-
-                            </ul>
-                        </div>
-                </div>
-        </div>
-    </header>
+    <?php include 'views/user/header.php'; ?>
     <main class="main-profile">
         <h2>Perfil de Usuario</h2>
         <div class="profile-container">
@@ -230,7 +158,6 @@
             });
         });
     </script>
-
     <script src="/MercaZone/assets/js/main.js"></script>
 </body>
 </html>

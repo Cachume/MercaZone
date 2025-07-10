@@ -1,0 +1,94 @@
+.verificacion-usuarios-container {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.tabla-header h2 {
+    font-size: 1.6rem;
+    color: #333;
+    margin-bottom: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.tabla-scroll {
+    overflow-x: auto;
+}
+
+.tabla-verificacion {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.tabla-verificacion thead {
+    background-color: #f0f0f0;
+}
+
+.tabla-verificacion th,
+.tabla-verificacion td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.tabla-verificacion tr:hover {
+    background-color: #f9f9f9;
+}
+
+.btn-gestionar {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-gestionar:hover {
+    background-color: #0056b3;
+}
+
+.ver-doc-link {
+    color: #007BFF;
+    text-decoration: underline;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.ver-doc-link:hover {
+    color: #0056b3;
+}
+
+        .detalle-verificacion {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+        .detalle-verificacion h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .info-verificacion p {
+            margin: 8px 0;
+        }
+        .imagenes-verificacion img {
+            width: 100%;
+            max-width: 300px;
+            margin: 10px 10px 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .imagenes-verificacion {
+            display: flex;
+            flex-wrap: wrap;
+        }
