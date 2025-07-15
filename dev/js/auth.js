@@ -29,3 +29,47 @@ btnregister.addEventListener('click',function(){
         textform.innerHTML = "Completa los campos para crear una cuenta nueva"
     }
 })
+
+
+$(document).ready(function () {
+    let showingCodeField = false;
+
+    $('#auth-login').on('submit', function (e) {
+      const email = $('#email').val().trim();
+
+      if (!showingCodeField) {
+        e.preventDefault();
+
+        if (email === '') {
+          alert('Por favor ingresa tu correo electrónico.');
+          return;
+        }
+
+        // Petición AJAX para enviar código
+        $.ajax({
+          url: '/auth/send-code',
+          method: 'POST',
+          data: { email: email },
+          success: function (response) {
+            if (response.success) {
+              alert('Código enviado a tu correo.');
+              $('#code-group').slideDown();
+              $('#codigo').prop('required', true);
+              $('#forgot-link').hide();
+              $('#login-btn').text('Verificar código');
+              showingCodeField = true;
+            } else {
+              alert(response.message || 'Error al enviar el código.');
+            }
+          },
+          error: function () {
+            alert('Error del servidor al enviar el código.');
+          }
+        });
+
+        return;
+      }
+
+      // Ya se mostró el campo, ahora permite el envío del formulario
+    });
+  });

@@ -30,6 +30,7 @@ if (array_key_exists($controllerName, $controllers)) {
 
         if (method_exists($controller, $method)) {
             $controller->$method();
+            exit();
         } else {
             echo "Error 404. Método no encontrado.";
         }

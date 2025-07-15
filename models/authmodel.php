@@ -85,6 +85,16 @@
             return $stmt->execute();
         }
 
+        public static function buscarPorCedula($cedula) {
+            $db = MzDB::conectar();
+            if (!$db) return false;
+
+            $stmt = $db->prepare("SELECT * FROM usuarios WHERE cedula = :cedula");
+            $stmt->bindParam(":cedula", $cedula, PDO::PARAM_STR);
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
 
     }
 
