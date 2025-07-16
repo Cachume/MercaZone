@@ -5,66 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/main.css">
+    
     <title>MercaZone</title>
 </head>
 <body>
-    <header class="header-index">
-        <div class="header-index-top">
-            <button class="btn-menu" id="btn-menu">
-                <span class="material-symbols-outlined">menu</span>
-            </button>
-            <a href="">
-                <span>Merca</span>
-                <span>Zone</span>
-            </a>
-            <button class="btn-account">
-                <span class="material-symbols-outlined">account_circle</span>
-            </button>
-            <div class="sub-menu-container" id="sub-menu-container">
-                <div class="sub-menu" id="sub-menu">
-                    <div class="sub-menu-title">
-                        <button class="btn-menu" id="btn-close">
-                            <span class="material-symbols-outlined">close</span>
-                        </button>
-                        <a href="">
-                            <span style="color: #03d26f;">Me</span>
-                            <span>nu</span>
-                        </a>
-                    </div>
-                    <div class="sub-menu-search">
-                        <input type="text" placeholder="Buscar...">
-                        <button class="btn-search">
-                            <span class="material-symbols-outlined">search</span>
-                        </button>
-                    </div>
-                    <ul class="sub-menu-list">
-                        <li><a href="">Inicio</a></li>
-                        <li><a href="">Productos</a></li>
-                        <li><a href="">Ofertas</a></li>
-                        <li><a href="">Contacto</a></li>
-                    </ul>
+<header>
+        <div class="header-top">
+            <div class="header-top-left">
+                <div class="sidebar-menu-button">
+                    <span class="material-symbols-outlined">menu</span>
                 </div>
-                <div class="background"></div>
+                <a href="#">MercaZone</a>
             </div>
-        </div>
-        <div class="header-index-desktop">
-                <a href="" class="header-title">
-                    <span>Merca</span>
-                    <span>Zone</span>
-                </a>
-                <form class="header-top-center">
-                    <input type="search" placeholder="Buscar productos, marcas y más...">
-                    <button><span class="material-symbols-outlined">search</span></button>
-                </form>
+            <form class="header-top-center">
+                <input type="search" placeholder="Buscar productos, marcas y más...">
+                <button><span class="material-symbols-outlined">search</span></button>
+            </form>
+            <div class="header-top-right">
+                <?php if (isset($_SESSION['id_user'])): ?>
                 <div class="user-data">
                         <div class="user-data-img">
-                            <img src="../img/albert.jpg" alt="" srcset="" id="user-img">
+                            <img src="/MercaZone/assets/img/albert.jpg" alt="" srcset="" id="user-img">
                         </div>
                         <div class="user-options" id="user-options">
                             <div class="user-data2">
                                 <div class="user-data2-img">
-                                    <img src="../img/albert.jpg" alt="" srcset="">
+                                    <img src="/MercaZone/assets/img/albert.jpg" alt="" srcset="">
                                 </div>
                                 <div class="user-data2-info">
                                     <span class="correo">Albert Josue</span>
@@ -72,24 +40,96 @@
                                 </div>
                             </div>
                             <ul class="user-options-list">
-                                <li><a href="index.php?u=auth&m=perfil">Perfil</a></li>
-                                <li><a href="index.php?u=auth&m=carrito">Carrito</a></li>
-                                <li><a href="index.php?u=auth&m=ordenes">Ordenes</a></li>
+                                <li><a href="index.php?u=perfil">Perfil</a></li>
+                                <?php
+                                if (isset($_SESSION['id_user']) && $_SESSION['rol'] == "admin") {
+                                    echo '<li><a href="index.php?u=admin">Panel de Administrador</a></li>';
+                                }
+                                ?>
+                                <li><a href="index.php">Carrito</a></li>
+                                <li><a href="index.php">Ordenes</a></li>
                                 <li><a href="index.php?u=auth&m=salir">Cerrar sesión</a></li>
-                                <li><a href="index.php?u=auth&m=soporte">Soporte</a></li>
-
                             </ul>
                         </div>
+                        <?php else: ?>
+                        <a href="index.php?u=auth"><span class="material-symbols-outlined">person</span></a>
+                    <?php endif; ?>
                 </div>
-        </div>
-    </header>
-    <main class="main-index">
-        <div class="carousel-container">
-            <div class="carousel-slide">
-                <img src="../img/banner.png" alt="Slide 1">
-                <img src="../img/banner2.png" alt="Slide 2">
+                
             </div>
         </div>
+        <div class="header-buttom">
+            <div class="header-buttom-nav">
+                <ul class="header-buttom-nav-list">
+                    <li class="header-buttom-nav-item"><a href="#">Inicio</a></li>
+                    <li class="header-buttom-nav-item"><a href="#">Categorías</a></li>
+                    <li class="header-buttom-nav-item"><a href="#">Ofertas</a></li>
+                    <li class="header-buttom-nav-item"><a href="#">Tecnologia</a></li>
+                    <li class="header-buttom-nav-item"><a href="#">Ropa y Calzado</a></li>
+                    <li class="header-buttom-nav-item"><a href="#">Deportes</a></li>
+                    <li class="header-buttom-nav-item"><a href="#">Repuestos para Vehiculos</a></li>
+                    
+                    <!-- <li class="header-buttom-nav-item"><a href="#">Mi cuenta</a></li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <span class="material-symbols-outlined">close</span>
+                <h2>Menú</h2>
+            </div>
+            <ul class="sidebar-list">
+                <li class="header-buttom-nav-item"><span class="material-symbols-outlined">home</span><a href="#">Inicio</a></li>
+                <li class="header-buttom-nav-item"><span class="material-symbols-outlined">percent</span><a href="#">Ofertas</a></li>
+                <li class="header-buttom-nav-item"><span class="material-symbols-outlined">category</span><a href="#">Categorías</a></li>
+                <li class="header-buttom-nav-item"><span class="material-symbols-outlined">account_circle</span><a href="#">Mi cuenta</a></li>
+            </ul>
+        </div>
+    </header>
+    <main class="principal">
+        <section class="promociones">
+            <div class="promocion-big">
+                <img src="../img/pruebas.png" alt="" srcset="">
+            </div>
+            <div class="container-small-promocion">
+                <div class="promocion-item">
+                    <img src="../img/vender.jpg" alt="" srcset="">
+                </div>
+                <div class="promocion-item"></div>
+            </div>
+        </section>
+    
+    <div class="teinteresa">
+        <div class="interesa_title">
+            <span>Te puede interesar</span>
+        </div>
+        <div class="teinteresa-items">
+            <div class="teinteresa-item">
+                <img src="../img/audifonos.webp" alt="">
+                <span class="teinteresa-text">Audifonos in-ears kz9 Pro</span>
+                <span class="teinteresa-precio">$8</span>
+            </div>
+            <div class="teinteresa-item">
+                <img src="../img/telcado.webp" alt="">
+                <span class="teinteresa-text">Teclado Mecanico Leaven k320</span>
+                <span class="teinteresa-precio">$8</span>
+            </div>
+            <div class="teinteresa-item">
+                <img src="../img/televisor.webp" alt="">
+                <span class="teinteresa-text">Televisor QLED 4k</span>
+                <span class="teinteresa-precio">$2.000</span>
+            </div>
+        </div>
+    </div>
+    <div class="promocionesm">
+        <div class="promocionm-item">
+            <div class="promocionm-item-text">
+                <p>ENCUENTRA UN NUEVO SMARTPHONE, PARA TI</p>
+                <a href="">Ver Ofertas</a>
+            </div>
+            <img src="../img/telefono.webp" alt="">
+        </div>
+    </div>
     </main>
     <script src="../js/main.js"></script>
 </body>
