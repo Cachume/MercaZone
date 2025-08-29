@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <title>MercaZone - Dashboard</title>
+</head>
+<body>
+    <aside class="aside-dashboard">
+        <header class="aside-title">
+            <a class="aside-title-link" href="">
+                <span>Merca</span>
+                <span>Zone</span>
+            </a>
+        </header>
+        <ul class="aside-menu">
+            <li class="aside-menu-item">
+                <a class="aside-menu-link selected" href="">
+                    <span class="material-symbols-outlined">home</span>
+                    <span class="aside-menu-link-text">Inicio</span>
+                </a>
+            </li>
+            <li class="aside-menu-item">
+                <a class="aside-menu-link" href="">
+                    <span class="material-symbols-outlined">analytics</span>
+                    <span class="aside-menu-link-text">Análisis</span>
+                </a>
+            </li>
+            <li class="aside-menu-item">
+                <a class="aside-menu-link" href="">
+                    <span class="material-symbols-outlined">settings</span>
+                    <span class="aside-menu-link-text">Configuración</span>
+                </a>
+            </li>
+            <li class="aside-menu-item">
+                <a class="aside-menu-link" href="">
+                    <span class="material-symbols-outlined">logout</span>
+                    <span class="aside-menu-link-text">Cerrar sesión</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+    <main class="main-dashboard">
+        <header class="header-dashboard">
+            <div class="header-dashboard-title">
+                <h1 id="dashboard-title">Dashboard</h1>
+                <span>28 de Agosto del 2025</span>
+            </div>
+            <div class="header-dashboard-actions">
+                <button class="header-action-btn">
+                    <span class="material-symbols-outlined">notifications</span>
+                </button>
+                <div class="header-dashboard-user">
+                    <img src="../img/albert.jpg" alt="User" />
+                    <div class="header-dashboard-userdata">
+                        <span class="dashboard-userdata-name">Hola, Albert Quintero</span>
+                        <span class="dashboard-userdata-secondary">albert@example.com</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section class="dashboard-main" id="dashboard-main">
+            <div class="dashboard-main-cards">
+                <div class="dashboard-main-card yellow">
+                    <h3>Compras Realizadas</h3>
+                    <div class="dashboard-main-card-data">
+                        <p>43</p>
+                        <p>Compras en el mes</p>
+                    </div>
+                </div>
+                <div class="dashboard-main-card">
+                    <h3>Dinero Gastado</h3>
+                    <div class="dashboard-main-card-data">
+                        <p>$500</p>
+                        <p>Gastados en el mes</p>
+                    </div>
+                </div>
+                <div class="dashboard-main-card blue">
+                    <h3>Ventas Realizadas</h3>
+                    <div class="dashboard-main-card-data">
+                        <p>0</p>
+                        <p>Ventas en el mes</p>
+                    </div>
+                </div>
+                <div class="dashboard-main-card green">
+                    <h3>Dinero Ganado</h3>
+                    <div class="dashboard-main-card-data">
+                        <p>20$</p>
+                        <p>Ganancias en el mes</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

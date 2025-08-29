@@ -1,0 +1,215 @@
+.aside-dashboard{
+    background: white;
+    height: 100vh;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.aside-title{
+    margin-bottom: 7vh;
+    display: grid;
+    place-items: center;
+}
+
+.aside-title-link{
+    font-family: "Roboto", sans-serif;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+}
+
+.aside-title-link span:first-child{
+    color:#00b45d;
+}
+
+.aside-title-link span:last-child{
+    color:#014651;
+}
+
+.aside-menu{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin: 0px 10px;
+}
+
+.aside-menu-item{
+    margin: 12px 0;
+    text-align: center;
+}
+
+.aside-menu-link{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: black;
+    box-sizing: content-box;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.aside-menu-link.selected{
+    background: var(--primary-color);
+    color: white;
+
+}
+
+.aside-menu-link .material-symbols-outlined{
+    font-size: 30px;
+}
+
+.aside-menu-link .aside-menu-link-text{
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    margin-top: 4px;
+}
+.aside-menu-link:hover{
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Informacion Main Dashboard */
+
+.main-dashboard{
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.header-dashboard{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vh 2vh;
+}
+
+.header-dashboard-title{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.header-dashboard-title h1{
+    font-family: "Roboto", sans-serif;
+    font-size: 30px;
+    margin: 0 0 10px 0;
+}
+
+.header-dashboard-title span{
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    color: gray;
+}
+
+.header-dashboard-actions{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-action-btn{
+    font-family: "Roboto", sans-serif;
+    border: none;
+    background: transparent;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+.header-action-btn:hover{
+    background: var(--primary-color);
+    cursor: pointer;
+    color: white;
+}
+
+.header-dashboard-user{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-dashboard-user img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.header-dashboard-userdata{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.header-dashboard-userdata span{
+    font-family: "Roboto", sans-serif;
+    color: rgb(88, 88, 88);
+}
+
+.dashboard-userdata-name{
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.dashboard-userdata-secondary{
+    color: rgb(130, 130, 130);
+    font-size: 13px;
+}
+
+/* Dashboard Main */
+
+.dashboard-main{
+    margin-top: 30px;
+}
+
+.dashboard-main-cards{
+    display: flex;
+    gap: 20px;
+}
+
+.dashboard-main-card{
+    background: #E74C3C;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    width: 200px;
+}
+
+.dashboard-main-card.blue{
+    background: #3498DB;
+}
+
+.dashboard-main-card.yellow{
+    background: #F1C40F;
+}
+
+.dashboard-main-card.green{
+    background: #2ECC71;
+}
+
+.dashboard-main-card h3{
+    margin: 0;
+    font-size: 16px;
+}
+
+.dashboard-main-card-data{
+    margin-top: 16px;
+    text-align: center;
+}
+
+.dashboard-main-card-data p:first-child{
+    font-size: 29px;
+    font-weight: bold;
+    margin: 0;
+    
+}
+.dashboard-main-card-data p:last-child{
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 5px 0 0 0;
+}
