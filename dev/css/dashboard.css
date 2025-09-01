@@ -168,6 +168,7 @@
 
 .dashboard-main-cards{
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
@@ -177,7 +178,7 @@
     padding: 20px;
     color: white;
     font-family: "Roboto", sans-serif;
-    width: 200px;
+    width: 170px;
 }
 
 .dashboard-main-card.blue{
@@ -213,3 +214,236 @@
     color: rgba(255, 255, 255, 0.7);
     margin: 5px 0 0 0;
 }
+
+
+/* Dashboard Products */
+
+.dashboard-products{
+    display: none;
+    flex-direction: column;
+}
+
+.dashboard-products-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vh 2vh;
+}
+
+.dashboard-products-search{
+    font-family: "Roboto", sans-serif;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px 15px;
+    width: 300px;
+    border-radius: 5px;
+}
+
+.dashboard-products-filter{
+    font-family: "Roboto", sans-serif;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px 15px;
+    background: white;
+}
+
+.header-action-btn{
+    font-family: "Roboto", sans-serif;
+    border: none;
+    background: var(--primary-color);
+    border-radius: 10px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    color: white;
+    border-radius: 20px;
+}
+
+.header-action-btn-edit{
+    background: #F39C12;
+    border: none;
+    color: white;
+    padding: 6px;
+    border-radius: 5px;
+}
+.header-action-btn-delete{
+    background: #E74C3C;
+    border: none;
+    color: white;
+    padding: 6px;
+    border-radius: 5px;
+}
+/* .header-action-btn:hover{
+    background: darken(var(--primary-color), 5%);
+    cursor: pointer;
+    color: black;
+} */
+
+/* Dashboard Product Modal */
+.modal-product{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.modal-product-body{
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.modal-product-header{
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-product-header h2{
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+}
+
+.modal-product-header-btns{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-form-image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.product-form-image img{
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background: grey;
+}
+
+.product-form-image label{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    background: var(--secondary-color);
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+
+.product-form-image input[type="file"]{
+    display: none;
+}
+
+.add-product{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-family: "Roboto", sans-serif;
+}
+
+.product-form-data-groups{
+    display: flex;
+    gap: 40px;
+}
+
+.product-form-data-group{
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.product-form-data-group label{
+    display: block;
+    margin-bottom: 5px;
+}
+
+.product-form-data-group input{
+    width: 100%;
+    height: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: rgb(238, 238, 238);
+    color: black;
+
+}
+
+.product-form-data-group select{
+    width: 180px;
+    height: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: rgb(238, 238, 238);
+    color: black;
+}
+
+.product-form-data-group span{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    position: absolute;
+    left: 10px;
+    top: 33px;
+}
+
+.product-form-data-group textarea{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: rgb(238, 238, 238);
+    color: black;
+}
+
+
+/* Dashboard products table */
+
+.dashboard-products-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 10px;
+    font-family: "Roboto", sans-serif;
+}
+
+.dashboard-products-table th,
+.dashboard-products-table td{
+    padding: 12px 15px;
+}
+
+.dashboard-products-table th{
+    color: rgb(172, 172, 172);
+    text-align: left;
+}
+
+.dashboard-products-table-body tr td:first-child{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.product-image{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+

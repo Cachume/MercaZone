@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/dashboard.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>MercaZone - Dashboard</title>
 </head>
 <body>
@@ -19,19 +20,25 @@
         </header>
         <ul class="aside-menu">
             <li class="aside-menu-item">
-                <a class="aside-menu-link selected" href="">
+                <a class="aside-menu-link selected" href="" id="link-home" data-view="dashboard-main">
                     <span class="material-symbols-outlined">home</span>
                     <span class="aside-menu-link-text">Inicio</span>
                 </a>
             </li>
             <li class="aside-menu-item">
-                <a class="aside-menu-link" href="">
-                    <span class="material-symbols-outlined">analytics</span>
-                    <span class="aside-menu-link-text">Análisis</span>
+                <a class="aside-menu-link" href="" id="link-products" data-view="dashboard-products">
+                    <span class="material-symbols-outlined">package_2</span>
+                    <span class="aside-menu-link-text">Mis Productos</span>
                 </a>
             </li>
             <li class="aside-menu-item">
-                <a class="aside-menu-link" href="">
+                <a class="aside-menu-link" href="" id="link-purchases" data-view="dashboard-purchases">
+                    <span class="material-symbols-outlined">attach_money</span>
+                    <span class="aside-menu-link-text">Mis Compras</span>
+                </a>
+            </li>
+            <li class="aside-menu-item">
+                <a class="aside-menu-link" href="" id="link-settings" data-view="dashboard-settings">
                     <span class="material-symbols-outlined">settings</span>
                     <span class="aside-menu-link-text">Configuración</span>
                 </a>
@@ -95,6 +102,108 @@
                 </div>
             </div>
         </section>
+        <section class="dashboard-products">
+            <header class="dashboard-products-header">  
+                <input type="text" class="dashboard-products-search" placeholder="Buscar producto..." />
+                <select class="dashboard-products-filter">
+                    <option value="todos">Todos</option>
+                    <option value="disponibles">Disponibles</option>
+                    <option value="agotados">Agotados</option>
+                </select>
+                <button class="header-action-btn" id="open-add-product-modal">
+                    <span class="material-symbols-outlined">add</span>
+                    <span>Agregar Producto</span>
+                </button>
+            </header>
+            <table class="dashboard-products-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Vistas</th>
+                        <th>Ventas</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="products-table-body" class="dashboard-products-table-body">
+                    <!-- <tr>
+                        <td colspan="5" style="text-align: center; padding: 20px;">
+                            No hay productos para mostrar.
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </section>
     </main>
+    <div class="modal-product">
+        <div class="modal-product-body">
+            <div class="modal-product-header">
+            <h2 id="modal-product-title">Agregar Producto</h2>
+            <div class="modal-product-header-btns">
+                <button class="header-action-btn" id="add-product-btn">
+                    <span class="material-symbols-outlined">check</span>
+                    <span id="add-product-btn-text">Agregar Producto</span>
+                </button>
+            </div>
+        </div>
+        <form class="add-product" id="add-product-form">
+            <div class="product-form-image">
+                <img src="" alt="">
+                <label for="product-image">
+                    <span class="material-symbols-outlined">upload</span>
+                    <span>Subir Imagen</span>
+                </label>
+                <input type="file" accept="image/*" required name="product-image" hidden/>
+            </div>
+            <div class="product-form-data">
+                <div class="product-form-data-header">
+                    <h3>Información del Producto</h3>
+                </div>
+                <div class="product-form-data-groups">
+                    <div class="product-form-data-group">
+                        <label for="product-name">Nombre del Producto</label>
+                        <input type="text" name="product-name" id="product-name" required />
+                    </div>
+                    <div class="product-form-data-group">
+                        <label for="product-description">Descripción corta del Producto</label>
+                        <input type="text" name="product-description" id="product-description" required />
+                    </div>
+                </div>
+                <div class="product-form-data-groups">
+                    <div class="product-form-data-group">
+                        <label for="product-category">Categoría del Producto</label>
+                        <select name="product-category" id="product-category" required>
+                            <option value="categoria1">Categoría 1</option>
+                            <option value="categoria2">Categoría 2</option>
+                            <option value="categoria3">Categoría 3</option>
+                        </select>
+                    </div>
+                    <div class="product-form-data-group">
+                        <label for="product-price">Precio del Producto</label>
+                        <span>$</span>
+                        <input type="text" name="product-price" id="product-price" required style="padding-left: 30px;"/>
+                    </div>
+                </div>
+                <div class="product-form-data-groups">
+                    <div class="product-form-data-group">
+                        <label for="product-stock">Stock del Producto</label>
+                        <input type="number" name="product-stock" id="product-stock" required />
+                    </div>
+                    <div class="product-form-data-group">
+                        
+                    </div>
+                </div>
+                <div class="product-form-data-group">
+                    <label for="product-full-description">Descripción completa del Producto</label>
+                    <textarea name="product-full-description" id="product-full-description" rows="4" required></textarea>
+                </div>
+            </div>
+        </form>            
+        </div>
+    </div>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/dashboard/dashboard.js"></script>
 </body>
 </html>

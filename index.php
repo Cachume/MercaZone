@@ -10,6 +10,7 @@ $controllers = [
     'index' => 'IndexController',
     'auth' => 'AuthController',
     'verificacion' => 'VerificacionController',
+    'dashboard' => 'DashboardController',
     'inicio' => 'LoginController',
     'registro' => 'RegisController',
     'perfil' => 'PerfilController',
