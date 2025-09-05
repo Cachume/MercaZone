@@ -34,6 +34,19 @@ $(document).ready(function() {
             $(".main-dashboard").removeClass("hidden");
         }
     });
+
+    $("#view-details-btn").on("click", function(){
+        $('.modal-details').css('display', 'flex');
+    });
+
+    $(".modal-details").on("click", function(e) {
+        if ($(e.target).is(".modal-details")) {
+            $(this).hide();
+        }
+    });
+    $('#close-details-btn').on('click', function() {
+        $('.modal-details').hide();
+    });
 });
 
 function ChangeNameDashboard(name){

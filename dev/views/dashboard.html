@@ -164,7 +164,7 @@
                         <p>Fecha de compra: 15 de Agosto del 2025</p>
                         <p>Estado: <span class="status completed">Entregado</span></p>
                         <div class="purchase-item-actions">
-                            <button class="purchase-action-btn">
+                            <button class="purchase-action-btn" id="view-details-btn">
                                 <span class="material-symbols-outlined"></span>
                                 <span>Ver Detalles</span>
                             </button>
@@ -174,30 +174,7 @@
                             </button>
                         </div>
                     </div>
-                </div>
-                <div class="purchases-list-item">
-                    <div class="purchase-item-image">
-                        <img src="../img/controller.png" alt="Product 1" />
-                    </div>
-                    <div class="purchase-item-details">
-                        <h3>Controlador Inalámbrico Xbox</h3>
-                        <p>Categoría: Accesorios</p>
-                        <p>Precio: $40</p>
-                        <p>Fecha de compra: 15 de Agosto del 2025</p>
-                        <p>Estado: <span class="status cancelled">En espera</span></p>
-                        <div class="purchase-item-actions">
-                            <button class="purchase-action-btn">
-                                <span class="material-symbols-outlined"></span>
-                                <span>Ver Detalles</span>
-                            </button>
-                            <button class="purchase-action-btn-secondary">
-                                <span class="material-symbols-outlined"></span>
-                                <span>Mensajes</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
+                </div>            
             </div>
         </section>
     </main>
@@ -265,6 +242,37 @@
                 </div>
             </div>
         </form>            
+        </div>
+    </div>
+    <div class="modal-details">
+        <div class="modal-details-body">
+            <div class="modal-details-header">
+                <h2 id="modal-details-title">Detalles de la Compra</h2>
+                <div class="modal-details-header-btns">
+                    <button class="header-action-btn" id="close-details-btn">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-details-content">
+                <div class="modal-details-product">
+                    <img src="../img/xbox.png" alt="Product 1" />
+                    <h3>Xbox Series X (Galaxy Edition)</h3>
+                </div>
+                <div class="modal-details-product-info">
+                        <h3>Información de la Compra</h3>
+                        <p>Vendedor: <a href="#">Tienda de Ejemplo</a></p>
+                        <p>Categoría: Consolas</p>
+                        <p>Precio Unitario: $500</p>
+                        <p>Cantidad: 1</p>
+                        <p>Precio Total: $500</p>
+                    </div>
+                <div class="modal-details-status">
+                    <h3>Estado de la Compra</h3>
+                    <p>Estado Actual: <span class="status completed">Entregado</span></p>
+                    <p>Fecha de Compra: 15 de Agosto del 2025</p>
+                </div>
+            </div>
         </div>
     </div>
     <script src="../js/jquery.js"></script>
