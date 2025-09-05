@@ -1,7 +1,7 @@
 $(document).ready(function() {
-    //  $(".dashboard-main").hide();
-    //  $(".dashboard-products").show();
-    //  ChangeNameDashboard("link-products");
+    // $(".dashboard-main").hide();
+    // $(".dashboard-purchases").show();
+    // ChangeNameDashboard("link-purchases");
 
     console.log("Dashboard listo");
     //Evento click en los links del aside menu
@@ -20,6 +20,20 @@ $(document).ready(function() {
         ChangeNameDashboard($(this).attr("id"));
     });
 
+    //Evento click para mostrar/ocultar el aside menu
+    $("#toggle-aside-btn") .on("click", function(){
+        if($("aside").css("left") === "-250px"){
+            $("aside").css("left", "0px");
+            $(".main-dashboard").addClass("hidden");
+        }
+    });
+
+    $("#toggle-aside-close-btn") .on("click", function(){
+        if($("aside").css("left") === "0px"){
+            $("aside").css("left", "-250px");
+            $(".main-dashboard").removeClass("hidden");
+        }
+    });
 });
 
 function ChangeNameDashboard(name){
@@ -59,10 +73,10 @@ function loadProducts(){
                             <td>${product.view}</td>
                             <td>${product.sales}</td>
                             <td >
-                                <button class="header-action-btn-edit" id="edit-product" data-id="${product.id}">
+                                <button class="header-action-btn-edit" data-id="${product.id}">
                                     <span  class="material-symbols-outlined">edit</span>
                                 </button>
-                                <button class="header-action-btn-delete" id="delete-product" data-id="${product.id}">
+                                <button class="header-action-btn-delete" data-id="${product.id}">
                                     <span class="material-symbols-outlined">delete</span>
                                 </button>
                             </td>

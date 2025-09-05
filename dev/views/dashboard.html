@@ -13,6 +13,9 @@
 <body>
     <aside class="aside-dashboard">
         <header class="aside-title">
+            <button class="header-action-btn-menu" id="toggle-aside-close-btn">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
             <a class="aside-title-link" href="">
                 <span>Merca</span>
                 <span>Zone</span>
@@ -44,15 +47,24 @@
                 </a>
             </li>
             <li class="aside-menu-item">
-                <a class="aside-menu-link" href="">
+                <a class="aside-menu-link" href="" id="link-verification" data-view="dashboard-verification">
+                    <span class="material-symbols-outlined">shield</span>
+                    <span class="aside-menu-link-text">Verificación</span>
+                </a>
+            </li>
+            <li class="aside-menu-item">
+                <a class="aside-menu-link" href="" id="link-logout" data-view="dashboard-logout">
                     <span class="material-symbols-outlined">logout</span>
                     <span class="aside-menu-link-text">Cerrar sesión</span>
                 </a>
             </li>
         </ul>
     </aside>
-    <main class="main-dashboard">
+    <main class="main-dashboard hidden" id="main-dashboard">
         <header class="header-dashboard">
+            <button class="header-action-btn-menu" id="toggle-aside-btn">
+                    <span class="material-symbols-outlined">menu</span>
+            </button>
             <div class="header-dashboard-title">
                 <h1 id="dashboard-title">Dashboard</h1>
                 <span>28 de Agosto del 2025</span>
@@ -65,7 +77,7 @@
                     <img src="../img/albert.jpg" alt="User" />
                     <div class="header-dashboard-userdata">
                         <span class="dashboard-userdata-name">Hola, Albert Quintero</span>
-                        <span class="dashboard-userdata-secondary">albert@example.com</span>
+                        <span class="dashboard-userdata-secondary">albert@gmail.com</span>
                     </div>
                 </div>
             </div>
@@ -136,6 +148,58 @@
                 </tbody>
             </table>
         </section>
+        <section class="dashboard-purchases" id="dashboard-purchases" style="display: none;">
+            <header class="dashboard-products-header">  
+                <input type="text" class="dashboard-products-search" placeholder="Buscar compra..." />
+            </header>
+            <div class="purchases-list">
+                <div class="purchases-list-item">
+                    <div class="purchase-item-image">
+                        <img src="../img/xbox.png" alt="Product 1" />
+                    </div>
+                    <div class="purchase-item-details">
+                        <h3>Xbox Series X (Galaxy Edition)</h3>
+                        <p>Categoría: Consolas</p>
+                        <p>Precio: $500</p>
+                        <p>Fecha de compra: 15 de Agosto del 2025</p>
+                        <p>Estado: <span class="status completed">Entregado</span></p>
+                        <div class="purchase-item-actions">
+                            <button class="purchase-action-btn">
+                                <span class="material-symbols-outlined"></span>
+                                <span>Ver Detalles</span>
+                            </button>
+                            <button class="purchase-action-btn-secondary">
+                                <span class="material-symbols-outlined"></span>
+                                <span>Mensajes</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="purchases-list-item">
+                    <div class="purchase-item-image">
+                        <img src="../img/controller.png" alt="Product 1" />
+                    </div>
+                    <div class="purchase-item-details">
+                        <h3>Controlador Inalámbrico Xbox</h3>
+                        <p>Categoría: Accesorios</p>
+                        <p>Precio: $40</p>
+                        <p>Fecha de compra: 15 de Agosto del 2025</p>
+                        <p>Estado: <span class="status cancelled">En espera</span></p>
+                        <div class="purchase-item-actions">
+                            <button class="purchase-action-btn">
+                                <span class="material-symbols-outlined"></span>
+                                <span>Ver Detalles</span>
+                            </button>
+                            <button class="purchase-action-btn-secondary">
+                                <span class="material-symbols-outlined"></span>
+                                <span>Mensajes</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
     </main>
     <div class="modal-product">
         <div class="modal-product-body">
@@ -150,7 +214,7 @@
         </div>
         <form class="add-product" id="add-product-form">
             <div class="product-form-image">
-                <img src="" alt="">
+                <img src="" alt="" id="product-image-preview"/>
                 <label for="product-image">
                     <span class="material-symbols-outlined">upload</span>
                     <span>Subir Imagen</span>
@@ -175,9 +239,9 @@
                     <div class="product-form-data-group">
                         <label for="product-category">Categoría del Producto</label>
                         <select name="product-category" id="product-category" required>
-                            <option value="categoria1">Categoría 1</option>
-                            <option value="categoria2">Categoría 2</option>
-                            <option value="categoria3">Categoría 3</option>
+                            <option value="Accesorios">Accesorios</option>
+                            <option value="Consolas">Consolas</option>
+                            <option value="Videojuegos">Videojuegos</option>
                         </select>
                     </div>
                     <div class="product-form-data-group">
@@ -205,5 +269,6 @@
     </div>
     <script src="../js/jquery.js"></script>
     <script src="../js/dashboard/dashboard.js"></script>
+    <script src="../js/dashboard/products.js"></script>
 </body>
 </html>
