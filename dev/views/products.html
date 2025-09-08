@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/products.css">
+    <title>MercaZone</title>
+</head>
+<body>
+<header>
+        <div class="header-top">
+            <div class="header-top-left">
+                <div class="sidebar-menu-button">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <a class="logop" href="">
+                    <span>Merca</span>
+                    <span>Zone</span>
+                </a>
+            </div>
+            <form class="header-top-center">
+                <input type="search" placeholder="Buscar productos, marcas y más...">
+                <button><span class="material-symbols-outlined">search</span></button>
+            </form>
+            <div class="header-top-right">
+                <?php if (isset($_SESSION['id_user'])): ?>
+                <div class="user-data">
+                        <div class="user-data-img">
+                            <img src="/MercaZone/assets/img/albert.jpg" alt="" srcset="" id="user-img">
+                        </div>
+                        <div class="user-options" id="user-options">
+                            <div class="user-data2">
+                                <div class="user-data2-img">
+                                    <img src="/MercaZone/assets/img/albert.jpg" alt="" srcset="">
+                                </div>
+                                <div class="user-data2-info">
+                                    <span class="correo">Albert Josue</span>
+                                    <span class="cedula">Quintero Colina</span>
+                                </div>
+                            </div>
+                            <ul class="user-options-list">
+                                <li><a href="index.php?u=perfil">Perfil</a></li>
+                                <?php
+                                if (isset($_SESSION['id_user']) && $_SESSION['rol'] == "admin") {
+                                    echo '<li><a href="index.php?u=admin">Panel de Administrador</a></li>';
+                                }
+                                ?>
+                                <li><a href="index.php">Carrito</a></li>
+                                <li><a href="index.php">Ordenes</a></li>
+                                <li><a href="index.php?u=auth&m=salir">Cerrar sesión</a></li>
+                            </ul>
+                        </div>
+                        <?php else: ?>
+                        <a href="index.php?u=auth"><span class="material-symbols-outlined">person</span></a>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+        <div class="header-buttom">
+            <div class="header-buttom-nav">
+                <ul class="header-buttom-nav-list">
+                    <li class="header-buttom-nav-item"><a href="#">INICIO</a></li>
+                    <li class="header-buttom-nav-item"><a href="#">CATEGORÍAS</a></li>
+                    <li class="header-buttom-nav-item"><a href="#">OFERTAS</a></li>
+                    <li class="header-buttom-nav-item"><a href="#">NOVEDADES</a></li>
+                    <li class="header-buttom-nav-item"><a href="#">CONTACTO</a></li>
+
+                    <!-- <li class="header-buttom-nav-item"><a href="#">Mi cuenta</a></li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <span class="material-symbols-outlined">close</span>
+                <h2>Menú</h2>
+            </div>
+            <ul class="sidebar-list">
+                <li class="header-buttom-nav-item"><span class="material-symbols-outlined">home</span><a href="#">Inicio</a></li>
+                <li class="header-buttom-nav-item"><span class="material-symbols-outlined">percent</span><a href="#">Ofertas</a></li>
+                <li class="header-buttom-nav-item"><span class="material-symbols-outlined">category</span><a href="#">Categorías</a></li>
+                <li class="header-buttom-nav-item"><span class="material-symbols-outlined">account_circle</span><a href="#">Mi cuenta</a></li>
+            </ul>
+        </div>
+    </header>
+    <main class="main-products">
+        <div class="products-title">
+            <h2>Accesorios</h2>
+            <p>Mostrando 4 de 4 productos</p>
+        </div>
+        <div class="products-filters">
+            <select name="sort" id="sort">
+                <option value="popularity">Más populares</option>
+                <option value="price_low">Precio: Bajo a Alto</option>
+                <option value="price_high">Precio: Alto a Bajo</option>
+            </select>
+        </div>
+        <div class="products-container">
+            <div class="products-items">
+                <div class="product-item">
+                    <div class="product-item-img">
+                        <img src="../img/controller.png" alt="">
+                    </div>
+                    <div class="product-item-info">
+                        <h3 class="product-item-title">Xbox Controller Edicion Limitada</h3>
+                        <p class="product-item-price">$60 / 43.234Bs</p>
+                        <p class="product-item-shortdescription">Xbox Wireless Controller, Color Gris</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-img">
+                        <img src="../img/xbox.png" alt="">
+                    </div>
+                    <div class="product-item-info">
+                        <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
+                        <p class="product-item-price">$600 / 68.234Bs</p>
+                        <p class="product-item-shortdescription">Xbox Series X Edicion Galaxias,  Color Negro</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-img">
+                        <img src="../img/xbox.png" alt="">
+                    </div>
+                    <div class="product-item-info">
+                        <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
+                        <p class="product-item-price">$600 / 68.234Bs</p>
+                        <p class="product-item-shortdescription">Xbox Series X Edicion Galaxias,  Color Negro</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-img">
+                        <img src="../img/xbox.png" alt="">
+                    </div>
+                    <div class="product-item-info">
+                        <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
+                        <p class="product-item-price">$600 / 68.234Bs</p>
+                        <p class="product-item-shortdescription">Xbox Series X Edicion Galaxias,  Color Negro</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-img">
+                        <img src="../img/xbox.png" alt="">
+                    </div>
+                    <div class="product-item-info">
+                        <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
+                        <p class="product-item-price">$600 / 68.234Bs</p>
+                        <p class="product-item-shortdescription">Xbox Series X Edicion Galaxias,  Color Negro</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-img">
+                        <img src="../img/xbox.png" alt="">
+                    </div>
+                    <div class="product-item-info">
+                        <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
+                        <p class="product-item-price">$600 / 68.234Bs</p>
+                        <p class="product-item-shortdescription">Xbox Series X Edicion Galaxias,  Color Negro</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-img">
+                        <img src="../img/xbox.png" alt="">
+                    </div>
+                    <div class="product-item-info">
+                        <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
+                        <p class="product-item-price">$600 / 68.234Bs</p>
+                        <p class="product-item-shortdescription">Xbox Series X Edicion Galaxias,  Color Negro</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-img">
+                        <img src="../img/xbox.png" alt="">
+                    </div>
+                    <div class="product-item-info">
+                        <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
+                        <p class="product-item-price">$600 / 68.234Bs</p>
+                        <p class="product-item-shortdescription">Xbox Series X Edicion Galaxias,  Color Negro</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-img">
+                        <img src="../img/xbox.png" alt="">
+                    </div>
+                    <div class="product-item-info">
+                        <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
+                        <p class="product-item-price">$600 / 68.234Bs</p>
+                        <p class="product-item-shortdescription">Xbox Series X Edicion Galaxias,  Color Negro</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-img">
+                        <img src="../img/xbox.png" alt="">
+                    </div>
+                    <div class="product-item-info">
+                        <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
+                        <p class="product-item-price">$600 / 68.234Bs</p>
+                        <p class="product-item-shortdescription">Xbox Series X Edicion Galaxias,  Color Negro</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-img">
+                        <img src="../img/xbox.png" alt="">
+                    </div>
+                    <div class="product-item-info">
+                        <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
+                        <p class="product-item-price">$600 / 68.234Bs</p>
+                        <p class="product-item-shortdescription">Xbox Series X Edicion Galaxias,  Color Negro</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-img">
+                        <img src="../img/xbox.png" alt="">
+                    </div>
+                    <div class="product-item-info">
+                        <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
+                        <p class="product-item-price">$600 / 68.234Bs</p>
+                        <p class="product-item-shortdescription">Xbox Series X Edicion Galaxias,  Color Negro</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-img">
+                        <img src="../img/xbox.png" alt="">
+                    </div>
+                    <div class="product-item-info">
+                        <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
+                        <p class="product-item-price">$600 / 68.234Bs</p>
+                        <p class="product-item-shortdescription">Xbox Series X Edicion Galaxias,  Color Negro</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-img">
+                        <img src="../img/xbox.png" alt="">
+                    </div>
+                    <div class="product-item-info">
+                        <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
+                        <p class="product-item-price">$600 / 68.234Bs</p>
+                        <p class="product-item-shortdescription">Xbox Series X Edicion Galaxias,  Color Negro</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-item-img">
+                        <img src="../img/xbox.png" alt="">
+                    </div>
+                    <div class="product-item-info">
+                        <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
+                        <p class="product-item-price">$600 / 68.234Bs</p>
+                        <p class="product-item-shortdescription">Xbox Series X Edicion Galaxias,  Color Negro</p>
+                    </div>
+                </div>
+            </div>
+            <aside class="products-categorys">
+                <h4>Categorías</h4>
+                <ul>
+                    <li><a href="#">Accesorios</a></li>
+                    <li><a href="#">Consolas</a></li>
+                    <li><a href="#">Videojuegos</a></li>
+                    <li><a href="#">Merchandising</a></li>
+                    <li><a href="#">Hardware</a></li>
+                    <li><a href="#">Otros</a></li>
+                </ul>
+            </aside>
+        </div>
+    </main>
+    <script src="../js/main.js"></script>
+</body>
+</html>
