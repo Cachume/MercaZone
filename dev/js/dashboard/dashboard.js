@@ -70,7 +70,7 @@ function ChangeNameDashboard(name){
 }
 
 function loadProducts(){
-    fetch('http://192.168.0.111:80/MercaZone/index.php?u=dashboard&m=getmyproducts')
+    fetch('http://localhost/MercaZone/index.php?u=dashboard&m=getmyproducts')
         .then(response => response.json())
         .then(data => {
             if(data.success === true){
