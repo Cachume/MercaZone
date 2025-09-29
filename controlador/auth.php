@@ -207,8 +207,8 @@
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'albertq703@gmail.com'; // tu correo
-            $mail->Password = 'njkrzphziuxwvetk';     // tu clave de app
+            $mail->Username = 'officialmercazone@gmail.com'; // tu correo
+            $mail->Password = 'jgopimzfjlhrccjy';     // tu clave de app
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
 

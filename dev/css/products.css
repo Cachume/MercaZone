@@ -41,6 +41,16 @@
     cursor: pointer;
 }
 
+.product-item.small{
+    width: 200px;
+    height: 260px;
+}
+
+.product-item.small > .product-item-img img{
+    width: 150px;
+    height: 150px;
+}
+
 .product-item:hover{
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     transform: translateY(-5px);

@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/main.css">
-    
+    <link rel="stylesheet" href="../css/products.css">
+    <!-- <link rel="stylesheet" href="../css/main.css"> -->
     <title>MercaZone</title>
 </head>
 <body>
@@ -17,7 +18,9 @@
                 <div class="sidebar-menu-button">
                     <span class="material-symbols-outlined">menu</span>
                 </div>
-                <a href="#">MercaZone</a>
+                <h1>
+                    <span style="color:#00b45d">Merca<span style="color:#014651">Zone</span></span>
+                </h1>
             </div>
             <form class="header-top-center">
                 <input type="search" placeholder="Buscar productos, marcas y más...">
@@ -52,7 +55,8 @@
                             </ul>
                         </div>
                         <?php else: ?>
-                        <a href="index.php?u=auth"><span class="material-symbols-outlined">person</span></a>
+                        <a href="index.php?u=auth">Iniciar Sesion</a>
+                        <a href="index.php?u=auth">Registrarme</a>
                     <?php endif; ?>
                 </div>
                 
@@ -87,50 +91,157 @@
         </div>
     </header>
     <main class="principal">
-        <section class="promociones">
-            <div class="promocion-big">
-                <img src="../img/pruebas.png" alt="" srcset="">
-            </div>
-            <div class="container-small-promocion">
-                <div class="promocion-item">
-                    <img src="../img/vender.jpg" alt="" srcset="">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img class="slider-image" src="../img/banner1.png" alt="">
                 </div>
-                <div class="promocion-item"></div>
+                <div class="swiper-slide">
+                    <img class="slider-image" src="../img/banner2.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img class="slider-image" src="../img/banner3.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img class="slider-image" src="../img/banner4.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img class="slider-image" src="../img/banner5.png" alt="">
+                </div>
+            </div>
+        </div>
+        <section class="principal-products">
+            <div class="principal-categorys">
+                <div class="principal-categorys-group">
+                    <div class="categorys-item">
+                        <a class="categorys-item-link" href="">
+                            <div class="categorys-item-icon">
+                                <span class="material-symbols-outlined">laptop</span>
+                            </div>
+                            <p>Computadoras y Laptops</p>
+                        </a>
+                    </div>
+                    <div class="categorys-item">
+                        <a class="categorys-item-link" href="">
+                            <div class="categorys-item-icon">
+                                <span class="material-symbols-outlined">mobile_2</span>
+                            </div>
+                            <p>SmartPhones</p>
+                        </a>
+                    </div>
+                    <div class="categorys-item">
+                        <a class="categorys-item-link" href="">
+                            <div class="categorys-item-icon">
+                                <span class="material-symbols-outlined">sports_soccer</span>
+                            </div>
+                            <p>Deportes</p>
+                        </a>
+                    </div>
+                    <div class="categorys-item">
+                        <a class="categorys-item-link" href="">
+                            <div class="categorys-item-icon">
+                                <span class="material-symbols-outlined">steps</span>
+                            </div>
+                            <p>Ropa y Calzado</p>
+                        </a>
+                    </div>
+                    <div class="categorys-item">
+                        <a class="categorys-item-link" href="">
+                            <div class="categorys-item-icon">
+                                <span class="material-symbols-outlined">headphones</span>
+                            </div>
+                            <p>Accesorios</p>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
-    
-    <div class="teinteresa">
-        <div class="interesa_title">
-            <span>Te puede interesar</span>
-        </div>
-        <div class="teinteresa-items">
-            <div class="teinteresa-item">
-                <img src="../img/audifonos.webp" alt="">
-                <span class="teinteresa-text">Audifonos in-ears kz9 Pro</span>
-                <span class="teinteresa-precio">$8</span>
+        <h1>La Mejor Seleccion para Ti</h1>
+        <section class="principal-descubre">
+            <div class="descubre-item">
+                <div class="descubre-item-data">
+                    <p>Los mejor para el Gamer</p>
+                    <a href="">Ver mas</a>
+                </div>
+                <div class="descubre-item-img">
+                    <img src="../img/descubrir1.png" alt="">
+                </div>
             </div>
-            <div class="teinteresa-item">
-                <img src="../img/telcado.webp" alt="">
-                <span class="teinteresa-text">Teclado Mecanico Leaven k320</span>
-                <span class="teinteresa-precio">$8</span>
+            <div class="descubre-item">
+                <div class="descubre-item-data">
+                    <p>Lleva tu musica a otro nivel</p>
+                    <a href="">Ver mas</a>
+                </div>
+                <div class="descubre-item-img">
+                    <img src="../img/audifonos.png" alt="">
+                </div>
             </div>
-            <div class="teinteresa-item">
-                <img src="../img/televisor.webp" alt="">
-                <span class="teinteresa-text">Televisor QLED 4k</span>
-                <span class="teinteresa-precio">$2.000</span>
+            <div class="descubre-item">
+                <div class="descubre-item-data">
+                    <p>Encuentra la mejor camisa para tu Outfit</p>
+                    <a href="">Ver mas</a>
+                </div>
+                <div class="descubre-item-img">
+                    <img src="../img/camisa.png" alt="">
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="promocionesm">
-        <div class="promocionm-item">
-            <div class="promocionm-item-text">
-                <p>ENCUENTRA UN NUEVO SMARTPHONE, PARA TI</p>
-                <a href="">Ver Ofertas</a>
+            <div class="descubre-item">
+                <div class="descubre-item-data">
+                    <p>Repuestos para tu vehiculo</p>
+                    <a href="">Ver mas</a>
+                </div>
+                <div class="descubre-item-img">
+                    <img src="../img/motor.png" alt="">
+                </div>
             </div>
-            <img src="../img/telefono.webp" alt="">
-        </div>
-    </div>
+        </section>
+        <section class="principal-descuentos">
+            <div class="descuentos-title">
+                <p>Productos en descuentos</p>
+                <a href="">Ver todos</a>
+            </div>
+            <div class="product-item small">
+                <div class="product-item-img">
+                    <img src="../img/controller.png" alt="">
+                </div>
+                <div class="product-item-info">
+                    <h3 class="product-item-title">Xbox Controller Edicion Limitada</h3>
+                    <p class="product-item-price">$60 / 43.234Bs</p>
+                </div>
+            </div>
+            <div class="product-item small">
+                <div class="product-item-img">
+                    <img src="../img/xbox.png" alt="">
+                </div>
+                <div class="product-item-info">
+                    <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
+                    <p class="product-item-price">$600 / 68.234Bs</p>
+                </div>
+            </div>
+            <div class="product-item small">
+                <div class="product-item-img">
+                    <img src="../img/xbox.png" alt="">
+                </div>
+                <div class="product-item-info">
+                    <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
+                    <p class="product-item-price">$600 / 68.234Bs</p>
+                </div>
+            </div>
+            <div class="product-item small">
+                <div class="product-item-img">
+                    <img src="../img/xbox.png" alt="">
+                </div>
+                <div class="product-item-info">
+                    <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
+                    <p class="product-item-price">$600 / 68.234Bs</p>
+                </div>
+            </div>
+        </section>
     </main>
     <script src="../js/main.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+    <script src="../js/carousel.js"></script>
 </body>
 </html>
