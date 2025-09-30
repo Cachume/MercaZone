@@ -15,8 +15,10 @@
     <main class="main-auth">
         <div class="auth-container">
             <div class="auth-header">
-                    <h1>MercaZone</h1>
-                    <div class="auth-header-buttons">
+                    <h1>
+                    <span style="color:#00b45d">Merca<span style="color:#014651">Zone</span></span>
+                </h1>
+                    <div class="auth-header-buttons" style="display: none;">
                         <button class="selected" id="login"><span class="material-symbols-outlined">account_circle</span>Iniciar Sesión</button>
                     |
                         <button id="register"><span class="material-symbols-outlined">person_add</span>Registrarse</button>
@@ -49,17 +51,17 @@
                         <input type="email" id="email" name="email" class="auth-input" placeholder="Correo Electrónico:" required>
                     </div>
 
-                    <div class="auth-input-group" id="code-group" style="display: none;">
+                    <div class="auth-input-group" id="code-group">
                         <label for="codigo" class="auth-label"></label>
                         <span class="material-symbols-outlined">key</span>
-                        <input type="text" id="codigo" name="password" class="auth-input" placeholder="Ingresa tu código de verificacion">
+                        <input type="text" id="codigo" name="password" class="auth-input" placeholder="Ingresa tu contraseña">
                     </div>
 
                     <div class="auth-forgot" id="forgot-link">
                         <a href="/auth/forgot-password">¿Olvidaste tu contraseña?</a>
                     </div>
 
-                    <button name="iniciarsesion" type="submit" class="auth-button" id="login-btn">Iniciar sesión</button>
+                    <button name="iniciarsesion" type="submit" class="login-button" id="login-btn">Iniciar sesión</button>
                     <button type="button" id="resend-btn" class="auth-button" style="display: none;">
                     Verificar Codigo
                     </button>

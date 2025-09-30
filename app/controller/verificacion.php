@@ -21,12 +21,10 @@ class VerificacionController {
         }
     }
 
-    // Mostrar la vista del formulario
     public function default() {
         require('views/user/verificacion.php');
     }
 
-    // Procesar envío del formulario
     public function enviar() {
         echo 'entro';
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -52,7 +50,6 @@ class VerificacionController {
             echo'se creo';
         }
 
-        // Guardar archivos
         $cedula_frontal = null;
         $cedula_reverso = null;
         $pasaporte_imagen = null;
@@ -64,8 +61,6 @@ class VerificacionController {
         } elseif ($tipo_documento === 'pasaporte') {
             $pasaporte_imagen = $this->guardarArchivo('passport-file', $upload_dir);
         }
-
-        // Validaciones
         if (!$selfie_imagen || 
             ($tipo_documento === 'cedula' && (!$cedula_frontal || !$cedula_reverso)) || 
             ($tipo_documento === 'pasaporte' && !$pasaporte_imagen)) {
@@ -91,7 +86,6 @@ class VerificacionController {
         }
     }
 
-    // 🔒 Función privada para manejar archivos
     private function guardarArchivo($campo, $upload_dir) {
         if (isset($_FILES[$campo]) && $_FILES[$campo]['error'] === UPLOAD_ERR_OK) {
             $tmp = $_FILES[$campo]['tmp_name'];

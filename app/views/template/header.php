@@ -1,10 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="/MercaZone/assets/css/normalize.css">
+    <link rel="stylesheet" href="/MercaZone/assets/css/index.css">
+    <link rel="stylesheet" href="/MercaZone/assets/css/products.css">
+    <title>MercaZone</title>
+</head>
 <header>
         <div class="header-top">
             <div class="header-top-left">
                 <div class="sidebar-menu-button">
                     <span class="material-symbols-outlined">menu</span>
                 </div>
-                <a href="#">MercaZone</a>
+                <h1>
+                    <span style="color:#00b45d">Merca<span style="color:#014651">Zone</span></span>
+                </h1>
             </div>
             <form class="header-top-center">
                 <input type="search" placeholder="Buscar productos, marcas y más...">
@@ -39,7 +53,8 @@
                             </ul>
                         </div>
                         <?php else: ?>
-                        <a href="index.php?u=auth"><span class="material-symbols-outlined">person</span></a>
+                        <a href="/MercaZone/autenticarse">Iniciar Sesion</a>
+                        <a href="/MercaZone/autenticarse">Registrarme</a>
                     <?php endif; ?>
                 </div>
                 
@@ -49,8 +64,13 @@
             <div class="header-buttom-nav">
                 <ul class="header-buttom-nav-list">
                     <li class="header-buttom-nav-item"><a href="#">Inicio</a></li>
-                    <li class="header-buttom-nav-item"><a href="#">Ofertas</a></li>
                     <li class="header-buttom-nav-item"><a href="#">Categorías</a></li>
+                    <li class="header-buttom-nav-item"><a href="#">Ofertas</a></li>
+                    <li class="header-buttom-nav-item"><a href="#">Tecnologia</a></li>
+                    <li class="header-buttom-nav-item"><a href="#">Ropa y Calzado</a></li>
+                    <li class="header-buttom-nav-item"><a href="#">Deportes</a></li>
+                    <li class="header-buttom-nav-item"><a href="#">Repuestos para Vehiculos</a></li>
+                    
                     <!-- <li class="header-buttom-nav-item"><a href="#">Mi cuenta</a></li> -->
                 </ul>
             </div>

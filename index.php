@@ -9,7 +9,7 @@ if (file_exists($controllerFile)) {
     require_once $controllerFile;
     $controller = new $controller();
     if (method_exists($controller, $action)) {
-        $controller->$action();
+        call_user_func_array([$controller, $action], [$param]);
         exit();
     } else {
         $controller->default();

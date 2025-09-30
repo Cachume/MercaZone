@@ -208,6 +208,33 @@ body{
 }
 
 
+.login-button {
+    background-color: #28a745; /* Verde MercaZone */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Para que ocupe todo el ancho del contenedor */
+}
+
+/* Efecto al pasar el cursor (hover) */
+.login-button:hover {
+    background-color: #218838; /* Un tono de verde un poco más oscuro */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+}
+
+/* Efecto al hacer clic (active) */
+.login-button:active {
+    background-color: #1e7e34; /* Un verde aún más oscuro para el estado de "presionado" */
+    transform: scale(0.98); /* Reduce ligeramente el tamaño */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra más pequeña para el efecto de "hundimiento" */
+}
+
 
 @media (max-width: 768px){
 
