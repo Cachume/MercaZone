@@ -1,11 +1,10 @@
 <?php
-    require_once("models/authmodel.php");
-
+    require_once("./app/models/authmodel.php");
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
 
     require 'vendor/autoload.php';
-    class AuthController{
+    class auth{
 
         private $errores = [];
         private $mensajesc;
@@ -16,7 +15,7 @@
                 header('Location:/MercaZone');
                 return;
             }
-            require_once("views/auth.php");
+            require_once './app/views/auth/auth.php';
         }
         public function login() {
     if (isset($_POST["iniciarsesion"])) {
@@ -27,7 +26,7 @@
 
         if (count($this->errores) > 0) {
             $errores = $this->errores;
-            require_once("views/auth.php");
+            require_once './app/views/auth/auth.php';
             return;
         }
 
@@ -40,7 +39,7 @@
         ) {
             $this->errores[] = "Código incorrecto o expirado.";
             $errores = $this->errores;
-            require_once("views/auth.php");
+            require_once './app/views/auth/auth.php';
             return;
         }
 
@@ -49,7 +48,7 @@
         if (!$auth) {
             $this->errores[] = "Correo no registrado.";
             $errores = $this->errores;
-            require_once("views/auth.php");
+            require_once './app/views/auth/auth.php';
             return;
         }
 
@@ -62,7 +61,7 @@
             if ($intervalo < 1) {
                 $this->errores[] = "Cuenta bloqueada por 1 minuto. Intente más tarde.";
                 $errores = $this->errores;
-                require_once("views/auth.php");
+                require_once './app/views/auth/auth.php';
                 return;
             } else {
                 AuthModel::desbloquearCuenta($correo);
@@ -132,7 +131,7 @@
             // Si hay errores, recarga vista
             if (!empty($this->errores)) {
                 $errores = $this->errores;
-                require_once("views/auth.php");
+                require_once './app/views/auth/auth.php';
                 return;
             }
 
@@ -149,7 +148,7 @@
             } else {
                 $this->errores[] = "No se pudo completar el registro.";
                 $errores = $this->errores;
-                require_once("views/auth.php");
+                require_once './app/views/auth/auth.php';
             }
         } else {
             header("Location:index.php?u=auth");
@@ -169,7 +168,7 @@
 
              $usuario = AuthModel::loginUser($email, '');
             if (!$usuario) {
-                echo json_encode(['success' => false, 'message' => 'Este correo no está registrado.']);
+                echo json_encode(value: ['success' => false, 'message' => 'Este correo no está registrado.']);
                 return;
             }
 
@@ -240,7 +239,6 @@
 
 public function sendCoder() {
     header('Content-Type: application/json');
-
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
         $email = trim($_POST['email']);
         $cedula = isset($_POST['cedula']) ? trim($_POST['cedula']) : null;
@@ -249,8 +247,6 @@ public function sendCoder() {
             echo json_encode(['success' => false, 'message' => 'Correo electrónico no válido.']);
             return;
         }
-
-        require_once("models/authmodel.php");
 
         // Validar si el correo existe
         $usuarioCorreo = AuthModel::loginUser($email, '');

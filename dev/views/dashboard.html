@@ -168,7 +168,7 @@
                                 <span class="material-symbols-outlined"></span>
                                 <span>Ver Detalles</span>
                             </button>
-                            <button class="purchase-action-btn-secondary">
+                            <button class="purchase-action-btn-secondary open-chat" id="open-chat-btn">
                                 <span class="material-symbols-outlined"></span>
                                 <span>Mensajes</span>
                             </button>
@@ -275,8 +275,53 @@
             </div>
         </div>
     </div>
+    <div class="modal-universal" id="modal-product">
+        <div class="modal-universal-body">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h4>Xbox Shop - Xbox Series X</h4>
+                     <span class="material-symbols-outlined modal-close" id="modal-close">close</span>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message">
+                        <div class="message-container received">
+                            <span class="message-user">Tienda de Ejemplo</span>
+                        <p class="message-text">Hola, ¿en qué puedo ayudarte?</p>
+                        <span class="message-time">10:00 AM</span>
+                        </div>
+                    </div>
+                    <div class="message">
+                        <div class="message-container sent">
+                            <span class="message-user">Tienda de Ejemplo</span>
+                            <p class="message-text">Hola, ¿en qué puedo ayudarte?</p>
+                            <span class="message-time">10:00 AM</span>
+                        </div>
+                    </div>
+                    <div class="message">
+                        <div class="message-container received">
+                            <span class="message-user">Tienda de Ejemplo</span>
+                        <p class="message-text">Hola, ¿en qué puedo ayudarte?</p>
+                        <span class="message-time">10:00 AM</span>
+                    </div>
+                    <div class="message">
+                        <div class="message-container received">
+                            <span class="message-user">Tienda de Ejemplo</span>
+                        <p class="message-text">Hola, ¿en qué puedo ayudarte?</p>
+                        <span class="message-time">10:00 AM</span>
+                    </div>
+                </div>
+            </div>
+            <form class="chat-input" id="chat-form">
+                    <input type="text" id="chat-message-input" placeholder="Escribe tu mensaje..." required />
+                    <button type="submit" class="header-action-btn">
+                        <span class="material-symbols-outlined">send</span>
+                    </button>
+            </form>
+        </div>
+    </div>
     <script src="../js/jquery.js"></script>
     <script src="../js/dashboard/dashboard.js"></script>
     <script src="../js/dashboard/products.js"></script>
+    <script src="../js/dashboard/chats.js"></script>
 </body>
 </html>

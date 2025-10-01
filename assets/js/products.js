@@ -35,4 +35,44 @@ $(document).ready(function() {
     $('#modal-close').on('click', function() {
         $('.modal-universal').fadeOut();
     });
+
+    $('#buy-product').on('click', function() {
+        var productId = $('.product-item').data('productid');
+        var quantity = $('#quantity').val();
+
+        fetch('http://localhost/MercaZone/producto/buyProduct',
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: productId, cantidad: quantity })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            if (data.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Compra exitosa',
+                    text: data.message,
+                    timer: 2000,
+                    showConfirmButton: false,
+                    timerProgressBar: true,
+                    willClose: () => {
+                    window.location.href = '/MercaZone/dashboard';
+                    } 
+                }).then(() => {
+                    $('.modal-universal').fadeOut();
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error en la compra',
+                    text: data.message,
+                });
+                //alert(data.message);
+            }
+        });
+    });
 });

@@ -74,10 +74,10 @@
                     <span class="material-symbols-outlined">notifications</span>
                 </button>
                 <div class="header-dashboard-user">
-                    <img src="/MercaZone/assets/img/users/albert.jpg" alt="User" />
+                    <img src="https://unavatar.io/<?=$_SESSION['correo']?>" alt="User" />
                     <div class="header-dashboard-userdata">
-                        <span class="dashboard-userdata-name">Hola, Albert Quintero</span>
-                        <span class="dashboard-userdata-secondary">albert@gmail.com</span>
+                        <span class="dashboard-userdata-name">Hola, <?= $_SESSION['nombre'] . ' ' . $_SESSION['apellidos'] ?></span>
+                        <span class="dashboard-userdata-secondary"><?=$_SESSION['correo']?></span>
                     </div>
                 </div>
             </div>
@@ -152,29 +152,24 @@
             <header class="dashboard-products-header">  
                 <input type="text" class="dashboard-products-search" placeholder="Buscar compra..." />
             </header>
-            <div class="purchases-list">
-                <div class="purchases-list-item">
+            <div class="purchases-list" id="purchases-list">
+                <!-- <div class="purchase-item">
                     <div class="purchase-item-image">
-                        <img src="/MercaZone/assets/img/products/xbox.png" alt="Product 1" />
+                        <img src="../img/xbox.png" alt="Product 1" />
                     </div>
-                    <div class="purchase-item-details">
+                    <div class="purchase-item-info">
                         <h3>Xbox Series X (Galaxy Edition)</h3>
+                        <p>Vendedor: <a href="#">Tienda de Ejemplo</a></p>
                         <p>Categoría: Consolas</p>
-                        <p>Precio: $500</p>
-                        <p>Fecha de compra: 15 de Agosto del 2025</p>
-                        <p>Estado: <span class="status completed">Entregado</span></p>
-                        <div class="purchase-item-actions">
-                            <button class="purchase-action-btn" id="view-details-btn">
-                                <span class="material-symbols-outlined"></span>
-                                <span>Ver Detalles</span>
-                            </button>
-                            <button class="purchase-action-btn-secondary">
-                                <span class="material-symbols-outlined"></span>
-                                <span>Mensajes</span>
-                            </button>
-                        </div>
+                        <p>Precio Unitario: $500</p>
+                        <p>Cantidad: 1</p>
+                        <p>Precio Total: $500</p>
                     </div>
-                </div>            
+                    <div class="purchase-item-status">
+                        <span class="status completed">Entregado</span>
+                        <button class="details-btn" data-purchase-id="1">Ver Detalles</button>
+                    </div>
+                </div> -->
             </div>
         </section>
     </main>

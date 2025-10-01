@@ -9,6 +9,8 @@
         public function categoria($id=null){
             if($id!=null){
                 $nombre = "Consolas";
+                $products = Productmodel::getProductsByCategory($id);
+                $nombre = $products[0]['categoria'] ?? 'Categoría';
                 require_once './app/views/products/category.php';
             }else{
                 echo "todo nulo";
@@ -30,6 +32,22 @@
             }else{
                 echo json_encode(['success'=>false,'message'=>'No se ha especificado el producto']);
             }
+        }
+
+        public function buyProduct(){
+            header('Content-Type: application/json');
+            $input = json_decode(file_get_contents('php://input'), true);
+            if(isset($input['id']) && isset($input['cantidad'])){
+                $data = [
+                    'id' => $input['id'],
+                    'cantidad' => $input['cantidad'],
+                    'usuario' => $_SESSION['id_user']
+                ];
+                $result = Productmodel::buyProduct($data);
+                echo json_encode($result);
+                return;
+            }
+            echo json_encode(['success'=>false,'message'=>'Función en desarrollo']);
         }
 
     }

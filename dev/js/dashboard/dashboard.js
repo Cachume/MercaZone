@@ -1,7 +1,8 @@
 $(document).ready(function() {
-    // $(".dashboard-main").hide();
-    // $(".dashboard-purchases").show();
-    // ChangeNameDashboard("link-purchases");
+    $(".dashboard-main").hide();
+    $(".dashboard-purchases").show();
+    ChangeNameDashboard("link-purchases");
+    $('.modal-universal').css('display', 'flex');
 
     console.log("Dashboard listo");
     //Evento click en los links del aside menu

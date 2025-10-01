@@ -13,26 +13,22 @@
         </div>
         <div class="products-container">
             <div class="products-items">
-                <div class="product-item" data-productid="1" id="product-item">
-                    <div class="product-item-img" >
-                        <img class="product-img" src="/MercaZone/assets/img/products/controller.png" alt="">
+                <?php 
+                    if(!$products):
+                        echo "<p>No hay productos en esta categoría</p>";
+                    else:
+                    foreach($products as $product): ?>
+                    <div class="product-item" data-productid="<?= $product['id'] ?>" id="product-item">
+                        <div class="product-item-img" >
+                            <img class="product-img" src="/MercaZone/assets/img/products/<?= $product['image'] ?>" alt="">
+                        </div>
+                        <div class="product-item-info">
+                            <h3 class="product-item-title"><?= $product['name'] ?></h3>
+                            <p class="product-item-price">$<?= $product['price'] ?> / <?= $product['price']*172 ?>Bs</p>
+                            <p class="product-item-shortdescription"><?= $product['description'] ?></p>
+                        </div>
                     </div>
-                    <div class="product-item-info">
-                        <h3 class="product-item-title">Xbox Controller Edicion Limitada</h3>
-                        <p class="product-item-price">$60 / 43.234Bs</p>
-                        <p class="product-item-shortdescription">Xbox Wireless Controller, Color Gris</p>
-                    </div>
-                </div>
-                <div class="product-item" data-productid="2" id="product-item">
-                    <div class="product-item-img" >
-                        <img src="/MercaZone/assets/img/products/xbox.png" alt="">
-                    </div>
-                    <div class="product-item-info">
-                        <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
-                        <p class="product-item-price">$600 / 68.234Bs</p>
-                        <p class="product-item-shortdescription">Xbox Series X Edicion Galaxias,  Color Negro</p>
-                    </div>
-                </div>
+                <?php endforeach; endif; ?>
             </div>
             <aside class="products-categorys">
                 <h4>Categorías</h4>
@@ -61,7 +57,7 @@
                     <div class="product-info-status">Disponible</div>
                     <p class="product-info-description"></p>
                     <p class="product-info-seller">Vendido por: <a href="">Tiendas XYZ</a></p>
-                    <form class="add-to-cart-form" action="">
+                    <div class="add-to-cart-form" >
                         <label for="quantity">Cantidad:</label>
                         <select class="quantity-select" name="quantity" id="quantity">
                             <option value="1">1</option>
@@ -70,13 +66,14 @@
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
-                        <button type="submit" class="add-to-cart-button">Adquirir Producto</button>
-                    </form>
+                        <button type="submit" id="buy-product" class="add-to-cart-button">Adquirir Producto</button>
+                    </div>
                     <button class="report-product-button">Reportar producto</button>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/MercaZone/assets/js/jquery.js"></script>
     <script src="/MercaZone/assets/js/products.js"></script>
     <script src="/MercaZone/assets/js/main.js"></script>

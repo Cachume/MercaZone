@@ -46,7 +46,7 @@ $(document).ready(function () {
       $('#login-btn').prop('disabled', true).text('Enviando código...');
 
       $.ajax({
-        url: 'index.php?u=auth&m=sendCode',
+        url: 'http://localhost/MercaZone/auth/sendCode',
         type: 'POST',
         data: { email: email },
         success: function (response) {
@@ -88,7 +88,7 @@ $(document).ready(function () {
   btn.prop('disabled', true).text('Reenviando...');
 
   $.ajax({
-    url: 'index.php?u=auth&m=sendCode',
+    url: 'http://localhost/MercaZone/auth/sendCode',
     type: 'POST',
     data: { email: email },
     success: function (response) {
@@ -141,9 +141,8 @@ $(document).ready(function () {
       }
 
       $('button[name="registro"]').prop('disabled', true).text('Enviando código...');
-
       $.ajax({
-        url: 'index.php?u=auth&m=sendCoder',
+        url: 'http://localhost/MercaZone/auth/sendCoder',
         type: 'POST',
         data: {
           email: email,
@@ -151,7 +150,6 @@ $(document).ready(function () {
         },
         success: function (response) {
           const res = typeof response === 'string' ? JSON.parse(response) : response;
-
           if (res.success) {
             Swal.fire('¡Código enviado!', 'Revisa tu correo para continuar.', 'success');
             $('#code-group').slideDown();
@@ -166,6 +164,7 @@ $(document).ready(function () {
           }
         },
         error: function () {
+          console.log('Error en la solicitud AJAX');
           Swal.fire('Error', 'No se pudo conectar con el servidor.', 'error');
         },
         complete: function () {
@@ -188,7 +187,7 @@ $(document).ready(function () {
     btn.prop('disabled', true).text('Reenviando...');
 
     $.ajax({
-      url: 'index.php?u=auth&m=sendCoder',
+      url: 'http://localhost/MercaZone/auth/sendCoder',
       type: 'POST',
       data: {
         email: email,

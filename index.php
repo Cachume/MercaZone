@@ -1,4 +1,5 @@
 <?php
+session_start();
 $url = $_GET['url'] ?? 'home/default';
 $urlParts = explode('/', trim($url, '/'));
 $controller = $urlParts[0] ?? 'home';

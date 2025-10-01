@@ -58,6 +58,7 @@ function ChangeNameDashboard(name){
             break;
         case "link-purchases":
             viewName = "Mis compras";
+            loadPurchases();
             break;
         case "link-settings":
             viewName = "Configuraciones";
@@ -112,5 +113,54 @@ function loadProducts(){
                 showConfirmButton: false,
                 timer: 1500
             })//.then(() => {location.reload();});
+        });
+}
+function loadPurchases(){
+    fetch('http://localhost/MercaZone/dashboard/getMyPurchases')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if(data.success === true){
+                const purchasesdiv = $('#purchases-list');
+                purchasesdiv.empty(); // Limpiar la tabla antes de agregar nuevos productos
+                data.purchases.forEach(purchase => {
+                    const purchaseRow = `
+                <div class="purchases-list-item">
+                    <div class="purchase-item-image">
+                        <img src="/MercaZone/assets/img/products/${purchase.image}" alt="${purchase.product_name}" />
+                    </div>
+                    <div class="purchase-item-details">
+                        <h3>${purchase.name}</h3>
+                        <p>Cantidad: ${purchase.cantidad} Unds</p>
+                        <p>Precio: $${purchase.price}</p>
+                        <p>Fecha de compra: ${purchase.creado_en}</p>
+                        <p>Estado: <span class="status ${purchase.status}">${purchase.estado}</span></p>
+                        <div class="purchase-item-actions">
+                            <button class="purchase-action-btn" id="view-details-btn">
+                                <span class="material-symbols-outlined"></span>
+                                <span>Ver Detalles</span>
+                            </button>
+                            <button class="purchase-action-btn-secondary">
+                                <span class="material-symbols-outlined"></span>
+                                <span>Mensajes</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                    `;
+                    purchasesdiv.append(purchaseRow);
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error al cargar las compras:', error);
+            Swal.fire({
+                icon: 'error',
+                position : 'top-end',
+                title: 'Error',
+                text: 'No se pudieron cargar las compras.',
+                showConfirmButton: false,
+                timer: 1500
+            });
         });
 }

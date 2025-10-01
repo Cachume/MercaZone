@@ -18,7 +18,7 @@
                     <h1>
                     <span style="color:#00b45d">Merca<span style="color:#014651">Zone</span></span>
                 </h1>
-                    <div class="auth-header-buttons" style="display: none;">
+                    <div class="auth-header-buttons">
                         <button class="selected" id="login"><span class="material-symbols-outlined">account_circle</span>Iniciar Sesión</button>
                     |
                         <button id="register"><span class="material-symbols-outlined">person_add</span>Registrarse</button>
@@ -44,7 +44,7 @@
                     ?>
                 </div>
             <div class="auth-forms">
-                <form id="auth-login" class="auth-form auth-login" action="index.php?u=auth&m=login" method="POST">
+                <form id="auth-login" class="auth-form auth-login" action="/MercaZone/auth/login" method="POST">
                     <div class="auth-input-group">
                         <label for="email" class="auth-label"></label>
                         <span class="material-symbols-outlined">email</span>
@@ -69,7 +69,7 @@
                     Reenviar Codigo
                     </button>
                 </form>
-                <form id="auth-register" class="auth-form auth-register hidden" action="index.php?u=auth&m=register" method="POST">
+                <form id="auth-register" class="auth-form auth-register hidden" action="/MercaZone/auth/register" method="POST">
                      <div class="auth-input-group">
                         <label for="email" class="auth-label"></label>
                         <span class="material-symbols-outlined">badge</span>

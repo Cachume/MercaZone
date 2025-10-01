@@ -1,3 +1,7 @@
+<?php
+    require_once("./app/models/productmodel.php");
+    $categories = Productmodel::getCategorys();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,6 +13,7 @@
     <link rel="stylesheet" href="/MercaZone/assets/css/index.css">
     <link rel="stylesheet" href="/MercaZone/assets/css/products.css">
     <link rel="stylesheet" href="/MercaZone/assets/css/dashboard.css">
+    <link rel="stylesheet" href="/MercaZone/assets/css/oldindex.css">
     <link rel="icon" type="image/png" href="/MercaZone/assets/img/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/MercaZone/assets/img/favicon/favicon.svg" />
     <link rel="shortcut icon" href="/MercaZone/assets/img/favicon/favicon.ico" />
@@ -34,31 +39,14 @@
             <div class="header-top-right">
                 <?php if (isset($_SESSION['id_user'])): ?>
                 <div class="user-data">
-                        <div class="user-data-img">
-                            <img src="/MercaZone/assets/img/albert.jpg" alt="" srcset="" id="user-img">
-                        </div>
-                        <div class="user-options" id="user-options">
-                            <div class="user-data2">
-                                <div class="user-data2-img">
-                                    <img src="/MercaZone/assets/img/albert.jpg" alt="" srcset="">
-                                </div>
-                                <div class="user-data2-info">
-                                    <span class="correo">Albert Josue</span>
-                                    <span class="cedula">Quintero Colina</span>
-                                </div>
-                            </div>
-                            <ul class="user-options-list">
-                                <li><a href="index.php?u=perfil">Perfil</a></li>
-                                <?php
-                                if (isset($_SESSION['id_user']) && $_SESSION['rol'] == "admin") {
-                                    echo '<li><a href="index.php?u=admin">Panel de Administrador</a></li>';
-                                }
-                                ?>
-                                <li><a href="index.php">Carrito</a></li>
-                                <li><a href="index.php">Ordenes</a></li>
-                                <li><a href="index.php?u=auth&m=salir">Cerrar sesión</a></li>
-                            </ul>
-                        </div>
+                    <div class="header-dashboard-user">
+                    <img src="https://unavatar.io/<?=$_SESSION['correo']?>" alt="User" />
+                    <div class="header-dashboard-userdata">
+                        <span class="dashboard-userdata-name">Hola, <?= $_SESSION['nombre'] . ' ' . $_SESSION['apellidos'] ?></span>
+                        <span class="dashboard-userdata-secondary"><?=$_SESSION['correo']?></span>
+                    </div>
+
+                </div>
                         <?php else: ?>
                         <a href="/MercaZone/autenticarse">Iniciar Sesion</a>
                         <a href="/MercaZone/autenticarse">Registrarme</a>
@@ -72,12 +60,12 @@
                 <ul class="header-buttom-nav-list">
                     <li class="header-buttom-nav-item"><a href="#">Inicio</a></li>
                     <li class="header-buttom-nav-item"><a href="#">Categorías</a></li>
-                    <li class="header-buttom-nav-item"><a href="#">Ofertas</a></li>
-                    <li class="header-buttom-nav-item"><a href="#">Tecnologia</a></li>
-                    <li class="header-buttom-nav-item"><a href="#">Ropa y Calzado</a></li>
-                    <li class="header-buttom-nav-item"><a href="#">Deportes</a></li>
-                    <li class="header-buttom-nav-item"><a href="#">Repuestos para Vehiculos</a></li>
-                    
+                    <?php if (isset($_SESSION['id_user'])): ?>
+                        <li class="header-buttom-nav-item"><a href="/Mercazone/dashboard">Mi Cuenta</a></li>
+                    <?php endif; ?>
+                    <?php foreach($categories as $category): ?>
+                        <li class="header-buttom-nav-item"><a href="/Mercazone/producto/categoria/<?= $category['id'] ?>"><?= $category['nombre'] ?></a></li>
+                    <?php endforeach; ?>
                     <!-- <li class="header-buttom-nav-item"><a href="#">Mi cuenta</a></li> -->
                 </ul>
             </div>
