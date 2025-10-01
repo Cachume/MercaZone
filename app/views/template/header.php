@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/MercaZone/assets/css/normalize.css">
     <link rel="stylesheet" href="/MercaZone/assets/css/index.css">
     <link rel="stylesheet" href="/MercaZone/assets/css/products.css">
+    <link rel="stylesheet" href="/MercaZone/assets/css/dashboard.css">
     <link rel="icon" type="image/png" href="/MercaZone/assets/img/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/MercaZone/assets/img/favicon/favicon.svg" />
     <link rel="shortcut icon" href="/MercaZone/assets/img/favicon/favicon.ico" />

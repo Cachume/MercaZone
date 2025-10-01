@@ -291,7 +291,7 @@
 } */
 
 /* Dashboard Product Modal */
-.modal-product, .modal-details{
+.modal-product, .modal-details, .modal-universal{
     position: fixed;
     top: 0;
     left: 0;
@@ -303,14 +303,15 @@
     align-items: center;
     flex-direction: column;
     z-index: 1000;
+    transition: all 0.3s ease;
+    overflow-y: auto;
 }
 
-.modal-product-body{
+.modal-product-body, .modal-universal-body{
     background: white;
     border-radius: 10px;
     padding: 20px;
 }
-
 .modal-product-header{
     padding: 20px;
     border-radius: 10px;
