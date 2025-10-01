@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="/MercaZone/assets/css/normalize.css">
     <link rel="stylesheet" href="/MercaZone/assets/css/index.css">
     <link rel="stylesheet" href="/MercaZone/assets/css/products.css">
+    <link rel="icon" type="image/png" href="/MercaZone/assets/img/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/MercaZone/assets/img/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/MercaZone/assets/img/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/MercaZone/assets/img/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="MercaZone" />
+    <link rel="manifest" href="/MercaZone/assets/img/favicon/site.webmanifest" />
     <title>MercaZone</title>
 </head>
 <header>
