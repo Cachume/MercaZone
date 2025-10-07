@@ -41,6 +41,12 @@
                 </a>
             </li>
             <li class="aside-menu-item">
+                <a class="aside-menu-link" href="" id="link-orders" data-view="dashboard-orders">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    <span class="aside-menu-link-text">Mis Pedidos</span>
+                </a>
+            </li>
+            <li class="aside-menu-item">
                 <a class="aside-menu-link" href="" id="link-settings" data-view="dashboard-settings">
                     <span class="material-symbols-outlined">settings</span>
                     <span class="aside-menu-link-text">Configuración</span>
@@ -172,6 +178,38 @@
                 </div> -->
             </div>
         </section>
+        <section class="dashboard-orders hidden" id="dashboard-orders">
+            <header class="dashboard-products-header">  
+                <input type="text" class="dashboard-products-search" placeholder="Buscar Pedido..." />
+                <select class="dashboard-products-filter">
+                    <option value="todos">Todos</option>
+                    <option value="disponibles">Disponibles</option>
+                    <option value="agotados">Agotados</option>
+                </select>
+                <!-- <button class="header-action-btn" id="open-add-product-modal">
+                    <span class="material-symbols-outlined">add</span>
+                    <span>Agregar Producto</span>
+                </button> -->
+            </header>
+            <table class="dashboard-products-table">
+                <thead>
+                    <tr>
+                        <th>Comprador</th>
+                        <th>Producto</th>
+                        <th>Monto</th>
+                        <th>Cant Compradas</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="orders-table-body" class="dashboard-products-table-body">
+                    <!-- <tr>
+                        <td colspan="5" style="text-align: center; padding: 20px;">
+                            No hay productos para mostrar.
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </section>
     </main>
     <div class="modal-product">
         <div class="modal-product-body">
@@ -270,7 +308,54 @@
             </div>
         </div>
     </div>
+    <div class="modal-universal" id="modal-product">
+        <div class="modal-universal-body">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h4>Xbox Shop - Xbox Series X</h4>
+                     <span class="material-symbols-outlined modal-close" id="modal-close">close</span>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message">
+                        <div class="message-container received">
+                            <span class="message-user">Tienda de Ejemplo</span>
+                        <p class="message-text">Hola, ¿en qué puedo ayudarte?</p>
+                        <span class="message-time">10:00 AM</span>
+                        </div>
+                    </div>
+                    <div class="message">
+                        <div class="message-container sent">
+                            <span class="message-user">Tienda de Ejemplo</span>
+                            <p class="message-text">Hola, ¿en qué puedo ayudarte?</p>
+                            <span class="message-time">10:00 AM</span>
+                        </div>
+                    </div>
+                    <div class="message">
+                        <div class="message-container received">
+                            <span class="message-user">Tienda de Ejemplo</span>
+                        <p class="message-text">Hola, ¿en qué puedo ayudarte?</p>
+                        <span class="message-time">10:00 AM</span>
+                        </div>
+                    </div>
+                    <div class="message">
+                        <div class="message-container received">
+                            <span class="message-user">Tienda de Ejemplo</span>
+                        <p class="message-text">Hola, ¿en qué puedo ayudarte?</p>
+                        <span class="message-time">10:00 AM</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="chat-input" id="chat-form">
+                    <input type="text" id="chat-message-input" placeholder="Escribe tu mensaje..." required />
+                    <button type="submit" class="header-action-btn">
+                        <span class="material-symbols-outlined">send</span>
+                    </button>
+                </form>
+            </div> 
+        </div>
+    </div>
     <script src="/MercaZone/assets/js/jquery.js"></script>
+    <script src="/MercaZone/assets/js/dashboard/chat.js"></script>
     <script src="/MercaZone/assets/js/dashboard/dashboard.js"></script>
     <script src="/MercaZone/assets/js/dashboard/products.js"></script>
 </body>

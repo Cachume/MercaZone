@@ -11,12 +11,12 @@ $(document).on("click", ".header-action-btn-edit", function() {
     $("#modal-product-title").text("Editar Producto");
     $("#add-product-btn-text").text("Guardar Cambios");
     $('.modal-product').css('display', 'flex');
-    fetch('http://192.168.0.107:80/MercaZone/index.php?u=dashboard&m=getmyproduct&id=' + productId)
+    fetch('http://localhost/MercaZone/dashboard/getMyProduct&id_product=' + productId)
         .then(response => response.json())
         .then(data => {
             console.log(data);
             if (data.success) {
-                const product = data.products[0];
+                const product = data.product;
                 $("#product-id").val(product.id);
                 $("#product-name").val(product.name);
                 $("#product-category").val(product.category);
@@ -24,7 +24,7 @@ $(document).on("click", ".header-action-btn-edit", function() {
                 $("#product-description").val(product.short_description);
                 $("#product-price").val(product.price);
                 $("#product-stock").val(product.stock);
-                $("#product-image-preview").attr("src", "../img/"+product.image);
+                $("#product-image-preview").attr("src", "/MercaZone/assets/img/products/"+product.image);
             }
         });
 });

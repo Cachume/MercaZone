@@ -66,11 +66,69 @@ function ChangeNameDashboard(name){
         case "link-verification":
             viewName = "Verificación";
             break;
+        case "link-orders":
+            viewName = "Mis pedidos";
+            loadOrders();
+            break;
         default:
             viewName = "Dashboard";
             break;
     }
     $("#dashboard-title").text(viewName);
+}
+
+function loadOrders(){
+    fetch('http://localhost/MercaZone/dashboard/getMyOrders')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if(data.success === true){
+                const ordersTableBody = $('#orders-table-body');
+                ordersTableBody.empty(); // Limpiar la tabla antes de agregar nuevos pedidos
+                data.orders.forEach(order => {
+                    if(order.buyer_image == null || order.buyer_image == ''){
+                        order.buyer_image = 'https://unavatar.io/'+order.buyer_email;
+                    }else{
+                        order.buyer_image = "/MercaZone/assets/img/users/"+order.buyer_image;
+                    }
+                    const orderRow = `
+                        <tr>
+                            <td><img class="buyer-image" src="${order.buyer_image}" alt=""> ${order.buyer_name+" "+order.buyer_lastname}</td>
+                            <td>${order.product_name}</td>
+                            <td>$${order.price}</td>
+                            <td>${order.amount} Unidad(es)</td>
+                            <td >
+                                <button class="header-action-btn-chat" data-id="${order.id}">
+                                    <span  class="material-symbols-outlined">chat</span>
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                    ordersTableBody.append(orderRow);
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error al cargar los pedidos:', error);
+            Swal.fire({
+                icon: 'error',
+                position : 'top-end',
+                title: 'Error',
+                text: 'No se pudieron cargar los pedidos.',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        });
+
+        $(".header-action-btn-chat").on("click", function(){
+            $('.modal-universal').css('display', 'flex');
+        });
+        
+        $('.modal-universal').on('click', function(e) {
+                if (e.target === this) {
+                    $(this).fadeOut();
+                }   
+            });
 }
 
 function loadProducts(){
@@ -134,7 +192,7 @@ function loadPurchases(){
                         <p>Cantidad: ${purchase.cantidad} Unds</p>
                         <p>Precio: $${purchase.price}</p>
                         <p>Fecha de compra: ${purchase.creado_en}</p>
-                        <p>Estado: <span class="status ${purchase.status}">${purchase.estado}</span></p>
+                        <p>Estado: <span class="status ${purchase.status}">${purchase.estado.charAt(0).toUpperCase() + purchase.estado.slice(1)}</span></p>
                         <div class="purchase-item-actions">
                             <button class="purchase-action-btn" id="view-details-btn">
                                 <span class="material-symbols-outlined"></span>

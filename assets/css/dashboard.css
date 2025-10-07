@@ -270,12 +270,22 @@
     border-radius: 20px;
 }
 
+.header-action-btn-chat{
+    background: #2ECC71;
+    border: none;
+    color: white;
+    padding: 6px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .header-action-btn-edit{
     background: #F39C12;
     border: none;
     color: white;
     padding: 6px;
     border-radius: 5px;
+    cursor: pointer;
 }
 .header-action-btn-delete{
     background: #E74C3C;
@@ -283,6 +293,7 @@
     color: white;
     padding: 6px;
     border-radius: 5px;
+    cursor: pointer;
 }
 /* .header-action-btn:hover{
     background: darken(var(--primary-color), 5%);
@@ -617,6 +628,20 @@
 }
 .modal-details-product-info p{
     margin: 0;
+}
+
+/* Dashboard Orders */
+.dashboard-orders{
+    display: none;
+    flex-direction: column;
+}
+
+.buyer-image{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
 /* Responsive Design */
