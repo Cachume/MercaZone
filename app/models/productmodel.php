@@ -40,6 +40,19 @@
             }
         }
 
+        public static function getProductsByCategorycount($categoryId) {
+            $db = MzDB::conectar();
+            if (!$db) {
+                return false;
+            } else {
+                $stmt = $db->prepare("SELECT COUNT(*) FROM productos WHERE category = :categoryId");
+                $stmt->bindParam(":categoryId", $categoryId, PDO::PARAM_INT);
+                $stmt->execute();
+                $resultado = $stmt->fetchColumn();
+                return $resultado;
+            }
+        }
+
         public static function buyProduct($data){
             $db = MzDB::conectar();       
             if (!$db) {

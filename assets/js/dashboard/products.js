@@ -27,15 +27,68 @@ $(document).on("click", ".header-action-btn-edit", function() {
                 $("#product-image-preview").attr("src", "/MercaZone/assets/img/products/"+product.image);
             }
         });
+
 });
 
-$(document).on("click", ".header-action-btn-delete", function() {
-    const productId = $(this).data("id");
-    alert("Delete product with ID: " + productId);
-});
+    $(document).on("click", ".header-action-btn-delete", function() {
+        const productId = $(this).data("id");
+        alert("Delete product with ID: " + productId);
+    });
 
-$(".modal-product").on("click", function(e) {
-    if ($(e.target).is(".modal-product")) {
-        $(this).hide();
-    }
-});
+    $(".modal-product").on("click", function(e) {
+        if ($(e.target).is(".modal-product")) {
+            $(this).hide();
+        }
+    });
+
+    $('#add-product-btn').on('click', function() {
+        let form = $('#add-product-form')[0];
+        let formData = new FormData(form);
+        console.log(...formData);
+        fetch('http://localhost/MercaZone/dashboard/addProduct', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Se ha agregado el producto',
+                    text: data.message,
+                    timer: 2000,
+                    showConfirmButton: false,
+                    timerProgressBar: true,
+                    willClose: () => {
+                        loadProducts();
+                    } 
+                })
+                $('.modal-product').hide();
+                $('#add-product-form')[0].reset();
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error al agregar el producto',
+                    text: data.message,
+                    timer: 2000,
+                    showConfirmButton: false,
+                    timerProgressBar: true,
+                })
+            }
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        }); 
+    });
+
+    $('#product-image').on('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                $("#product-image-preview").attr("src", e.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    });

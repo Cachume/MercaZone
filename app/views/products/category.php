@@ -2,7 +2,7 @@
 <main class="main-products">
         <div class="products-title">
             <h2><?=$nombre;?></h2>
-            <p>Mostrando 4 de 4 productos</p>
+            <p><strong>Mostrando <?=$totalProducts;?> de <?=$totalProducts;?> productos</strong></p>
         </div>
         <div class="products-filters">
             <select name="sort" id="sort">

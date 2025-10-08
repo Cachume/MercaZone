@@ -10,6 +10,7 @@
             if($id!=null){
                 $nombre = "Consolas";
                 $products = Productmodel::getProductsByCategory($id);
+                $totalProducts = Productmodel::getProductsByCategorycount($id);
                 $nombre = $products[0]['categoria'] ?? 'Categoría';
                 require_once './app/views/products/category.php';
             }else{

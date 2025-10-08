@@ -229,7 +229,7 @@
                     <span class="material-symbols-outlined">upload</span>
                     <span>Subir Imagen</span>
                 </label>
-                <input type="file" accept="image/*" required name="product-image" hidden/>
+                <input type="file" accept="image/*" id="product-image" name="product-image" required hidden/>
             </div>
             <div class="product-form-data">
                 <div class="product-form-data-header">
@@ -249,9 +249,12 @@
                     <div class="product-form-data-group">
                         <label for="product-category">Categoría del Producto</label>
                         <select name="product-category" id="product-category" required>
-                            <option value="Accesorios">Accesorios</option>
-                            <option value="Consolas">Consolas</option>
-                            <option value="Videojuegos">Videojuegos</option>
+                            <option value="" disabled selected>Selecciona una categoría</option>
+                            <?php
+                                foreach($this->data as $category){
+                                    echo '<option value="'.$category['id'].'">'.$category['nombre'].'</option>';
+                                }
+                            ?>
                         </select>
                     </div>
                     <div class="product-form-data-group">
