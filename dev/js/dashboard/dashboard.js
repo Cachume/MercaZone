@@ -1,8 +1,7 @@
 $(document).ready(function() {
     $(".dashboard-main").hide();
-    $(".dashboard-purchases").show();
-    ChangeNameDashboard("link-purchases");
-    $('.modal-universal').css('display', 'flex');
+    $(".dashboard-chat").show();
+    ChangeNameDashboard("link-chat");
 
     console.log("Dashboard listo");
     //Evento click en los links del aside menu
@@ -62,6 +61,9 @@ function ChangeNameDashboard(name){
             break;
         case "link-settings":
             viewName = "Configuraciones";
+            break;
+        case "link-chat":
+            viewName = "Chat";
             break;
         default:
             viewName = "Dashboard";
