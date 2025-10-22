@@ -59,7 +59,7 @@
                 </a>
             </li>
             <li class="aside-menu-item">
-                <a class="aside-menu-link" href="" id="link-logout" data-view="dashboard-logout">
+                <a class="aside-menu-link" href="/MercaZone/salir" id="link-logout" data-view="dashboard-logout">
                     <span class="material-symbols-outlined">logout</span>
                     <span class="aside-menu-link-text">Cerrar sesión</span>
                 </a>
@@ -80,7 +80,13 @@
                     <span class="material-symbols-outlined">notifications</span>
                 </button>
                 <div class="header-dashboard-user">
-                    <img src="https://unavatar.io/<?=$_SESSION['correo']?>" alt="User" />
+                    <?php
+                            if(!empty($_SESSION['imagen'])) {
+                                echo '<img src="' . htmlspecialchars($_SESSION['imagen']) . '" alt="User" />';
+                            } else {
+                                echo '<img src="https://unavatar.io/' . htmlspecialchars($_SESSION['correo']) . '" alt="User" />';
+                            }
+                        ?>
                     <div class="header-dashboard-userdata">
                         <span class="dashboard-userdata-name">Hola, <?= $_SESSION['nombre'] . ' ' . $_SESSION['apellidos'] ?></span>
                         <span class="dashboard-userdata-secondary"><?=$_SESSION['correo']?></span>

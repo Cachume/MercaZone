@@ -68,8 +68,8 @@
                     <button type="button" id="resendbtn" class="auth-button" style="display: none;">
                     Reenviar Codigo
                     </button>
-                    <div class="auth-input-group">
-                        <a href="<?= $data ?>" class="google-btn">
+                    <div class="auth-input-group" style="align-items: center;">
+                        <a href="<?=$this->data ?>" class="google-btn">
                             <img src="https://developers.google.com/identity/images/btn_google_signin_light_normal_web.png" alt="Google Icon" class="google-icon">
                             <span class="google-text"></span>
                         </a>

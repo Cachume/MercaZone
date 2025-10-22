@@ -70,6 +70,27 @@ function ChangeNameDashboard(name){
             viewName = "Mis pedidos";
             loadOrders();
             break;
+        case "link-logout":
+            viewName = "Cerrar sesión";
+            Swal.fire({
+                icon: 'success',
+                title: 'Sesión cerrada',
+                text: 'Has cerrado sesión correctamente, esperamos verte pronto de nuevo.',
+                showConfirmButton: false,
+                timer: 3000
+            }).then(() => {
+                Swal.fire({
+                icon: 'info',
+                title: 'Redirigiendo...',
+                text: 'Serás enviado a la página principal.',
+                showConfirmButton: false,
+                timer: 2000
+                });
+                setTimeout(() => {
+                window.location.href = '/MercaZone/salir';
+                }, 2000);
+            });
+            break;
         default:
             viewName = "Dashboard";
             break;

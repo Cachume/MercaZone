@@ -1,5 +1,5 @@
 <?php
-    require_once '/../vendor/autoload.php';
+    require_once './vendor/autoload.php';
     
     $clientID = '81206704171-otum5ea76gu52cvlm01q90capq22kkhp.apps.googleusercontent.com';
     $clientSecret = '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';

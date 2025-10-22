@@ -78,6 +78,7 @@
         $_SESSION['correo'] = $auth['correo'];
         $_SESSION['cedula'] = $auth['cedula'];
         $_SESSION['rol'] = $auth['rol'];
+        $_SESSION['imagen'] = $auth['foto_perfil'];
 
         // Limpiar código OTP de sesión
         unset($_SESSION['otp_email'], $_SESSION['otp_code'], $_SESSION['otp_expires']);

@@ -40,10 +40,16 @@
                 <?php if (isset($_SESSION['id_user'])): ?>
                 <div class="user-data">
                     <div class="header-dashboard-user">
-                    <img src="https://unavatar.io/<?=$_SESSION['correo']?>" alt="User" />
+                        <?php
+                            if(!empty($_SESSION['imagen'])) {
+                                echo '<img src="/MercaZone/' . htmlspecialchars($_SESSION['imagen']) . '" alt="User" />';
+                            } else {
+                                echo '<img src="https://unavatar.io/' . htmlspecialchars($_SESSION['correo']) . '" alt="User" />';
+                            }
+                        ?>
                     <div class="header-dashboard-userdata">
-                        <span class="dashboard-userdata-name">Hola, <?= $_SESSION['nombre'] . ' ' . $_SESSION['apellidos'] ?></span>
-                        <span class="dashboard-userdata-secondary"><?=$_SESSION['correo']?></span>
+                        <span class="dashboard-userdata-name">Hola, <?= htmlspecialchars($_SESSION['nombre']) . ' ' . htmlspecialchars($_SESSION['apellidos']) ?></span>
+                        <span class="dashboard-userdata-secondary"><?= htmlspecialchars($_SESSION['correo']) ?></span>
                     </div>
 
                 </div>
@@ -58,7 +64,7 @@
         <div class="header-buttom">
             <div class="header-buttom-nav">
                 <ul class="header-buttom-nav-list">
-                    <li class="header-buttom-nav-item"><a href="#">Inicio</a></li>
+                    <li class="header-buttom-nav-item"><a href="/Mercazone/">Inicio</a></li>
                     <li class="header-buttom-nav-item"><a href="#">Categorías</a></li>
                     <?php if (isset($_SESSION['id_user'])): ?>
                         <li class="header-buttom-nav-item"><a href="/Mercazone/dashboard">Mi Cuenta</a></li>
