@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     title: 'Inicio de sesión exitoso',
     text: 'Bienvenido a Mercazone',
     showConfirmButton: false,
-    timer: 3000
+    timer: 2000
   }).then(() => {
     Swal.fire({
       icon: 'info',

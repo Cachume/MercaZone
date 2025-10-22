@@ -77,14 +77,14 @@ function ChangeNameDashboard(name){
                 title: 'Sesión cerrada',
                 text: 'Has cerrado sesión correctamente, esperamos verte pronto de nuevo.',
                 showConfirmButton: false,
-                timer: 3000
+                timer: 1500
             }).then(() => {
                 Swal.fire({
                 icon: 'info',
                 title: 'Redirigiendo...',
                 text: 'Serás enviado a la página principal.',
                 showConfirmButton: false,
-                timer: 2000
+                timer: 1500
                 });
                 setTimeout(() => {
                 window.location.href = '/MercaZone/salir';
