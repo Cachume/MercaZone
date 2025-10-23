@@ -1,4 +1,6 @@
 let currentOrderId = null;
+const baseURL = `${window.location.protocol}//${window.location.hostname}/MercaZone/`;
+
 $(document).ready(function() {
     $(document).on("click", ".wapisimo", function(){
         $('.dashboard-orders').hide();
@@ -17,7 +19,7 @@ $(document).ready(function() {
         const formData = new FormData();
         formData.append('order_id', currentOrderId);
         formData.append('message', messageText);
-        fetch('http://localhost/MercaZone/dashboard/sendChatMessage', {
+        fetch(`${baseURL}dashboard/sendChatMessage`, {
         method: 'POST',
         body: formData
         })
@@ -46,7 +48,7 @@ $(document).ready(function() {
 });
 
 function loadMessages(orden){
-    fetch('http://localhost/MercaZone/dashboard/getChatMessage', {
+    fetch(`${baseURL}dashboard/getChatMessage`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

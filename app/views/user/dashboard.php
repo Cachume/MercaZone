@@ -16,7 +16,7 @@
             <button class="header-action-btn-menu" id="toggle-aside-close-btn">
                 <span class="material-symbols-outlined">menu</span>
             </button>
-            <a class="aside-title-link" href="">
+            <a class="aside-title-link" href="/MercaZone/">
                 <span>Merca</span>
                 <span>Zone</span>
             </a>
@@ -222,53 +222,14 @@
                     <div class="chat-header-user">
                         <img src="https://unavatar.io/elvismoreno17@gmail.com" alt="User" />
                         <div class="chat-header-userdata">
-                            <span class="chat-userdata-name">Jahyr Jara</span>
+                            <span class="chat-userdata-name">Usuario</span>
                             <span class="chat-userdata-secondary">En línea</span>
                         </div>
                     </div>
                 </div>
                 <div class="chat-messages" id="chat-messages">
                     <div class="message">
-                        <div class="message-container received">
-                            <span class="message-user">Tienda de Ejemplo</span>
-                            <p class="message-text">Hola, ¿en qué puedo ayudarte?</p>
-                            <span class="message-time">10:00 AM</span>
-                        </div>
-                        <div class="message">
-                            <div class="message-container sent">
-                                <span class="message-user">Tienda de Ejemplo</span>
-                                <p class="message-text">Hola, ¿en qué puedo ayudarte?</p>
-                                <span class="message-time">10:00 AM</span>
-                            </div>
-                        </div>
-                        <div class="message">
-                            <div class="message-container received">
-                                <span class="message-user">Tienda de Ejemplo</span>
-                            <p class="message-text">Hola, ¿en qué puedo ayudarte?</p>
-                            <span class="message-time">10:00 AM</span>
-                            </div>
-                        </div>
-                        <div class="message">
-                            <div class="message-container received">
-                                <span class="message-user">Tienda de Ejemplo</span>
-                            <p class="message-text">Hola, ¿en qué puedo ayudarteasdasdasdasdasdasdasdasdasdasdasasdasd?</p>
-                            <span class="message-time">10:00 AM</span>
-                            </div>
-                        </div>
-                        <div class="message">
-                            <div class="message-container sent">
-                                <span class="message-user">Tienda de Ejemplo</span>
-                                <p class="message-text">Hola, ¿en qué puedo ayudarte?</p>
-                                <span class="message-time">10:00 AM</span>
-                            </div>
-                        </div>
-                        <div class="message">
-                            <div class="message-container sent">
-                                <span class="message-user">Tienda de Ejemplo</span>
-                                <p class="message-text">Hola, ¿en qué puedo ayudarte?</p>
-                                <span class="message-time">10:00 AM</span>
-                            </div>
-                        </div>
+                        
                     </div>  
                 </div>  
                 <div class="chat-input">

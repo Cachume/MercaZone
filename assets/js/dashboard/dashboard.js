@@ -1,7 +1,9 @@
 $(document).ready(function() {
     // $(".dashboard-main").hide();
     // $(".dashboard-purchases").show();
-    // ChangeNameDashboard("link-purchases");
+    // ChangeNameDashboard("link-purchases");\
+    const baseURL = `${window.location.protocol}//${window.location.hostname}/MercaZone/`;
+
 
     console.log("Dashboard listo");
     //Evento click en los links del aside menu
@@ -103,7 +105,7 @@ function ChangeNameDashboard(name){
 }
 
 function loadOrders(){
-    fetch('http://localhost/MercaZone/dashboard/getMyOrders')
+    fetch(`${baseURL}dashboard/getMyOrders`)
         .then(response => response.json())
         .then(data => {
             if(data.success === true){
@@ -147,7 +149,7 @@ function loadOrders(){
 }
 
 function loadProducts(){
-    fetch('http://localhost/MercaZone/dashboard/getMyProducts')
+    fetch(`${baseURL}dashboard/getMyProducts`)
         .then(response => response.json())
         .then(data => {
             if(data.success === true){
@@ -189,7 +191,7 @@ function loadProducts(){
         });
 }
 function loadPurchases(){
-    fetch('http://localhost/MercaZone/dashboard/getMyPurchases')
+    fetch(`${baseURL}dashboard/getMyPurchases`)
         .then(response => response.json())
         .then(data => {
             console.log(data);

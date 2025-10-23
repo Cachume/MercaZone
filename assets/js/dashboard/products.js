@@ -6,12 +6,14 @@ $('#open-add-product-modal').on('click', function() {
     $("#product-image-preview").attr("src", "");
 });
 
+const baseURL = `${window.location.protocol}//${window.location.hostname}/MercaZone/`;
+
 $(document).on("click", ".header-action-btn-edit", function() {
     const productId = $(this).data("id");
     $("#modal-product-title").text("Editar Producto");
     $("#add-product-btn-text").text("Guardar Cambios");
     $('.modal-product').css('display', 'flex');
-    fetch('http://localhost/MercaZone/dashboard/getMyProduct&id_product=' + productId)
+    fetch(`${baseURL}dashboard/getMyProduct&id_product=` + productId)
         .then(response => response.json())
         .then(data => {
             console.log(data);
@@ -45,7 +47,7 @@ $(document).on("click", ".header-action-btn-edit", function() {
         let form = $('#add-product-form')[0];
         let formData = new FormData(form);
         console.log(...formData);
-        fetch('http://localhost/MercaZone/dashboard/addProduct', {
+        fetch(`${baseURL}dashboard/addProduct`, {
             method: 'POST',
             body: formData
         })
