@@ -84,4 +84,30 @@ class dashboard{
             return null;
         }
     }
+
+    public function getChatMessage(){
+        header('Content-Type: application/json');
+        $userId = $_SESSION['id_user'];
+        $data = json_decode(file_get_contents("php://input"), true);
+        $order_id = $data['order_id'];
+        $mensajes = Dashboardmodel::getAllMensages($order_id);
+        if($mensajes){
+            echo json_encode(['success' => true,'localuser' => $userId ,'messages' => $mensajes]);
+        }else{
+            echo json_encode(['success' => false,'messages' => $mensajes]);
+        }
+    }
+
+    public function sendChatMessage(){
+        header('Content-Type: application/json');
+        $order_id = $_POST['order_id'] ?? null;
+        $sender_id = $_SESSION['id_user'] ?? null;
+        $message = trim($_POST['message'] ?? '');
+        $mensajebd =Dashboardmodel::SendMensages($order_id,$sender_id,$message);
+        if($mensajebd){
+            echo json_encode(['success' => true]);
+        }else{
+            echo json_encode(['success' => false, 'mensaje' => $mensajebd]);
+        }
+    }
 }

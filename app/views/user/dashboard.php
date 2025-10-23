@@ -216,6 +216,69 @@
                 </tbody>
             </table>
         </section>
+        <section class="dashboard-chat" id="dashboard-chat" style="display: none;align-items: center;justify-content: center;">
+            <div class="chat-list">
+                <div class="chat-header">
+                    <div class="chat-header-user">
+                        <img src="https://unavatar.io/elvismoreno17@gmail.com" alt="User" />
+                        <div class="chat-header-userdata">
+                            <span class="chat-userdata-name">Jahyr Jara</span>
+                            <span class="chat-userdata-secondary">En línea</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message">
+                        <div class="message-container received">
+                            <span class="message-user">Tienda de Ejemplo</span>
+                            <p class="message-text">Hola, ¿en qué puedo ayudarte?</p>
+                            <span class="message-time">10:00 AM</span>
+                        </div>
+                        <div class="message">
+                            <div class="message-container sent">
+                                <span class="message-user">Tienda de Ejemplo</span>
+                                <p class="message-text">Hola, ¿en qué puedo ayudarte?</p>
+                                <span class="message-time">10:00 AM</span>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="message-container received">
+                                <span class="message-user">Tienda de Ejemplo</span>
+                            <p class="message-text">Hola, ¿en qué puedo ayudarte?</p>
+                            <span class="message-time">10:00 AM</span>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="message-container received">
+                                <span class="message-user">Tienda de Ejemplo</span>
+                            <p class="message-text">Hola, ¿en qué puedo ayudarteasdasdasdasdasdasdasdasdasdasdasasdasd?</p>
+                            <span class="message-time">10:00 AM</span>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="message-container sent">
+                                <span class="message-user">Tienda de Ejemplo</span>
+                                <p class="message-text">Hola, ¿en qué puedo ayudarte?</p>
+                                <span class="message-time">10:00 AM</span>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="message-container sent">
+                                <span class="message-user">Tienda de Ejemplo</span>
+                                <p class="message-text">Hola, ¿en qué puedo ayudarte?</p>
+                                <span class="message-time">10:00 AM</span>
+                            </div>
+                        </div>
+                    </div>  
+                </div>  
+                <div class="chat-input">
+                    <input type="text" id="chat-message-input" placeholder="Escribe tu mensaje..." required />
+                    <button type="submit" class="header-action-btn" id="send-message">
+                        <span class="material-symbols-outlined">send</span>
+                    </button>
+                </div>
+            </div>
+        </section>
     </main>
     <div class="modal-product">
         <div class="modal-product-body">

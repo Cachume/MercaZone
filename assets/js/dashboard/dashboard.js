@@ -7,6 +7,7 @@ $(document).ready(function() {
     //Evento click en los links del aside menu
     $(".aside-menu-link").on("click", function(e){
         //Valor del id del link clickeado
+        $(".dashboard-chat").hide();
         id_link=$(this).attr("data-view");
         old_link=$(".aside-menu-link.selected").attr("data-view");
 
@@ -91,6 +92,9 @@ function ChangeNameDashboard(name){
                 }, 2000);
             });
             break;
+        case "link-chat":
+            viewName = "Chat";
+            break;
         default:
             viewName = "Dashboard";
             break;
@@ -102,7 +106,6 @@ function loadOrders(){
     fetch('http://localhost/MercaZone/dashboard/getMyOrders')
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             if(data.success === true){
                 const ordersTableBody = $('#orders-table-body');
                 ordersTableBody.empty(); // Limpiar la tabla antes de agregar nuevos pedidos
@@ -119,8 +122,8 @@ function loadOrders(){
                             <td>$${order.price}</td>
                             <td>${order.amount} Unidad(es)</td>
                             <td >
-                                <button class="header-action-btn-chat" data-id="${order.id}">
-                                    <span  class="material-symbols-outlined">chat</span>
+                                <button class="header-action-btn-chat wapisimo" data-id="${order.id}">
+                                    <span class="material-symbols-outlined">chat</span>
                                 </button>
                             </td>
                         </tr>
@@ -140,16 +143,7 @@ function loadOrders(){
                 timer: 1500
             });
         });
-
-        $(".header-action-btn-chat").on("click", function(){
-            $('.modal-universal').css('display', 'flex');
-        });
         
-        $('.modal-universal').on('click', function(e) {
-                if (e.target === this) {
-                    $(this).fadeOut();
-                }   
-            });
 }
 
 function loadProducts(){
@@ -206,7 +200,7 @@ function loadPurchases(){
                     const purchaseRow = `
                 <div class="purchases-list-item">
                     <div class="purchase-item-image">
-                        <img src="/MercaZone/assets/img/products/${purchase.image}" alt="${purchase.product_name}" />
+                        <img src="/MercaZone/assets/img/products/${purchase.image}" alt="${purchase.name}" />
                     </div>
                     <div class="purchase-item-details">
                         <h3>${purchase.name}</h3>
@@ -219,7 +213,7 @@ function loadPurchases(){
                                 <span class="material-symbols-outlined"></span>
                                 <span>Ver Detalles</span>
                             </button>
-                            <button class="purchase-action-btn-secondary">
+                            <button class="purchase-action-btn-secondary wapisimo" data-id="${purchase.compraid}">
                                 <span class="material-symbols-outlined"></span>
                                 <span>Mensajes</span>
                             </button>
@@ -243,3 +237,4 @@ function loadPurchases(){
             });
         });
 }
+

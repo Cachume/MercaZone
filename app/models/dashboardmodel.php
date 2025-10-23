@@ -8,7 +8,7 @@
             if (!$db) {
                 return false;
             } else {
-                $stmt= $db->prepare("SELECT c.*, p.* FROM compras c JOIN productos p ON p.id = c.id_producto WHERE id_comprador=:userId;");
+                $stmt= $db->prepare("SELECT c.id AS compraid,c.cantidad,c.estado,c.creado_en ,p.* FROM compras c JOIN productos p ON p.id = c.id_producto WHERE id_comprador=:userId;");
                 $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
                 $stmt->execute();
                 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -47,7 +47,7 @@
             if (!$db) {
                 return false;
             } else {
-                $stmt= $db->prepare("SELECT p.name AS product_name,p.price ,c.cantidad AS amount, u.nombre AS buyer_name, u.apellidos AS buyer_lastname, u.foto_perfil AS buyer_image, u.correo AS buyer_email FROM productos p JOIN compras c ON c.id_producto=p.id JOIN usuarios u ON u.id=c.id_comprador WHERE p.id_user = :userId;");
+                $stmt= $db->prepare("SELECT c.id, p.name AS product_name,p.price ,c.cantidad AS amount, u.nombre AS buyer_name, u.apellidos AS buyer_lastname, u.foto_perfil AS buyer_image, u.correo AS buyer_email FROM productos p JOIN compras c ON c.id_producto=p.id JOIN usuarios u ON u.id=c.id_comprador WHERE p.id_user = :userId;");
                 $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
                 $stmt->execute();
                 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -92,6 +92,49 @@
                 return ['success'=>false,'message'=>'Excepción: '.$e->getMessage()];
             }
         }
+        
+        public static function getAllMensages($id){
+            $db = MzDB::conectar();   
+            $stmt = $db->prepare("
+                SELECT 
+                chat_mensajes.id,
+                chat_mensajes.id_compra,
+                chat_mensajes.id_usuario,
+                usuarios.nombre AS sender_name,
+                chat_mensajes.mensaje,
+                DATE_FORMAT(chat_mensajes.creado_en, '%h:%i %p') AS time
+            FROM chat_mensajes
+            INNER JOIN usuarios ON usuarios.id = chat_mensajes.id_usuario
+            WHERE chat_mensajes.id_compra = :compra
+            ORDER BY chat_mensajes.creado_en ASC;
+            ");
+            $stmt->bindParam(':compra', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if($messages){
+                return $messages;
+            }else{
+                return false;
+            }
+        }
+
+        public static function SendMensages($compra,$usuario,$mensaje){
+            $db = MzDB::conectar();   
+            $stmt = $db->prepare("
+                INSERT INTO chat_mensajes (id_compra, id_usuario, mensaje, creado_en)
+            VALUES (:compra, :usuario, :mensaje, NOW())
+            ");
+            $stmt->bindParam(':compra', $compra, PDO::PARAM_INT);
+            $stmt->bindParam(':usuario', $usuario, PDO::PARAM_INT);
+            $stmt->bindParam(':mensaje', $mensaje, PDO::PARAM_STR);
+            $stmt->execute();
+            if($stmt){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    
     }
 
 ?>
