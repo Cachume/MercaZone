@@ -1,6 +1,12 @@
 <?php
+
+use Google\Service\AdMob\App;
+
     require_once("./app/models/productmodel.php");
     $categories = Productmodel::getCategorys();
+    if($categories === false) {
+        $categories = [];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -9,17 +15,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="/MercaZone/assets/css/normalize.css">
-    <link rel="stylesheet" href="/MercaZone/assets/css/index.css">
-    <link rel="stylesheet" href="/MercaZone/assets/css/products.css">
-    <link rel="stylesheet" href="/MercaZone/assets/css/dashboard.css">
-    <link rel="stylesheet" href="/MercaZone/assets/css/oldindex.css">
-    <link rel="icon" type="image/png" href="/MercaZone/assets/img/favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/MercaZone/assets/img/favicon/favicon.svg" />
-    <link rel="shortcut icon" href="/MercaZone/assets/img/favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/MercaZone/assets/img/favicon/apple-touch-icon.png" />
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/normalize.css">
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/index.css">
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/products.css">
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/dashboard.css">
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/oldindex.css">
+    <link rel="icon" type="image/png" href="<?= APP_URL ?>/assets/img/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="<?= APP_URL ?>/assets/img/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="<?= APP_URL ?>/assets/img/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= APP_URL ?>/assets/img/favicon/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="MercaZone" />
-    <link rel="manifest" href="/MercaZone/assets/img/favicon/site.webmanifest" />
+    <link rel="manifest" href="<?= APP_URL ?>/assets/img/favicon/site.webmanifest" />
     <title>MercaZone</title>
 </head>
 <header>
@@ -42,7 +48,7 @@
                     <div class="header-dashboard-user">
                         <?php
                             if(!empty($_SESSION['imagen'])) {
-                                echo '<img src="/MercaZone/' . htmlspecialchars($_SESSION['imagen']) . '" alt="User" />';
+                                echo '<img src="'.APP_URL."/" . htmlspecialchars($_SESSION['imagen']) . '" alt="User" />';
                             } else {
                                 echo '<img src="https://unavatar.io/' . htmlspecialchars($_SESSION['correo']) . '" alt="User" />';
                             }
@@ -54,8 +60,8 @@
 
                 </div>
                         <?php else: ?>
-                        <a href="/MercaZone/autenticarse">Iniciar Sesion</a>
-                        <a href="/MercaZone/autenticarse">Registrarme</a>
+                        <a href="<?= APP_URL ?>/autenticarse">Iniciar Sesion</a>
+                        <a href="<?= APP_URL ?>/autenticarse">Registrarme</a>
                     <?php endif; ?>
                 </div>
                 
@@ -64,15 +70,14 @@
         <div class="header-buttom">
             <div class="header-buttom-nav">
                 <ul class="header-buttom-nav-list">
-                    <li class="header-buttom-nav-item"><a href="/Mercazone/">Inicio</a></li>
+                    <li class="header-buttom-nav-item"><a href="<?= APP_URL ?>/">Inicio</a></li>
                     <li class="header-buttom-nav-item"><a href="#">Categorías</a></li>
                     <?php if (isset($_SESSION['id_user'])): ?>
-                        <li class="header-buttom-nav-item"><a href="/Mercazone/dashboard">Mi Cuenta</a></li>
+                        <li class="header-buttom-nav-item"><a href="<?= APP_URL ?>/dashboard">Mi Cuenta</a></li>
                     <?php endif; ?>
                     <?php foreach($categories as $category): ?>
-                        <li class="header-buttom-nav-item"><a href="/Mercazone/producto/categoria/<?= $category['id'] ?>"><?= $category['nombre'] ?></a></li>
+                        <li class="header-buttom-nav-item"><a href="<?= APP_URL ?>/producto/categoria/<?= $category['id'] ?>"><?= $category['nombre'] ?></a></li>
                     <?php endforeach; ?>
-                    <!-- <li class="header-buttom-nav-item"><a href="#">Mi cuenta</a></li> -->
                 </ul>
             </div>
         </div>

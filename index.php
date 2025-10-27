@@ -1,5 +1,12 @@
 <?php
 session_start();
+require_once __DIR__.'/vendor/autoload.php';
+$dotenv= Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+define('APP_URL', $_ENV['APP_URL']);
+define('APP_ENV', $_ENV['APP_ENV']);
+
 $url = $_GET['url'] ?? 'home/default';
 $urlParts = explode('/', trim($url, '/'));
 $controller = $urlParts[0] ?? 'home';

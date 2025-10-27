@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /MercaZone/
+RewriteBase /
 
 # Ignorar si el archivo o carpeta existe
 RewriteCond %{REQUEST_FILENAME} !-f

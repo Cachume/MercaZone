@@ -2,7 +2,7 @@ $(document).ready(function() {
     // $(".dashboard-main").hide();
     // $(".dashboard-purchases").show();
     // ChangeNameDashboard("link-purchases");\
-    const baseURL = `${window.location.protocol}//${window.location.hostname}/MercaZone/`;
+    const baseURL = `${window.location.protocol}//${window.location.hostname}/`;
 
 
     console.log("Dashboard listo");
@@ -90,7 +90,7 @@ function ChangeNameDashboard(name){
                 timer: 1500
                 });
                 setTimeout(() => {
-                window.location.href = '/MercaZone/salir';
+                window.location.href = '/salir';
                 }, 2000);
             });
             break;
@@ -115,7 +115,7 @@ function loadOrders(){
                     if(order.buyer_image == null || order.buyer_image == ''){
                         order.buyer_image = 'https://unavatar.io/'+order.buyer_email;
                     }else{
-                        order.buyer_image = "/MercaZone/assets/img/users/"+order.buyer_image;
+                        order.buyer_image = "/assets/img/users/"+order.buyer_image;
                     }
                     const orderRow = `
                         <tr>
@@ -158,7 +158,7 @@ function loadProducts(){
                 data.products.forEach(product => {
                     const productRow = `
                         <tr>
-                            <td><img src="/MercaZone/assets/img/products/${product.image}" class="product-image" alt=""> ${product.name}</td>
+                            <td><img src="/assets/img/products/${product.image}" class="product-image" alt=""> ${product.name}</td>
                             <td>${product.category}</td>
                             <td>$${product.price}</td>
                             <td>${product.stock}</td>
@@ -202,7 +202,7 @@ function loadPurchases(){
                     const purchaseRow = `
                 <div class="purchases-list-item">
                     <div class="purchase-item-image">
-                        <img src="/MercaZone/assets/img/products/${purchase.image}" alt="${purchase.name}" />
+                        <img src="/assets/img/products/${purchase.image}" alt="${purchase.name}" />
                     </div>
                     <div class="purchase-item-details">
                         <h3>${purchase.name}</h3>

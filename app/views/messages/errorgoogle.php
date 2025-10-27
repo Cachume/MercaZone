@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         timer: 3000
       });
       setTimeout(() => {
-        window.location.href = '/MercaZone/';
+        window.location.href = '<?= APP_URL ?>';
       }, 2000);
     });
 });

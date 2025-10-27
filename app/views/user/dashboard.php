@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/MercaZone/assets/css/index.css">
-    <link rel="stylesheet" href="/MercaZone/assets/css/normalize.css">
-    <link rel="stylesheet" href="/MercaZone/assets/css/dashboard.css">
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/index.css">
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/normalize.css">
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/dashboard.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>MercaZone - Dashboard</title>
@@ -16,7 +16,7 @@
             <button class="header-action-btn-menu" id="toggle-aside-close-btn">
                 <span class="material-symbols-outlined">menu</span>
             </button>
-            <a class="aside-title-link" href="/MercaZone/">
+            <a class="aside-title-link" href="<?= APP_URL ?>/">
                 <span>Merca</span>
                 <span>Zone</span>
             </a>
@@ -59,7 +59,7 @@
                 </a>
             </li>
             <li class="aside-menu-item">
-                <a class="aside-menu-link" href="/MercaZone/salir" id="link-logout" data-view="dashboard-logout">
+                <a class="aside-menu-link" href="<?= APP_URL ?>/salir" id="link-logout" data-view="dashboard-logout">
                     <span class="material-symbols-outlined">logout</span>
                     <span class="aside-menu-link-text">Cerrar sesión</span>
                 </a>
@@ -82,7 +82,7 @@
                 <div class="header-dashboard-user">
                     <?php
                             if(!empty($_SESSION['imagen'])) {
-                                echo '<img src="' . htmlspecialchars($_SESSION['imagen']) . '" alt="User" />';
+                                echo '<img src="' . APP_URL . '/' . htmlspecialchars($_SESSION['imagen']) . '" alt="User" />';
                             } else {
                                 echo '<img src="https://unavatar.io/' . htmlspecialchars($_SESSION['correo']) . '" alt="User" />';
                             }
@@ -387,9 +387,9 @@
             </div> 
         </div>
     </div>
-    <script src="/MercaZone/assets/js/jquery.js"></script>
-    <script src="/MercaZone/assets/js/dashboard/chat.js"></script>
-    <script src="/MercaZone/assets/js/dashboard/dashboard.js"></script>
-    <script src="/MercaZone/assets/js/dashboard/products.js"></script>
+    <script src="<?= APP_URL ?>/assets/js/jquery.js"></script>
+    <script src="<?= APP_URL ?>/assets/js/dashboard/chat.js"></script>
+    <script src="<?= APP_URL ?>/assets/js/dashboard/dashboard.js"></script>
+    <script src="<?= APP_URL ?>/assets/js/dashboard/products.js"></script>
 </body>
 </html>

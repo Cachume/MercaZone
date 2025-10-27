@@ -6,7 +6,7 @@ $('#open-add-product-modal').on('click', function() {
     $("#product-image-preview").attr("src", "");
 });
 
-const baseURL = `${window.location.protocol}//${window.location.hostname}/MercaZone/`;
+const baseURL = `${window.location.protocol}//${window.location.hostname}/`;
 
 $(document).on("click", ".header-action-btn-edit", function() {
     const productId = $(this).data("id");
@@ -26,7 +26,7 @@ $(document).on("click", ".header-action-btn-edit", function() {
                 $("#product-description").val(product.short_description);
                 $("#product-price").val(product.price);
                 $("#product-stock").val(product.stock);
-                $("#product-image-preview").attr("src", "/MercaZone/assets/img/products/"+product.image);
+                $("#product-image-preview").attr("src", "/assets/img/products/"+product.image);
             }
         });
 

@@ -3,19 +3,19 @@
         <div class="swiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <img class="slider-image" src="/MercaZone/assets/img/banners/banner1.png" alt="">
+                    <img class="slider-image" src="<?= APP_URL ?>/assets/img/banners/banner1.png" alt="">
                 </div>
                 <div class="swiper-slide">
-                    <img class="slider-image" src="/MercaZone/assets/img/banners/banner2.png" alt="">
+                    <img class="slider-image" src="<?= APP_URL ?>/assets/img/banners/banner2.png" alt="">
                 </div>
                 <div class="swiper-slide">
-                    <img class="slider-image" src="/MercaZone/assets/img/banners/banner3.png" alt="">
+                    <img class="slider-image" src="<?= APP_URL ?>/assets/img/banners/banner3.png" alt="">
                 </div>
                 <div class="swiper-slide">
-                    <img class="slider-image" src="/MercaZone/assets/img/banners/banner4.png" alt="">
+                    <img class="slider-image" src="<?= APP_URL ?>/assets/img/banners/banner4.png" alt="">
                 </div>
                 <div class="swiper-slide">
-                    <img class="slider-image" src="/MercaZone/assets/img/banners/banner5.png" alt="">
+                    <img class="slider-image" src="<?= APP_URL ?>/assets/img/banners/banner5.png" alt="">
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@
                     <a href="">Ver mas</a>
                 </div>
                 <div class="descubre-item-img">
-                    <img src="/MercaZone/assets/img/products/descubrir1.png" alt="">
+                    <img src="<?= APP_URL ?>/assets/img/products/descubrir1.png" alt="">
                 </div>
             </div>
             <div class="descubre-item">
@@ -82,7 +82,7 @@
                     <a href="">Ver mas</a>
                 </div>
                 <div class="descubre-item-img">
-                    <img src="/MercaZone/assets/img/products/audifonos.png" alt="">
+                    <img src="<?= APP_URL ?>/assets/img/products/audifonos.png" alt="">
                 </div>
             </div>
             <div class="descubre-item">
@@ -91,7 +91,7 @@
                     <a href="">Ver mas</a>
                 </div>
                 <div class="descubre-item-img">
-                    <img src="/MercaZone/assets/img/products/camisa.png" alt="">
+                    <img src="<?= APP_URL ?>/assets/img/products/camisa.png" alt="">
                 </div>
             </div>
             <div class="descubre-item">
@@ -100,7 +100,7 @@
                     <a href="">Ver mas</a>
                 </div>
                 <div class="descubre-item-img">
-                    <img src="/MercaZone/assets/img/products/motor.png" alt="">
+                    <img src="<?= APP_URL ?>/assets/img/products/motor.png" alt="">
                 </div>
             </div>
         </section>
@@ -111,7 +111,7 @@
             </div>
             <div class="product-item small">
                 <div class="product-item-img">
-                    <img src="/MercaZone/assets/img/products/controller.png" alt="">
+                    <img src="<?= APP_URL ?>/assets/img/products/controller.png" alt="">
                 </div>
                 <div class="product-item-info">
                     <h3 class="product-item-title">Xbox Controller Edicion Limitada</h3>
@@ -120,7 +120,7 @@
             </div>
             <div class="product-item small">
                 <div class="product-item-img">
-                    <img src="/MercaZone/assets/img/products/xbox.png" alt="">
+                    <img src="<?= APP_URL ?>/assets/img/products/xbox.png" alt="">
                 </div>
                 <div class="product-item-info">
                     <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
@@ -129,7 +129,7 @@
             </div>
             <div class="product-item small">
                 <div class="product-item-img">
-                    <img src="/MercaZone/assets/img/products/xbox.png" alt="">
+                    <img src="<?= APP_URL ?>/assets/img/products/xbox.png" alt="">
                 </div>
                 <div class="product-item-info">
                     <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
@@ -138,7 +138,7 @@
             </div>
             <div class="product-item small">
                 <div class="product-item-img">
-                    <img src="/MercaZone/assets/img/products/xbox.png" alt="">
+                    <img src="<?= APP_URL ?>/assets/img/products/xbox.png" alt="">
                 </div>
                 <div class="product-item-info">
                     <h3 class="product-item-title">Xbox Series X Galaxy Edition</h3>
@@ -147,9 +147,9 @@
             </div>
         </section>
     </main>
-    <script src="/MercaZone/assets//js/main.js"></script>
+    <script src="<?= APP_URL ?>/assets//js/main.js"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-    <script src="/MercaZone/assets/js/carousel.js"></script>
+    <script src="<?= APP_URL ?>/assets/js/carousel.js"></script>
 </body>
 </html>

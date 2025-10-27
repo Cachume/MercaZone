@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="/MercaZone/assets/css/normalize.css">
-    <link rel="stylesheet" href="/MercaZone/assets/css/index.css">
-    <link rel="stylesheet" href="/MercaZone/assets/css/auth.css">
-    <script src="/MercaZone/assets/js/jquery.js"></script>
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/normalize.css">
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/index.css">
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/auth.css">
+    <script src="<?= APP_URL ?>/assets/js/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>MercaZone | Autentificación</title>
 </head>
@@ -44,7 +44,7 @@
                     ?>
                 </div>
             <div class="auth-forms">
-                <form id="auth-login" class="auth-form auth-login" action="/MercaZone/auth/login" method="POST">
+                <form id="auth-login" class="auth-form auth-login" action="<?= APP_URL ?>/auth/login" method="POST">
                     <div class="auth-input-group">
                         <label for="email" class="auth-label"></label>
                         <span class="material-symbols-outlined">email</span>
@@ -74,7 +74,7 @@
                             <span class="google-text"></span>
                         </a>
                 </form>
-                <form id="auth-register" class="auth-form auth-register hidden" action="/MercaZone/auth/register" method="POST">
+                <form id="auth-register" class="auth-form auth-register hidden" action="<?= APP_URL ?>/auth/register" method="POST">
                      <div class="auth-input-group">
                         <label for="email" class="auth-label"></label>
                         <span class="material-symbols-outlined">badge</span>
@@ -100,6 +100,6 @@
             </div>
         </div>
     </main>
-    <script src="/MercaZone/assets/js/auth.js"></script>
+    <script src="<?= APP_URL ?>/assets/js/auth.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 let currentOrderId = null;
-const baseURL = `${window.location.protocol}//${window.location.hostname}/MercaZone/`;
+const baseURL = `${window.location.protocol}//${window.location.hostname}/`;
 
 $(document).ready(function() {
     $(document).on("click", ".wapisimo", function(){

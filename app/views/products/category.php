@@ -20,7 +20,7 @@
                     foreach($products as $product): ?>
                     <div class="product-item" data-productid="<?= $product['id'] ?>" id="product-item">
                         <div class="product-item-img" >
-                            <img class="product-img" src="/MercaZone/assets/img/products/<?= $product['image'] ?>" alt="">
+                            <img class="product-img" src="<?= APP_URL ?>/assets/img/products/<?= $product['image'] ?>" alt="">
                         </div>
                         <div class="product-item-info">
                             <h3 class="product-item-title"><?= $product['name'] ?></h3>
@@ -74,8 +74,8 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/MercaZone/assets/js/jquery.js"></script>
-    <script src="/MercaZone/assets/js/products.js"></script>
-    <script src="/MercaZone/assets/js/main.js"></script>
+    <script src="<?= APP_URL ?>/assets/js/jquery.js"></script>
+    <script src="<?= APP_URL ?>/assets/js/products.js"></script>
+    <script src="<?= APP_URL ?>/assets/js/main.js"></script>
 </body>
 </html>
