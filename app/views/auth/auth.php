@@ -74,7 +74,8 @@
                             <span class="google-text"></span>
                         </a>
                 </form>
-                <form id="auth-register" class="auth-form auth-register hidden" action="<?= APP_URL ?>/auth/register" method="POST">
+            </div>
+            <form id="auth-register" class="auth-form auth-register hidden" action="<?= APP_URL ?>/auth/register" method="POST">
                      <div class="auth-input-group">
                         <label for="email" class="auth-label"></label>
                         <span class="material-symbols-outlined">badge</span>
@@ -97,7 +98,6 @@
                     Reenviar Codigo
                     </button>
                 </form>
-            </div>
         </div>
     </main>
     <script src="<?= APP_URL ?>/assets/js/auth.js"></script>

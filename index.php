@@ -6,6 +6,8 @@ $dotenv->load();
 
 define('APP_URL', $_ENV['APP_URL']);
 define('APP_ENV', $_ENV['APP_ENV']);
+define('SMTP_USER', $_ENV['SMTP_USER']);
+define('SMTP_PASSWORD', $_ENV['SMTP_PASSWORD']);
 
 $url = $_GET['url'] ?? 'home/default';
 $urlParts = explode('/', trim($url, '/'));

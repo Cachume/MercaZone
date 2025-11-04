@@ -463,6 +463,14 @@ body{
     text-decoration: none;
 }
 
+.input-error{
+    border: 2px solid red !important;
+}
+
+.input-success{
+    border: 2px solid green !important;
+}
+
 /* //Responsivo */
 @media only screen and (max-width: 770px) {
 

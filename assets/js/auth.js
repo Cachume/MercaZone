@@ -3,6 +3,7 @@ btnregister = document.getElementById("register");
 formlogin = document.getElementById("auth-login");
 formregister = document.getElementById("auth-register");
 textform = document.getElementById("textform")
+const baseURL = `${window.location.protocol}//${window.location.hostname}/`;
 
 var estadoform = 'login';
 
@@ -46,7 +47,7 @@ $(document).ready(function () {
       $('#login-btn').prop('disabled', true).text('Enviando código...');
 
       $.ajax({
-        url: 'http://localhost/MercaZone/auth/sendCode',
+        url: `${baseURL}auth/sendCode`,
         type: 'POST',
         data: { email: email },
         success: function (response) {
@@ -88,7 +89,7 @@ $(document).ready(function () {
   btn.prop('disabled', true).text('Reenviando...');
 
   $.ajax({
-    url: 'http://localhost/MercaZone/auth/sendCode',
+    url: `${baseURL}auth/sendCode`,
     type: 'POST',
     data: { email: email },
     success: function (response) {
@@ -139,10 +140,8 @@ $(document).ready(function () {
         Swal.fire('Error', 'Debes ingresar tu cédula y correo.', 'error');
         return;
       }
-
-      $('button[name="registro"]').prop('disabled', true).text('Enviando código...');
       $.ajax({
-        url: 'http://localhost/MercaZone/auth/sendCoder',
+        url: `${baseURL}auth/sendCoder`,
         type: 'POST',
         data: {
           email: email,
@@ -159,6 +158,7 @@ $(document).ready(function () {
             $('button[name="registro"]').text('Verificar código');
             showingCodeFieldReg = true;
             iniciarTemporizador($('#resend-register-btn'));
+            $('button[name="registro"]').prop('disabled', true).text('Enviando código...');
           } else {
             Swal.fire('Error', res.message || 'No se pudo enviar el código.', 'error');
           }
@@ -187,7 +187,7 @@ $(document).ready(function () {
     btn.prop('disabled', true).text('Reenviando...');
 
     $.ajax({
-      url: 'http://localhost/MercaZone/auth/sendCoder',
+      url: `${baseURL}auth/sendCoder`,
       type: 'POST',
       data: {
         email: email,

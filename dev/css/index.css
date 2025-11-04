@@ -182,6 +182,7 @@ body{
     position: fixed;
     top: 0;
     left: -250px;
+    z-index: 100;
     background: var(--primary-color);
     width: 250px;
     height: 100%;
@@ -493,5 +494,43 @@ body{
 
     .sidebar-menu-button{
         display:block;
+    }
+
+    .principal-products{
+        position: none;
+        top: 40px;
+        width: 100%;
+        height: auto;
+    }
+
+    .principal-categorys-group{
+        flex-wrap: wrap;
+    }
+
+    .categorys-item{
+        width: 100px;
+        height: 50px;
+    }
+
+    .categorys-item-link p{
+        font-size: 10px;
+        width: 100%;
+    }
+
+    .categorys-item-icon span{
+        font-size: 20px;
+    }
+
+    .principal-descubre{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .descubre-item {
+        width: 320px;
+        height: 150px;
+    }
+
+    .lmsp{
+        font-size: 20px;
     }
 }

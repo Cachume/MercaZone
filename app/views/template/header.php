@@ -61,7 +61,7 @@ use Google\Service\AdMob\App;
                 </div>
                         <?php else: ?>
                         <a href="<?= APP_URL ?>/autenticarse">Iniciar Sesion</a>
-                        <a href="<?= APP_URL ?>/autenticarse">Registrarme</a>
+                        <a href="<?= APP_URL ?>/autenticarse/registrarme">Registrarme</a>
                     <?php endif; ?>
                 </div>
                 

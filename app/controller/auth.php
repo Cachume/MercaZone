@@ -2,7 +2,6 @@
     require_once("./app/models/authmodel.php");
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
-
     require 'vendor/autoload.php';
     class auth{
 
@@ -83,7 +82,7 @@
         // Limpiar código OTP de sesión
         unset($_SESSION['otp_email'], $_SESSION['otp_code'], $_SESSION['otp_expires']);
 
-        header('Location:/MercaZone');
+        header('Location:'.APP_URL);
         return;
     }
 
@@ -152,7 +151,7 @@
                 require_once './app/views/auth/auth.php';
             }
         } else {
-            header("Location:index.php?u=auth");
+            header("Location:".APP_URL."/autenticarse");
         }
     }
 
@@ -186,7 +185,7 @@
 
             $_SESSION['otp_email'] = $email;
             $_SESSION['otp_code'] = (string)$codigo;
-            $_SESSION['otp_expires'] = time() + 60; // 5 minutos
+            $_SESSION['otp_expires'] = time() + 60; 
             $_SESSION['otp_last_sent'] = time();
 
             if ($this->sendMail($email, $codigo)) {
@@ -342,7 +341,7 @@ public function sendCoder() {
         public function salir(){
             session_unset();
             session_destroy();
-            header("Location:index.php?u=auth");
+            header("Location:".APP_URL."");
         }
     }  
 

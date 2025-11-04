@@ -2,18 +2,28 @@
     require_once("mzDb.php");
     class Authmodel extends MzDB {
 
+        private $db;
+
+        public function __construct(){
+            $this->db = MzDB::conectar();
+        }
+
         public static function registerUser($data){
             $db = MzDB::conectar();       
             if (!$db) {
                 return "errordb";
             } else {
-                $stmt= $db->prepare("INSERT INTO usuarios (cedula, correo, contrasena, rol, nombre, apellidos) VALUES (:cedula,:correo,:contrasena,:rol,:nombre,:apellidos)");
-                $stmt->bindParam(":cedula", $data["cedula"], PDO::PARAM_INT);
-                $stmt->bindParam(":correo", $data["correo"], PDO::PARAM_STR);
-                $stmt->bindParam(":contrasena", $data["contrasena"], PDO::PARAM_STR);
-                $stmt->bindParam(":rol", $data["rol"], PDO::PARAM_STR);
-                $stmt->bindParam(":nombre", $data["nombre"], PDO::PARAM_STR);
-                $stmt->bindParam(":apellidos", $data["apellido"], PDO::PARAM_STR);
+                $stmt= $db->prepare("INSERT INTO usuarios (cedula, correo, contrasena, rol, nombre, apellidos,type_dni, cumpleanos,token,active) VALUES (:cedula,:correo,:rol,:nombre,:apellidos,:tdni,:cumpleanos,:token,:active)");
+                $stmt->bindParam(":cedula", $data["dni"], PDO::PARAM_INT);
+                $stmt->bindParam(":correo", $data["email"], PDO::PARAM_STR);
+                $stmt->bindParam(":rol", $data["rol"], PDO::PARAM_INT);
+                $stmt->bindParam(":nombre", $data["name"], PDO::PARAM_STR);
+                $stmt->bindParam(":apellidos", $data["lastname"], PDO::PARAM_STR);
+                $stmt->bindParam(":tdni", $data["type_dni"], PDO::PARAM_STR);
+                $stmt->bindParam(":cumpleanos", $data["birthday"], PDO::PARAM_STR);
+                $stmt->bindParam(":token", $data["token"], PDO::PARAM_STR);
+                $stmt->bindParam(":active", $data["active"], PDO::PARAM_INT);
+                
                 if ($stmt->execute()) {
                     return true;
                 }else{
@@ -108,6 +118,19 @@
             $stmt->execute();
 
             return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+
+        public static function validarCedula($data){
+            try{
+                $db = MzDB::conectar();
+                $stmt = $db->prepare(" SELECT COUNT(*) FROM usuarios WHERE cedula = :cedula AND type_dni = :type_dni");
+                $stmt->bindParam(":cedula", $data["dni"], PDO::PARAM_INT);
+                $stmt->bindParam(":type_dni", $data["type_dni"], PDO::PARAM_STR);
+                $stmt->execute();
+                return $stmt->fetchColumn() > 0;
+            }catch(Exception $e){
+                return false;
+            }
         }
 
     }

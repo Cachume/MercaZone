@@ -1,0 +1,190 @@
+body{
+    background: black;
+    font-family: "Roboto", sans-serif;
+}
+
+.main-auth{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.auth-container{
+    background: white;
+    height: 700px;
+    border-radius: 10px;
+    display: flex;
+
+}
+.auth-register-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.auth-promotes img{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height: 700px;
+    object-fit: cover;
+}
+
+.register-form-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.register-form-description{
+    margin: 0px 0px 0 0px;
+    font-size: 17px;
+    color:#929292;
+    font-weight: 500;
+    text-align: center;
+    width: 80%;
+}
+
+/*Normal*/
+
+.auth-input-group{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 70%;
+}
+
+.auth-input-group span{
+    position: absolute;
+    left: 10px;
+    top: 22%;
+}
+
+.auth-input-group input{
+    padding: 5px;
+    background: transparent;
+    border-radius: 5px;
+    border: 2px solid #929292;
+    height: 30px;
+    padding-left: 40px;
+    width: 90%;
+}
+
+.auth-input-group-dni{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    position: relative;
+    width: 70%;
+}
+
+.auth-input-group-dni select{
+    padding: 5px;
+    background: transparent;
+    border-radius: 5px;
+    border: 2px solid #929292;
+    height: 43px;
+    width: 20%;
+    text-align: center  ;
+}
+
+.register-step-confirmation{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    align-items: center;
+    width: 100%;
+}
+
+/*Doblues*/
+
+.auth-input-group-double{
+    display: flex;
+    position: relative;
+    gap: 20px;
+    width: 70%;
+}
+
+.auth-input-group-double .auth-input-group input{
+    width: 79%;
+}
+
+.auth-button{
+    background: var(--primary-color);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-sizing: content-box;
+    border: 2px solid transparent;
+}
+
+.auth-button.return{
+    background: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+/*Steps*/
+
+.register-step{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.register-step.hidden{
+    display: none;
+}
+
+.register-step h2{
+    margin: 10px 0 0px 0;
+    color: #000000;
+    font-weight: 600;
+}
+
+.register-step p{
+    margin: 10px 0 20px 0px;
+    color: #757575;
+    text-align: center;
+    width: 93%;
+}
+
+.register-step-buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+@media (max-width: 768px){
+
+    .main-auth{
+        height: 100%;
+        margin-top: 4rem;
+    }
+
+    .auth-container{
+        width: 400px;
+        margin: 0px 5px 0px 5px;
+    }
+    .auth-input-group{
+        width: 80%;
+    }
+    .auth-input-group-double{
+        gap: 30px;
+        width: 80%;
+    }
+
+    .auth-input-group-double .auth-input-group input{
+        width: 79%;
+    }
+}

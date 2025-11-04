@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/register.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>MercaZone | Registro</title>
+</head>
+<body>
+    <main class="main-auth">
+        <div class="auth-container">
+            <div class="auth-promotes">
+                <img src="../../assets/img/banners/banner_register.png" alt="">
+            </div>
+            <form action="" class="auth-register-form">
+                <div class="register-form-header">
+                    <h1>
+                    <span style="color:#00b45d">Merca<span style="color:#014651">Zone</span></span>
+                    </h1>
+                    <p class="register-form-description"> Es la plataforma ideal para comprar y vender productos de manera fácil y rápida.</p>
+                    <h4>Crea una cuenta para continuar</h4>
+                </div>
+                <div class="register-step" data-step="1">
+                    <div class="auth-input-group-double">
+                        <div class="auth-input-group">
+                            <label for="nombre" class="auth-label"></label>
+                            <span class="material-symbols-outlined">person</span>
+                            <input type="text" id="nombre" name="nombre" class="auth-input" placeholder="Nombres" required>
+                        </div>
+                        <div class="auth-input-group">
+                            <label for="apellido" class="auth-label"></label>
+                            <span class="material-symbols-outlined">person</span>
+                            <input type="text" id="apellido" name="apellido" class="auth-input" placeholder="Apellidos" required>
+                        </div>
+                    </div>
+                    <div class="auth-input-group">
+                        <label for="cumpleanos" class="auth-label"></label>
+                        <span class="material-symbols-outlined">cake</span>
+                        <input type="date" id="cumpleanos" name="cumpleanos" class="auth-input" placeholder="Fecha de Nacimiento" value="2003-02-10" required>
+                    </div>
+                    <div class="auth-input-group-dni">
+                        <label for="tipo-dni" class="auth-label"></label>
+                        <select id="tipo-dni" name="tipo-dni" class="auth-input" required>
+                            <option value="V">V</option>
+                            <option value="E">E</option>
+                        </select>
+                        <div class="auth-input-group">
+                            <label for="carnet" class="auth-label"></label>
+                            <span class="material-symbols-outlined">badge</span>
+                            <input type="number" id="carnet" name="carnet" class="auth-input" placeholder="Cedula de Identidad" required>
+                        </div>
+                    </div>
+                    <div class="auth-input-group">
+                            <label for="email" class="auth-label"></label>
+                            <span class="material-symbols-outlined">email</span>
+                            <input type="email" id="email" name="email" class="auth-input" placeholder="Correo Electronico" required>
+                    </div>
+                    <div class="register-step-buttons">
+                        <button type="reset">Limpiar</button>
+                        <button class="auth-button next" type="button" id="next">Registrarme</button>
+                    </div>
+                </div>
+                <hr style="border: none; height: 2px; background-color: #00b45d; width: 80%;">
+                <p class="auth-register-text">¿Ya tienes una cuenta? <a href="/auth/login">Inicia Sesión</a></p>
+            </form>
+        </div>
+    </main>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/register.js"></script>
+</body>
+</html>
