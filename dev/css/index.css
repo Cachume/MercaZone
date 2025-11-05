@@ -347,7 +347,7 @@ body{
     padding: 20px 20px;
     border: 1px solid #e9e9e9;
     border-radius: 5px;
-    height: 90px;
+    /* height: 90px; */
     transition: background .3s ease-in-out;
 }
 
@@ -464,12 +464,36 @@ body{
     text-decoration: none;
 }
 
+.header-mobile{
+    display: none;
+    font-family: 'Roboto';
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    height: 50px;
+}
+
 /* //Responsivo */
 @media only screen and (max-width: 770px) {
+
+    .swiper{
+    width: 99.9%;
+    height: 150px;
+    }
+
+    .slider-image{
+        width: 100%;
+        height: 100%;
+    }
+
+    .header-mobile{
+        display: flex;
+    }
 
     .header-top{
         justify-content: space-evenly;
         padding: 0px 0px;
+        display: none;
     }
 
     .header-buttom{
@@ -496,25 +520,44 @@ body{
         display:block;
     }
 
+    .principal-categorys{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .principal-products{
-        position: none;
-        top: 40px;
-        width: 100%;
+        top: 5px;
+        width: 96%;
         height: auto;
+        margin: 0px 20px 0px 20px;
+        border-radius: 0px;
     }
 
     .principal-categorys-group{
-        flex-wrap: wrap;
+        width: 100%;
+        height: 120px;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        align-items: center;
+        gap: 20px;
+        padding: 10px;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
     }
 
     .categorys-item{
-        width: 100px;
-        height: 50px;
+        width: 120px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
     }
 
     .categorys-item-link p{
         font-size: 10px;
-        width: 100%;
+        margin: 0px 10px 0px 10px;
     }
 
     .categorys-item-icon span{
@@ -532,5 +575,9 @@ body{
 
     .lmsp{
         font-size: 20px;
+    }
+
+    .principal-descuentos{
+        display: none;
     }
 }
