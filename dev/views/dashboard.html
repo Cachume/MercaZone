@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/verificacion.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>MercaZone - Dashboard</title>
@@ -76,7 +77,7 @@
                 <div class="header-dashboard-user">
                     <img src="https://unavatar.io/albertq703@gmail.com" alt="User" />
                     <div class="header-dashboard-userdata">
-                        <span class="dashboard-userdata-name">Hola, Albert Quintero</span>
+                        <span class="dashboard-userdata-name">Hola, Albert Quintero </span>
                         <span class="dashboard-userdata-secondary">albert@gmail.com</span>
                     </div>
                 </div>
@@ -84,33 +85,15 @@
         </header>
         <section class="dashboard-main" id="dashboard-main">
             <div class="dashboard-main-cards">
-                <div class="dashboard-main-card yellow">
+                <div class="card_buyer">
+                    <div class="dashboard-main-card">
                     <h3>Compras Realizadas</h3>
-                    <div class="dashboard-main-card-data">
-                        <p>43</p>
-                        <p>Compras en el mes</p>
-                    </div>
+                    <canvas id="comprasDiaChart"></canvas>
                 </div>
                 <div class="dashboard-main-card">
                     <h3>Dinero Gastado</h3>
-                    <div class="dashboard-main-card-data">
-                        <p>$500</p>
-                        <p>Gastados en el mes</p>
-                    </div>
-                </div>
-                <div class="dashboard-main-card blue">
-                    <h3>Ventas Realizadas</h3>
-                    <div class="dashboard-main-card-data">
-                        <p>0</p>
-                        <p>Ventas en el mes</p>
-                    </div>
-                </div>
-                <div class="dashboard-main-card green">
-                    <h3>Dinero Ganado</h3>
-                    <div class="dashboard-main-card-data">
-                        <p>20$</p>
-                        <p>Ganancias en el mes</p>
-                    </div>
+                    <canvas id="dineroGastadoChart"></canvas>
+                </div><br>
                 </div>
             </div>
         </section>
@@ -238,6 +221,47 @@
                         <span class="material-symbols-outlined">send</span>
                     </button>
                 </div>
+            </div>
+        </section>
+        <section class="dashboard-verification" style="display: none;">
+            <div class="verification-novirified" style="display: none;">
+                <div class="noverified-main">
+                    <span class="material-symbols-outlined">report</span>
+                    <h2>Oh! No estas verificado</h2>
+                    <p>Para proteger tu cuenta y brindarte acceso completo a nuestra plataforma, es necesario completar el
+                proceso de verificación de identidad.</p>
+                        <p>Mas de <strong>3000</strong> personas estan verificadas</p>
+                    <button id="verificarme">Verificarme</button>
+                </div>
+                <form id="verification-form" class="verification-form" enctype="multipart/form-data">
+                    <h2>Verificación de Identidad</h2>
+                    <label for="document-number">Número de Documento</label>
+                    <input type="text" id="document-number" name="document-number" value="V-30506910" disabled required>
+
+                    <div id="cedula-fields">
+                        <label for="cedula-front">Foto del Frente de la Cédula</label>
+                        <input type="file" id="cedula-front" name="cedula-front" accept=".jpg,.jpeg,.png" required>
+                    </div>
+                    <label>
+                    <input type="checkbox" id="acepto">
+                    Confirmo que los datos ingresados son correctos y coinciden con mi cédula de identidad.
+                    </label>
+                    <button type="submit" class="verification-button">Enviar Verificación</button>
+                </form>
+            </div>
+            <div class="verification-verified" style="display: none;">
+                <span class="material-symbols-outlined">verified_user</span>
+                <h2>Felicitaciones</h2>
+                <p>Tu proceso de verificación ha sido completado</p>
+                <p>Ahora en tu perfil podras ver el check de verificado</p>
+                <span class="verifieduser">
+                    <span class="material-symbols-outlined">verified</span>
+                </span>
+            </div>
+            <div class="verification-verified">
+                <span class="material-symbols-outlined">hourglass</span>
+                <h2>Estamos verificando tu Identidad</h2>
+                <p>Este proceso puede tomar varias horas, al completarse la verificación</p>
             </div>
         </section>
     </main>
@@ -388,5 +412,8 @@
     <script src="../js/dashboard/dashboard.js"></script>
     <script src="../js/dashboard/products.js"></script>
     <script src="../js/dashboard/chats.js"></script>
+    <script src="../js/dashboard/verification.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/dashboard/graficos.js"></script>
 </body>
 </html>

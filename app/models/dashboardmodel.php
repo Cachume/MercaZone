@@ -96,16 +96,17 @@
         public static function getAllMensages($id){
             $db = MzDB::conectar();   
             $stmt = $db->prepare("
-                SELECT 
+               SELECT
                 chat_mensajes.id,
-                chat_mensajes.id_compra,
                 chat_mensajes.id_usuario,
                 usuarios.nombre AS sender_name,
+                usuarios.apellidos AS sender_lastname,
+                usuarios.foto_perfil AS sender_photo,
                 chat_mensajes.mensaje,
                 DATE_FORMAT(chat_mensajes.creado_en, '%h:%i %p') AS time
             FROM chat_mensajes
             INNER JOIN usuarios ON usuarios.id = chat_mensajes.id_usuario
-            WHERE chat_mensajes.id_compra = :compra
+            WHERE chat_mensajes.id_chat = :compra
             ORDER BY chat_mensajes.creado_en ASC;
             ");
             $stmt->bindParam(':compra', $id, PDO::PARAM_INT);
@@ -121,7 +122,7 @@
         public static function SendMensages($compra,$usuario,$mensaje){
             $db = MzDB::conectar();   
             $stmt = $db->prepare("
-                INSERT INTO chat_mensajes (id_compra, id_usuario, mensaje, creado_en)
+                INSERT INTO chat_mensajes (id_chat, id_usuario, mensaje, creado_en)
             VALUES (:compra, :usuario, :mensaje, NOW())
             ");
             $stmt->bindParam(':compra', $compra, PDO::PARAM_INT);
@@ -134,7 +135,9 @@
                 return false;
             }
         }
-    
+        public static function getstadisticUser($id){
+            $db = MzDB::conectar();
+            if (!$db) return false;
+        }   
     }
-
 ?>

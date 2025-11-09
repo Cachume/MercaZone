@@ -9,7 +9,7 @@
         }
 
         $stmt = $db->prepare("
-            SELECT v.id, v.usuario_id, v.tipo_documento, v.numero_documento, v.estado, 
+            SELECT v.id, v.usuario_id, u.type_dni, v.estado, 
                    u.correo, u.cedula 
             FROM verificaciones v
             JOIN usuarios u ON v.usuario_id = u.id
@@ -17,7 +17,8 @@
         ");
 
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $resultado;
     }
 
     public static function getVerificacionByUserId($usuarioId) {
@@ -35,7 +36,21 @@
         $stmt->execute();
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
-        }       
+        }   
+    
+    public static function getUsers(){
+            $db = MzDB::conectar();       
+            if (!$db) {
+                return false;
+            } else {
+                $stmt= $db->prepare("SELECT u.nombre,u.apellidos,u.correo,u.cedula,u.rol,r.rol_name FROM usuarios u JOIN rol r ON u.rol = r.id");
+                $stmt->execute();
+                $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $resultado;
+            }
+        }    
+        
+
     }
 
 ?>

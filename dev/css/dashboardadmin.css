@@ -9,12 +9,17 @@
     top: 0;
     left: 0;
     transition: left 0.3s ease;
+    font-family: "Roboto", sans-serif;
 }
 
 .aside-title{
     margin-bottom: 7vh;
     display: grid;
     place-items: center;
+}
+
+.pn{
+    font-weight: bolder;
 }
 
 .aside-title-link{
@@ -57,7 +62,7 @@
 }
 
 .aside-menu-link.selected{
-    background: var(--primary-color);
+    background: #18293d;
     color: white;
 
 }

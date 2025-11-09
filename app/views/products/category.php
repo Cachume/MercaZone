@@ -56,7 +56,7 @@
                     <p class="product-info-price"><span class="product-info-price-old"></span></p>
                     <div class="product-info-status">Disponible</div>
                     <p class="product-info-description"></p>
-                    <p class="product-info-seller">Vendido por: <a href="">Tiendas XYZ</a></p>
+                    <p class="product-info-seller">Vendido por: <a href="" class="product-info-nameuser">Tiendas XYZ</a></p>
                     <div class="add-to-cart-form" >
                         <label for="quantity">Cantidad:</label>
                         <select class="quantity-select" name="quantity" id="quantity">
@@ -77,5 +77,6 @@
     <script src="<?= APP_URL ?>/assets/js/jquery.js"></script>
     <script src="<?= APP_URL ?>/assets/js/products.js"></script>
     <script src="<?= APP_URL ?>/assets/js/main.js"></script>
+    
 </body>
 </html>

@@ -1,7 +1,7 @@
 $(document).ready(function() {
-    $(".dashboard-main").hide();
-    $(".dashboard-chat").show();
-    ChangeNameDashboard("link-chat");
+    // $(".dashboard-main").hide();
+    // $(".dashboard-verification").show();
+    // ChangeNameDashboard("link-verification");
 
     console.log("Dashboard listo");
     //Evento click en los links del aside menu
@@ -64,6 +64,9 @@ function ChangeNameDashboard(name){
             break;
         case "link-chat":
             viewName = "Chat";
+            break;
+        case "link-verification":
+            viewName = "Verificación";
             break;
         default:
             viewName = "Dashboard";

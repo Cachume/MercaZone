@@ -2,9 +2,6 @@ $(document).ready(function() {
     // $(".dashboard-main").hide();
     // $(".dashboard-purchases").show();
     // ChangeNameDashboard("link-purchases");\
-    const baseURL = `${window.location.protocol}//${window.location.hostname}/`;
-
-
     console.log("Dashboard listo");
     //Evento click en los links del aside menu
     $(".aside-menu-link").on("click", function(e){
@@ -105,7 +102,7 @@ function ChangeNameDashboard(name){
 }
 
 function loadOrders(){
-    fetch(`${baseURL}dashboard/getMyOrders`)
+    fetch(`/dashboard/getMyOrders`)
         .then(response => response.json())
         .then(data => {
             if(data.success === true){
@@ -115,7 +112,7 @@ function loadOrders(){
                     if(order.buyer_image == null || order.buyer_image == ''){
                         order.buyer_image = 'https://unavatar.io/'+order.buyer_email;
                     }else{
-                        order.buyer_image = "/assets/img/users/"+order.buyer_image;
+                        order.buyer_image = "/"+order.buyer_image;
                     }
                     const orderRow = `
                         <tr>
@@ -149,7 +146,7 @@ function loadOrders(){
 }
 
 function loadProducts(){
-    fetch(`${baseURL}dashboard/getMyProducts`)
+    fetch(`/dashboard/getMyProducts`)
         .then(response => response.json())
         .then(data => {
             if(data.success === true){
@@ -191,7 +188,7 @@ function loadProducts(){
         });
 }
 function loadPurchases(){
-    fetch(`${baseURL}dashboard/getMyPurchases`)
+    fetch(`/dashboard/getMyPurchases`)
         .then(response => response.json())
         .then(data => {
             console.log(data);

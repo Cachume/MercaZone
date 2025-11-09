@@ -6,7 +6,7 @@
                     <span class="material-symbols-outlined">menu</span>
             </button>
             <div class="header-dashboard-title">
-                <h1 id="dashboard-title">Usuarios</h1>
+                <h1 id="dashboard-title">Verificaciones</h1>
                 <span>28 de Agosto del 2025</span>
             </div>
             <div class="header-dashboard-actions">
@@ -23,11 +23,11 @@
             <table class="dashboard-products-table">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
                         <th>Correo</th>
-                        <th>Cedula</th>
-                        <th>Rol</th>
+                        <th>Cédula</th>
+                        <th>Tipo de Documento</th>
+                        <th>N° Documento</th>
+                        <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -42,7 +42,7 @@
         </section>
         
     <script src="<?= APP_URL ?>/assets/js/jquery.js"></script>
-    <script src="<?= APP_URL ?>/assets/js/admin/usuarios.js"></script>
+    <script src="<?= APP_URL ?>/assets/js/admin/verificaciones.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="<?= APP_URL ?>/assets/js/dashboard/graficos.js"></script>
 </body>

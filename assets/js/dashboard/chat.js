@@ -1,5 +1,4 @@
 let currentOrderId = null;
-const baseURL = `${window.location.protocol}//${window.location.hostname}/`;
 
 $(document).ready(function() {
     $(document).on("click", ".wapisimo", function(){
@@ -7,21 +6,27 @@ $(document).ready(function() {
         $(".dashboard-purchases").hide();
         $('.dashboard-chat').css('display', 'flex');
         currentOrderId = $(this).data("id");
+        console.log(currentOrderId);
         loadMessages(currentOrderId);
+
+        // 🔄 Recargar mensajes cada 3 segundos
         setInterval(() => {
             loadMessages(currentOrderId);
         }, 3000);
     });
 
+    // ✉️ Enviar mensaje
     $('#send-message').on('click', function(){
         const messageText = $('#chat-message-input').val().trim();
         if(messageText === '' || !currentOrderId) return;
+
         const formData = new FormData();
         formData.append('order_id', currentOrderId);
         formData.append('message', messageText);
-        fetch(`${baseURL}dashboard/sendChatMessage`, {
-        method: 'POST',
-        body: formData
+
+        fetch(`/dashboard/sendChatMessage`, {
+            method: 'POST',
+            body: formData
         })
         .then(response => response.json())
         .then(data => {
@@ -33,60 +38,56 @@ $(document).ready(function() {
             }
         })
         .catch(error => console.error("Error:", error));
-
-    })
-
-    $('#chat-text').on('keypress', function(e){
-        if(e.which === 13){ // Enter
-            $('#send-message').click();
-            e.preventDefault();
-        }
     });
-
-
-
 });
 
+// 💬 Cargar mensajes del chat
 function loadMessages(orden){
-    fetch(`${baseURL}dashboard/getChatMessage`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                order_id: orden,
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if(data.success){
-                const chatMessages = $('#chat-messages');
-                var localuser = data.localuser
-                chatMessages.empty(); 
-                data.messages.forEach(msg => {
-                    const messageType = (msg.id_usuario === localuser) ? 'sent' : 'received';
-                    if(msg.id_usuario != localuser){
-                        $(".chat-userdata-name").text(msg.sender_name)
-                    }
-                    const messageUser = msg.sender_name;
-                    const messageText = msg.mensaje;
-                    const messageTime = msg.time;
+    fetch(`/dashboard/getChatMessage`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ order_id: orden })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.success){
+            const chatMessages = $('#chat-messages');
+            var localuser = data.localuser;
 
-                    const messageHTML = `
-                        <div class="message">
-                            <div class="message-container ${messageType}">
-                                <span class="message-user">${messageUser}</span>
-                                <p class="message-text">${messageText}</p>
-                                <span class="message-time">${messageTime}</span>
-                            </div>
+            chatMessages.empty(); 
+
+            data.messages.forEach(msg => {
+                const messageType = (msg.id_usuario === localuser) ? 'sent' : 'received';
+                
+                // Actualiza datos del otro usuario (nombre e imagen)
+                if(msg.id_usuario != localuser){
+                    $(".chat-userdata-name").text(msg.sender_name+" "+msg.sender_lastname);
+                    $("#chat_user_img").attr("src","/"+msg.sender_photo);
+                }
+                
+                const messageUser = msg.sender_name;
+                const messageText = msg.mensaje;
+                const messageTime = msg.time;
+
+                const messageHTML = `
+                    <div class="message">
+                        <div class="message-container ${messageType}">
+                            <span class="message-user">${messageUser}</span>
+                            <p class="message-text">${messageText}</p>
+                            <span class="message-time">${messageTime}</span>
                         </div>
-                    `;
-                    chatMessages.append(messageHTML);
-                });
-            }
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+                    </div>
+                `;
+                chatMessages.append(messageHTML);
+            });
+
+            // ✅ Mantener scroll al final del chat
+            chatMessages.scrollTop(chatMessages[0].scrollHeight);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }

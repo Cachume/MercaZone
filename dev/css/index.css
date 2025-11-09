@@ -473,6 +473,39 @@ body{
     height: 50px;
 }
 
+.verifieduser span{
+    color: #0d8ddc !important;
+    font-size: 20px !important;
+    
+}
+.check-verificado {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 22px;
+  height: 22px;
+  background: linear-gradient(135deg, #1da1f2, );
+  color: white;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(29, 161, 242, 0.8);
+  position: relative;
+}
+
+/* Brillo decorativo */
+.check-verificado::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  width: 6px;
+  height: 6px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 50%;
+  filter: blur(1px);
+}
+
 /* //Responsivo */
 @media only screen and (max-width: 770px) {
 

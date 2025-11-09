@@ -3,15 +3,16 @@ $(document).ready(function() {
     $('.product-item').on('click', function() {
         var productId = $(this).data('productid');
         console.log('Product ID:', productId);
-        fetch(`${baseURL}producto/get_product?producto=` + productId)
+        fetch(`/producto/get_product?producto=` + productId)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
                 if (data.success) {
-                    $('.modal-product-info .product-info-img img').attr('src', "/MercaZone/assets/img/products/"+data.data.image);
+                    $('.modal-product-info .product-info-img img').attr('src', "/assets/img/products/"+data.data.image);
                     $('.modal-product-info .product-info-title').text(data.data.name);
                     $('.modal-product-info .product-info-price').text('$' + data.data.price + ' / ' + data.data.price*172 + 'Bs');
                     $('.modal-product-info .product-info-description').text(data.data.description);
+                    $('.modal-product-info .product-info-nameuser').text(data.data.nombre+' '+data.data.apellidos);
                     $('.modal-product-info .product-info-sold').text('Vendidos: ' + data.data.sales);
                     $('.quantity-select').empty();
                     for (let i = 1; i <= data.data.stock; i++) {
@@ -41,7 +42,7 @@ $(document).ready(function() {
         var productId = $('.product-item').data('productid');
         var quantity = $('#quantity').val();
 
-        fetch(`${baseURL}producto/buyProduct`,
+        fetch(`/producto/buyProduct`,
         {
             method: 'POST',
             headers: {
@@ -61,7 +62,7 @@ $(document).ready(function() {
                     showConfirmButton: false,
                     timerProgressBar: true,
                     willClose: () => {
-                    window.location.href = '/MercaZone/dashboard';
+                    window.location.href = '/dashboard/miscompras';
                     } 
                 }).then(() => {
                     $('.modal-universal').fadeOut();

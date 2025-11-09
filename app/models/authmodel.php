@@ -133,6 +133,20 @@
             }
         }
 
+        public static function updateImg($name,$ruta){
+            $db = MzDB::conectar();
+            if (!$db) return false;
+            $stmt = $db->prepare("UPDATE usuarios SET foto_perfil = :foto WHERE correo = :correo");
+            $stmt->bindParam(":correo", $name, PDO::PARAM_STR);
+            $stmt->bindParam(":foto", $ruta, PDO::PARAM_STR);
+            $result = $stmt->execute();
+            if($result){
+                return true;
+            }
+
+        return false;
+    }
+
     }
 
 ?>

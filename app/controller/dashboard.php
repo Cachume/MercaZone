@@ -3,6 +3,7 @@
 
 class dashboard{
     public $data;
+    public $comando;
 
     public function __construct(){
         if(isset($_SESSION["id_user"]) == false){
@@ -15,16 +16,22 @@ class dashboard{
         require_once './app/views/user/dashboard.php';
     }
 
+    public function miscompras() {
+        $comando= '
+            $(".dashboard-main").hide();
+            $(".dashboard-purchases").show();
+            ChangeNameDashboard("link-purchases");
+        ';
+        $this->data = Dashboardmodel::getCategories();
+        $this->comando = ['iscommand'=> true, 'command'=>$comando ];
+        require_once './app/views/user/dashboard.php';
+    }
+
+
     public function getMyProducts() {
         header('Content-Type: application/json');
-        // header('Access-Control-Allow-Origin: *');
-        // Simulación de productos obtenidos de la base de datos
         $userId = $_SESSION['id_user'];
         $products = Dashboardmodel::getMyProducts($userId);
-        // $products = ['success' => true, 'products' => [
-        //     ['id' => 1, 'name' => 'Xbox Controller', 'category' => 'Accesorios', 'price' => 45, 'stock' => 10, 'image' => 'controller.png', 'view' => 45, 'sales' => 20],
-        //     ['id' => 2, 'name' => 'Xbox Series X', 'category' => 'Consolas', 'price' => 400, 'stock' => 4, 'image' => 'xbox.png', 'view' => 45, 'sales' => 20]
-        // ]];
         $products = ['success' => true, 'products' => $products];
         echo json_encode($products);
     }
@@ -109,5 +116,11 @@ class dashboard{
         }else{
             echo json_encode(['success' => false, 'mensaje' => $mensajebd]);
         }
+    }
+
+    public function getStatistics(){
+        header('Content-Type: application/json');
+        $userId = $_SESSION['id_user'];
+
     }
 }

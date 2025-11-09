@@ -220,7 +220,7 @@
             <div class="chat-list">
                 <div class="chat-header">
                     <div class="chat-header-user">
-                        <img src="https://unavatar.io/elvismoreno17@gmail.com" alt="User" />
+                        <img src="" id="chat_user_img" alt="User" />
                         <div class="chat-header-userdata">
                             <span class="chat-userdata-name">Usuario</span>
                             <span class="chat-userdata-secondary">En línea</span>
@@ -238,6 +238,47 @@
                         <span class="material-symbols-outlined">send</span>
                     </button>
                 </div>
+            </div>
+        </section>
+        <section class="dashboard-verification" style="display: none;">
+            <div class="verification-novirified" style="display: none;">
+                <div class="noverified-main">
+                    <span class="material-symbols-outlined">report</span>
+                    <h2>Oh! No estas verificado</h2>
+                    <p>Para proteger tu cuenta y brindarte acceso completo a nuestra plataforma, es necesario completar el
+                proceso de verificación de identidad.</p>
+                        <p>Mas de <strong>3000</strong> personas estan verificadas</p>
+                    <button id="verificarme">Verificarme</button>
+                </div>
+                <form id="verification-form" class="verification-form" enctype="multipart/form-data">
+                    <h2>Verificación de Identidad</h2>
+                    <label for="document-number">Número de Documento</label>
+                    <input type="text" id="document-number" name="document-number" value="V-30506910" disabled required>
+
+                    <div id="cedula-fields">
+                        <label for="cedula-front">Foto del Frente de la Cédula</label>
+                        <input type="file" id="cedula-front" name="cedula-front" accept=".jpg,.jpeg,.png" required>
+                    </div>
+                    <label>
+                    <input type="checkbox" id="acepto">
+                    Confirmo que los datos ingresados son correctos y coinciden con mi cédula de identidad.
+                    </label>
+                    <button type="submit" class="verification-button">Enviar Verificación</button>
+                </form>
+            </div>
+            <div class="verification-verified" style="display: none;">
+                <span class="material-symbols-outlined">verified_user</span>
+                <h2>Felicitaciones</h2>
+                <p>Tu proceso de verificación ha sido completado</p>
+                <p>Ahora en tu perfil podras ver el check de verificado</p>
+                <span class="verifieduser">
+                    <span class="material-symbols-outlined">verified</span>
+                </span>
+            </div>
+            <div class="verification-verified">
+                <span class="material-symbols-outlined">hourglass</span>
+                <h2>Estamos verificando tu Identidad</h2>
+                <p>Este proceso puede tomar varias horas, al completarse la verificación</p>
             </div>
         </section>
     </main>
@@ -390,6 +431,12 @@
     <script src="<?= APP_URL ?>/assets/js/jquery.js"></script>
     <script src="<?= APP_URL ?>/assets/js/dashboard/chat.js"></script>
     <script src="<?= APP_URL ?>/assets/js/dashboard/dashboard.js"></script>
+    <?php
+        if(isset($this->comando) && isset($this->comando['iscommand']) && $this->comando['iscommand']){
+            echo "<script>".$this->comando['command']."</script>";
+        }
+    ?>
     <script src="<?= APP_URL ?>/assets/js/dashboard/products.js"></script>
+    <script src="<?= APP_URL ?>/assets/js/dashboard/verification.js"></script>
 </body>
 </html>

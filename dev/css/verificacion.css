@@ -91,9 +91,10 @@
 }
 
 #verification-form {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 18px;
+  max-width: 400px;
 }
 
 #verification-form label {

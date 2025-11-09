@@ -7,7 +7,7 @@
             if (!$db) {
                 return false;
             } else {
-                $stmt= $db->prepare("SELECT * FROM productos WHERE id = :id LIMIT 1");
+                $stmt= $db->prepare("SELECT p.*, u.nombre, u.apellidos, u.id FROM productos p JOIN usuarios u ON p.id_user = u.id WHERE p.id = :id LIMIT 1");
                 $stmt->bindParam(":id", $id, PDO::PARAM_INT);
                 $stmt->execute();
                 $resultado = $stmt->fetch(PDO::FETCH_ASSOC);

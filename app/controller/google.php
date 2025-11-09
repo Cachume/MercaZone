@@ -75,6 +75,7 @@
                         if ($imagen !== false) {
                             file_put_contents($rutaDestino, $imagen);
                             $_SESSION['imagen'] = $rutaDestino;
+                            Authmodel::updateImg($email_verified,$rutaDestino);
                         } else {
                             $_SESSION['imagen'] = null; 
                         }

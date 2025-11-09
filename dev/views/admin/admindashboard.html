@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/index.css">
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/dashboardadmin.css">
+    <link rel="stylesheet" href="../css/verificacion.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>MercaZone - Dashboard</title>
+</head>
+<body>
+    <aside class="aside-dashboard">
+        <header class="aside-title">
+            <button class="header-action-btn-menu" id="toggle-aside-close-btn">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            <a class="aside-title-link" href="">
+                <span>Merca</span>
+                <span>Zone</span>
+            </a>
+            <span class="pn">Panel Administrador</span>
+        </header>
+        <ul class="aside-menu">
+            <li class="aside-menu-item">
+                <a class="aside-menu-link selected" href="" id="link-home" data-view="dashboard-main">
+                    <span class="material-symbols-outlined">home</span>
+                    <span class="aside-menu-link-text">Inicio</span>
+                </a>
+            </li>
+            <li class="aside-menu-item">
+                <a class="aside-menu-link" href="" id="link-products" data-view="dashboard-products">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <span class="aside-menu-link-text">Usuarios</span>
+                </a>
+            </li>
+            <li class="aside-menu-item">
+                <a class="aside-menu-link" href="" id="link-purchases" data-view="dashboard-purchases">
+                    <span class="material-symbols-outlined">badge</span>
+                    <span class="aside-menu-link-text">Verificaciones</span>
+                </a>
+            </li>
+            <li class="aside-menu-item">
+                <a class="aside-menu-link" href="" id="link-settings" data-view="dashboard-settings">
+                    <span class="material-symbols-outlined">category</span>
+                    <span class="aside-menu-link-text">Categorias</span>
+                </a>
+            </li>
+            <li class="aside-menu-item">
+                <a class="aside-menu-link" href="" id="link-verification" data-view="dashboard-verification">
+                    <span class="material-symbols-outlined">shield</span>
+                    <span class="aside-menu-link-text">Reportes</span>
+                </a>
+            </li>
+            <li class="aside-menu-item">
+                <a class="aside-menu-link" href="" id="link-logout" data-view="dashboard-logout">
+                    <span class="material-symbols-outlined">logout</span>
+                    <span class="aside-menu-link-text">Regresar</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+    <main class="main-dashboard hidden" id="main-dashboard">
+        <header class="header-dashboard">
+            <button class="header-action-btn-menu" id="toggle-aside-btn">
+                    <span class="material-symbols-outlined">menu</span>
+            </button>
+            <div class="header-dashboard-title">
+                <h1 id="dashboard-title">Panel Administrador</h1>
+                <span>28 de Agosto del 2025</span>
+            </div>
+            <div class="header-dashboard-actions">
+                <div class="header-dashboard-user">
+                    <img src="https://unavatar.io/albertq703@gmail.com" alt="User" />
+                    <div class="header-dashboard-userdata">
+                        <span class="dashboard-userdata-name">Hola, Albert Quintero </span>
+                        <span class="dashboard-userdata-secondary">albert@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section class="dashboard-main" id="dashboard-main">
+            <div class="dashboard-main-cards">
+                <div class="card_buyer">
+                    <div class="dashboard-main-card">
+                    <h3>Compras Realizadas</h3>
+                    <canvas id="comprasDiaChart"></canvas>
+                </div>
+                <div class="dashboard-main-card">
+                    <h3>Dinero Gastado</h3>
+                    <canvas id="dineroGastadoChart"></canvas>
+                </div><br>
+                </div>
+            </div>
+        </section>
+        
+    <script src="../js/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/dashboard/graficos.js"></script>
+</body>
+</html>
