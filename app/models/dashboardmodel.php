@@ -138,6 +138,19 @@
         public static function getstadisticUser($id){
             $db = MzDB::conectar();
             if (!$db) return false;
-        }   
+        } 
+        
+        public static function getUserVef($id_user){
+            $db = MzDB::conectar();       
+            if (!$db) {
+                return false;
+            } else {
+                $stmt= $db->prepare("SELECT id,usuario_id,estado FROM verificaciones WHERE usuario_id=:id_user;");
+                $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+                $stmt->execute();
+                $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $resultado;
+            }
+        }
     }
 ?>

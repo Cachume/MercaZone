@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/index.css">
     <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/normalize.css">
     <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/dashboard.css">
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/verificacion.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>MercaZone - Dashboard</title>
@@ -47,15 +48,15 @@
                 </a>
             </li>
             <li class="aside-menu-item">
-                <a class="aside-menu-link" href="" id="link-settings" data-view="dashboard-settings">
-                    <span class="material-symbols-outlined">settings</span>
-                    <span class="aside-menu-link-text">Configuración</span>
-                </a>
-            </li>
-            <li class="aside-menu-item">
                 <a class="aside-menu-link" href="" id="link-verification" data-view="dashboard-verification">
                     <span class="material-symbols-outlined">shield</span>
                     <span class="aside-menu-link-text">Verificación</span>
+                </a>
+            </li>
+            <li class="aside-menu-item">
+                <a class="aside-menu-link" href="" id="link-settings" data-view="dashboard-settings">
+                    <span class="material-symbols-outlined">settings</span>
+                    <span class="aside-menu-link-text">Configuración</span>
                 </a>
             </li>
             <li class="aside-menu-item">
@@ -84,7 +85,7 @@
                             if(!empty($_SESSION['imagen'])) {
                                 echo '<img src="' . APP_URL . '/' . htmlspecialchars($_SESSION['imagen']) . '" alt="User" />';
                             } else {
-                                echo '<img src="https://unavatar.io/' . htmlspecialchars($_SESSION['correo']) . '" alt="User" />';
+                                echo '<img src="'.APP_URL.'/assets/uploads/sf.jpg" alt="User" />';
                             }
                         ?>
                     <div class="header-dashboard-userdata">
@@ -241,45 +242,54 @@
             </div>
         </section>
         <section class="dashboard-verification" style="display: none;">
-            <div class="verification-novirified" style="display: none;">
-                <div class="noverified-main">
-                    <span class="material-symbols-outlined">report</span>
-                    <h2>Oh! No estas verificado</h2>
-                    <p>Para proteger tu cuenta y brindarte acceso completo a nuestra plataforma, es necesario completar el
-                proceso de verificación de identidad.</p>
-                        <p>Mas de <strong>3000</strong> personas estan verificadas</p>
-                    <button id="verificarme">Verificarme</button>
-                </div>
-                <form id="verification-form" class="verification-form" enctype="multipart/form-data">
-                    <h2>Verificación de Identidad</h2>
-                    <label for="document-number">Número de Documento</label>
-                    <input type="text" id="document-number" name="document-number" value="V-30506910" disabled required>
+            <?php
+                // $rol = $_SESSION['rol'];
+                $verificacion = $this->vef;
+                // var_dump($verificacion);
+               if(!$verificacion) {
+                        echo '<div class="verification-novirified">
+                            <div class="noverified-main">
+                                <span class="material-symbols-outlined">report</span>
+                                <h2>Oh! No estas verificado</h2>
+                                <p>Para proteger tu cuenta y brindarte acceso completo a nuestra plataforma, es necesario completar el
+                            proceso de verificación de identidad.</p>
+                                    <p>Mas de <strong>3000</strong> personas estan verificadas</p>
+                                <button id="verificarme">Verificarme</button>
+                            </div>
+                            <form id="verification-form" method="post" class="verification-form" enctype="multipart/form-data" style="display: none;" action="'.APP_URL.'/dashboard/verificarme">
+                                <h2>Verificación de Identidad</h2>
+                                <label for="document-number">Número de Documento</label>
+                                <input type="text" id="document-number" name="document-number" value="-'.$_SESSION['cedula'].'" disabled required>
 
-                    <div id="cedula-fields">
-                        <label for="cedula-front">Foto del Frente de la Cédula</label>
-                        <input type="file" id="cedula-front" name="cedula-front" accept=".jpg,.jpeg,.png" required>
-                    </div>
-                    <label>
-                    <input type="checkbox" id="acepto">
-                    Confirmo que los datos ingresados son correctos y coinciden con mi cédula de identidad.
-                    </label>
-                    <button type="submit" class="verification-button">Enviar Verificación</button>
-                </form>
-            </div>
-            <div class="verification-verified" style="display: none;">
-                <span class="material-symbols-outlined">verified_user</span>
-                <h2>Felicitaciones</h2>
-                <p>Tu proceso de verificación ha sido completado</p>
-                <p>Ahora en tu perfil podras ver el check de verificado</p>
-                <span class="verifieduser">
-                    <span class="material-symbols-outlined">verified</span>
-                </span>
-            </div>
-            <div class="verification-verified">
-                <span class="material-symbols-outlined">hourglass</span>
-                <h2>Estamos verificando tu Identidad</h2>
-                <p>Este proceso puede tomar varias horas, al completarse la verificación</p>
-            </div>
+                                <div id="cedula-fields">
+                                    <label for="cedula-front">Foto del Frente de la Cédula</label>
+                                    <input type="file" id="cedula-front" name="cedula-front" accept=".jpg,.jpeg,.png" required>
+                                </div>
+                                <label>
+                                <input type="checkbox" name="acepto" id="acepto">
+                                Confirmo que los datos ingresados son correctos y coinciden con mi cédula de identidad.
+                                </label>
+                                <button type="submit" class="verification-button">Enviar Verificación</button>
+                            </form>
+                        </div>';
+                }elseif($verificacion['estado']=="pendiente"){
+                    echo '<div class="verification-verified">
+                        <span class="material-symbols-outlined">hourglass</span>
+                        <h2>Estamos verificando tu Identidad</h2>
+                        <p>Este proceso puede tomar varias horas, al completarse la verificación</p>
+                        </div>';
+                }else{
+                    echo '<div class="verification-verified">
+                            <span class="material-symbols-outlined">verified_user</span>
+                            <h2>Felicitaciones</h2>
+                            <p>Tu proceso de verificación ha sido completado</p>
+                            <p>Ahora en tu perfil podras ver el check de verificado</p>
+                            <span class="verifieduser">
+                                <span class="material-symbols-outlined">verified</span>
+                            </span>
+                        </div>';
+                }
+            ?>
         </section>
     </main>
     <div class="modal-product">

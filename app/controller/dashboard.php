@@ -4,6 +4,8 @@
 class dashboard{
     public $data;
     public $comando;
+    public $vef;
+    public $mensaje;
 
     public function __construct(){
         if(isset($_SESSION["id_user"]) == false){
@@ -12,6 +14,8 @@ class dashboard{
         }
     }
     public function default() {
+        $userId = $_SESSION['id_user'];
+        $this->vef= Dashboardmodel::getUserVef($userId);
         $this->data = Dashboardmodel::getCategories();
         require_once './app/views/user/dashboard.php';
     }
@@ -21,6 +25,17 @@ class dashboard{
             $(".dashboard-main").hide();
             $(".dashboard-purchases").show();
             ChangeNameDashboard("link-purchases");
+        ';
+        $this->data = Dashboardmodel::getCategories();
+        $this->comando = ['iscommand'=> true, 'command'=>$comando ];
+        require_once './app/views/user/dashboard.php';
+    }
+
+    public function verificacion() {
+        $comando= '
+            $(".dashboard-main").hide();
+            $(".dashboard-verification").show();
+            ChangeNameDashboard("link-verification");
         ';
         $this->data = Dashboardmodel::getCategories();
         $this->comando = ['iscommand'=> true, 'command'=>$comando ];
@@ -123,4 +138,34 @@ class dashboard{
         $userId = $_SESSION['id_user'];
 
     }
+
+    public function verificarme(){
+        // var_dump($_FILES);
+        // echo "<br>";
+        // var_dump($_POST);
+        $usuario_id = $_SESSION['id_user'] ?? null;
+        $acepto = $_POST['acepto'] ?? null;
+        if(is_null($acepto)){
+            echo "debes aceptar los terminos";
+            $this->data = 'terminos';
+            require_once './app/views/messages/messagesverificarme.php';
+        }
+        $upload_dir = 'assets/verificaciones/';
+    }
+
+    private function guardarArchivo($campo, $upload_dir) {
+        if (isset($_FILES[$campo]) && $_FILES[$campo]['error'] === UPLOAD_ERR_OK) {
+            $tmp = $_FILES[$campo]['tmp_name'];
+            $nombre_archivo = uniqid() . '_' . basename($_FILES[$campo]['name']);
+            $ruta = $upload_dir . $nombre_archivo;
+            move_uploaded_file($tmp, $ruta);
+            return $ruta;
+        }
+        return null;
+    }
+
+    public function mensaje($dato): void {
+    $this->data = $dato;
+    require_once './app/views/messages/messagesverificarme.php';
+}
 }

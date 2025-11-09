@@ -49,8 +49,8 @@ use Google\Service\AdMob\App;
                         <?php
                             if(!empty($_SESSION['imagen'])) {
                                 echo '<img src="'.APP_URL."/" . htmlspecialchars($_SESSION['imagen']) . '" alt="User" />';
-                            } else {
-                                echo '<img src="https://unavatar.io/' . htmlspecialchars($_SESSION['correo']) . '" alt="User" />';
+                            }else {
+                                echo '<img src="'.APP_URL.'/assets/uploads/sf.jpg" alt="User" />';
                             }
                         ?>
                     <div class="header-dashboard-userdata">

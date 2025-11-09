@@ -6,7 +6,6 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   Swal.fire({
@@ -29,6 +28,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 </script>
-
 </body>
 </html>
