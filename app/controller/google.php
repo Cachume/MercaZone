@@ -61,6 +61,7 @@
                         $_SESSION['correo'] = $email_verified;
                         $_SESSION['cedula'] = $authuser['cedula'];
                         $_SESSION['rol'] = $authuser['rol'];
+                        $_SESSION['type_dni'] = $authuser['type_dni'];
                         include_once './app/views/messages/successgoogle.php';
                         $operation = true;
                     }

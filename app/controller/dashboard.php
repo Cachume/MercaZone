@@ -1,5 +1,7 @@
 <?php
-        require_once './app/models/dashboardmodel.php';
+    require_once './app/models/dashboardmodel.php';
+    require_once './app/core/utils.php';
+    require_once './app/core/mercamail.php';
 
 class dashboard{
     public $data;
@@ -12,10 +14,10 @@ class dashboard{
             header("Location: /MercaZone/autenticarse");
             exit();
         }
-    }
-    public function default() {
         $userId = $_SESSION['id_user'];
         $this->vef= Dashboardmodel::getUserVef($userId);
+    }
+    public function default() {
         $this->data = Dashboardmodel::getCategories();
         require_once './app/views/user/dashboard.php';
     }
@@ -140,17 +142,68 @@ class dashboard{
     }
 
     public function verificarme(){
-        // var_dump($_FILES);
-        // echo "<br>";
-        // var_dump($_POST);
         $usuario_id = $_SESSION['id_user'] ?? null;
         $acepto = $_POST['acepto'] ?? null;
         if(is_null($acepto)){
-            echo "debes aceptar los terminos";
-            $this->data = 'terminos';
-            require_once './app/views/messages/messagesverificarme.php';
+            UtilsZone::instaMessage('error',"Error en la Verificación","Todos los campos son obligaroios");
+            header('Location: ' . APP_URL . '/dashboard/verificacion');
+            exit;
         }
+
+        if(!isset($_FILES['cedula-front'])){
+            UtilsZone::instaMessage('error',"Error en la Verificación","Todos los campos son obligaroios");
+            header('Location: ' . APP_URL . '/dashboard/verificacion');
+            exit;
+        }
+        $imagen = $_FILES['cedula-front'];
+        $ext = strtolower(pathinfo($imagen['name'], PATHINFO_EXTENSION));
+        $ext_permitidas = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+        if (!in_array($ext, $ext_permitidas)) {
+            UtilsZone::instaMessage('error',"Error en la Verificación","Formato no permitido. Solo JPG, PNG, GIF o WEBP.");
+            header('Location: ' . APP_URL . '/dashboard/verificacion');
+            exit;
+        } 
+
+        if($imagen['size'] > 2*1024*1024){
+            UtilsZone::instaMessage('error',"Error en la Verificación","La imagen de la cédula es demasiado grande (máx. 2 MB).");
+            header('Location: ' . APP_URL . '/dashboard/verificacion');
+            exit;
+        } 
+        $nombre = basename($imagen['name']);
         $upload_dir = 'assets/verificaciones/';
+        $nombreSeguro = uniqid('img_', true) . '.' . $ext;
+        $ruta=$upload_dir.$nombreSeguro;
+        $data = [
+            'user' => $_SESSION['id_user'],
+            'image' => $ruta
+        ];
+        $messageMail="<div style='text-align: center; font-family: Arial, sans-serif;  padding: 50px 80px; width: 400px; margin: auto; border-radius: 10px; background-color: #f9f9f9;'>
+        <h1>
+            <span style='color:#00b45d;'>Merca<span style='color:#014651;'>Zone</span></span>
+        </h1>
+        <span style='text-decoration:none; font-weight: bold;'>Nos alegra saber que te quieres verificar.</span>
+        <p>Has enviado correctamente tu información para la verificación</p>
+        <p>Por los momentos solo queda <strong>esperar</strong> que el equipo de MercaZone compruebe tu información y concuerde con los datos que ingresaste en el registro</p>
+        <p><strong>En caso que hayas ingresado tu información de forma incorrecta debes volver a llenar el formulario de verificación</strong></p>
+        <p>Att: Equipo de MercaZone</p>
+        </div>";
+        if(move_uploaded_file($imagen['tmp_name'], $ruta)){
+            $newvef = Dashboardmodel::NewVerification($data);
+            if($newvef){
+                MercaMail::sendMail($_SESSION['correo'],"MercaZone | Verificación de Identidad",$messageMail);
+                UtilsZone::instaMessage('success    ',"Verificación Exitosa","Se ha subido exitosamente tu foto de verificación.");
+                header('Location: ' . APP_URL . '/dashboard/verificacion');
+                exit;    
+            }else{
+                UtilsZone::instaMessage('error',"Error en la Verificación","Ha ocurrido un error intentalo mas tarde.");
+                header('Location: ' . APP_URL . '/dashboard/verificacion');
+                exit;
+            }
+        }else{
+            UtilsZone::instaMessage('error',"Error en la Verificación","Ha ocurrido un error intentalo mas tarde.");
+            header('Location: ' . APP_URL . '/dashboard/verificacion');
+            exit;
+        }
     }
 
     private function guardarArchivo($campo, $upload_dir) {
@@ -163,9 +216,4 @@ class dashboard{
         }
         return null;
     }
-
-    public function mensaje($dato): void {
-    $this->data = $dato;
-    require_once './app/views/messages/messagesverificarme.php';
-}
 }

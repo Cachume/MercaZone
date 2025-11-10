@@ -135,10 +135,12 @@
                     <option value="disponibles">Disponibles</option>
                     <option value="agotados">Agotados</option>
                 </select>
-                <button class="header-action-btn" id="open-add-product-modal">
+                <?php if($_SESSION['rol'] != 3):?>
+                    <button class="header-action-btn" id="open-add-product-modal">
                     <span class="material-symbols-outlined">add</span>
                     <span>Agregar Producto</span>
                 </button>
+                <?php endif;?>
             </header>
             <table class="dashboard-products-table">
                 <thead>
@@ -243,9 +245,7 @@
         </section>
         <section class="dashboard-verification" style="display: none;">
             <?php
-                // $rol = $_SESSION['rol'];
                 $verificacion = $this->vef;
-                // var_dump($verificacion);
                if(!$verificacion) {
                         echo '<div class="verification-novirified">
                             <div class="noverified-main">
@@ -259,7 +259,7 @@
                             <form id="verification-form" method="post" class="verification-form" enctype="multipart/form-data" style="display: none;" action="'.APP_URL.'/dashboard/verificarme">
                                 <h2>Verificación de Identidad</h2>
                                 <label for="document-number">Número de Documento</label>
-                                <input type="text" id="document-number" name="document-number" value="-'.$_SESSION['cedula'].'" disabled required>
+                                <input type="text" id="document-number" name="document-number" value="'.$_SESSION['type_dni'].'-'.$_SESSION['cedula'].'" disabled required>
 
                                 <div id="cedula-fields">
                                     <label for="cedula-front">Foto del Frente de la Cédula</label>
@@ -441,12 +441,13 @@
     <script src="<?= APP_URL ?>/assets/js/jquery.js"></script>
     <script src="<?= APP_URL ?>/assets/js/dashboard/chat.js"></script>
     <script src="<?= APP_URL ?>/assets/js/dashboard/dashboard.js"></script>
+    <script src="<?= APP_URL ?>/assets/js/dashboard/products.js"></script>
+    <script src="<?= APP_URL ?>/assets/js/dashboard/verification.js"></script>
+    <?php require_once "./app/core/alerts.php";?>
     <?php
         if(isset($this->comando) && isset($this->comando['iscommand']) && $this->comando['iscommand']){
             echo "<script>".$this->comando['command']."</script>";
         }
     ?>
-    <script src="<?= APP_URL ?>/assets/js/dashboard/products.js"></script>
-    <script src="<?= APP_URL ?>/assets/js/dashboard/verification.js"></script>
 </body>
 </html>

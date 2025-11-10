@@ -23,6 +23,49 @@
               }, 2000);
         ";
         break;
+      case 'incompleto':
+        echo "
+            Swal.fire({
+                icon: 'error',
+                title: 'Error Verificacion',
+                text: 'Los campos estan incompletos',
+                showConfirmButton: false,
+                timer: 2000
+              })
+              setTimeout(() => {
+                window.location.href = '".APP_URL."/dashboard/verificacion';
+              }, 2000);
+        ";
+        break;
+        case 'nopermitido':
+          echo "
+              Swal.fire({
+                  icon: 'error',
+                  title: 'Error Verificacion',
+                  text: '',
+                  showConfirmButton: false,
+                  timer: 2000
+                })
+                setTimeout(() => {
+                  window.location.href = '".APP_URL."/dashboard/verificacion';
+                }, 2000);
+          ";
+          break;
+        case 'bigfile':
+          echo "
+              Swal.fire({
+                  icon: 'error',
+                  title: 'Error Verificacion',
+                  text: '.',
+                  showConfirmButton: false,
+                  timer: 2000
+                })
+                setTimeout(() => {
+                  window.location.href = '".APP_URL."/dashboard/verificacion';
+                }, 2000);
+          ";
+          break;
+      
       
       default:
         break;

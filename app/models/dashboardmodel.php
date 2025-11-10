@@ -152,5 +152,22 @@
                 return $resultado;
             }
         }
+
+        public static function NewVerification($data){
+            $db = MzDB::conectar();       
+            if (!$db) {
+                return false;
+            } else {
+                $stmt= $db->prepare("INSERT INTO verificaciones (usuario_id, cedula_frontal) VALUES (:user, :cedula)");
+                $stmt->bindParam(':user', $data['user'], PDO::PARAM_INT);
+                $stmt->bindParam(':cedula', $data['image'], PDO::PARAM_STR);
+                $stmt->execute();
+                if($stmt){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
     }
 ?>
