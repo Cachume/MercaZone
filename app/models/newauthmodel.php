@@ -47,6 +47,18 @@
 
         return false;
     }
+
+    public static function loginUser($correo, $contrasena) {
+            $db = MzDB::conectar();
+            if (!$db) return false;
+
+            $stmt = $db->prepare("SELECT * FROM usuarios WHERE correo = :correo");
+            $stmt->bindParam(":correo", $correo, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $usuario; 
+        }
     
     }
 

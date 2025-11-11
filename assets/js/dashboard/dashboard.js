@@ -47,6 +47,14 @@ $(document).ready(function() {
     $('#close-details-btn').on('click', function() {
         $('.modal-details').hide();
     });
+
+    $('#export-sell').on('click', function (){  
+        const popup = window.open("/reportes/ventas ", "_blank");
+        setTimeout(() => {
+            popup.close();
+        }, 3000);
+    })
+
 });
 
 function ChangeNameDashboard(name){

@@ -6,8 +6,6 @@
         public $mensajes;
         public $verificaciones;
         public function __CONSTRUCT(){
-
-            
         }
         public function default(){
             require('./app/views/admin/index.php');

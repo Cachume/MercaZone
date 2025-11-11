@@ -11,13 +11,13 @@
         public function default(){
             $mensaje = $this->mensajesc;
             if(isset($_SESSION['id_user'])){
-                header('Location:/MercaZone');
+                header('Location:/');
                 return;
             }
             require_once './app/views/auth/auth.php';
         }
         public function login() {
-    if (isset($_POST["iniciarsesion"])) {
+        if (isset($_POST["iniciarsesion"])) {
         $correo = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $codigo = trim($_POST['password'] ?? '');
 
@@ -50,27 +50,6 @@
             require_once './app/views/auth/auth.php';
             return;
         }
-
-        // Verificar si cuenta está bloqueada
-        if ($auth['cuenta_bloqueada']) {
-            $now = new DateTime();
-            $bloqueo = new DateTime($auth['tiempo_bloqueo']);
-            $intervalo = $bloqueo->diff($now)->i;
-
-            if ($intervalo < 1) {
-                $this->errores[] = "Cuenta bloqueada por 1 minuto. Intente más tarde.";
-                $errores = $this->errores;
-                require_once './app/views/auth/auth.php';
-                return;
-            } else {
-                AuthModel::desbloquearCuenta($correo);
-                $auth['cuenta_bloqueada'] = 0;
-                $auth['intentos_fallidos'] = 0;
-            }
-        }
-
-        // Login correcto, reiniciar intentos y guardar sesión
-        AuthModel::actualizarIntentos($correo, 0);
         $_SESSION['id_user'] = $auth['id'];
         $_SESSION['nombre'] = $auth['nombre'];
         $_SESSION['apellidos'] = $auth['apellidos'];
@@ -78,9 +57,6 @@
         $_SESSION['cedula'] = $auth['cedula'];
         $_SESSION['rol'] = $auth['rol'];
         $_SESSION['imagen'] = $auth['foto_perfil'];
-
-        // Limpiar código OTP de sesión
-        unset($_SESSION['otp_email'], $_SESSION['otp_code'], $_SESSION['otp_expires']);
 
         header('Location:'.APP_URL);
         return;

@@ -11,7 +11,7 @@ class dashboard{
 
     public function __construct(){
         if(isset($_SESSION["id_user"]) == false){
-            header("Location: /MercaZone/autenticarse");
+            header("Location: /autenticarse");
             exit();
         }
         $userId = $_SESSION['id_user'];

@@ -3,6 +3,7 @@
     require_once("./app/models/authmodel.php");
     require_once("./app/models/newauthmodel.php");
     require_once("./app/core/mercamail.php");
+    require_once("./app/core/utils.php");
     class Autenticarse{
 
         public $data;
@@ -17,6 +18,49 @@
         public function registrarme(){
             $_SESSION['register_data']=[];
             require_once './app/views/auth/register.php';
+        }
+
+        public function login(){
+            if(isset($_POST['iniciarsesion'])){
+                if(!isset($_POST['email']) && !isset($_POST['password'])){
+                    UtilsZone::instaMessage('error',"Error en la Verificación","Todos los campos son obligatorios");
+                    header('Location: ' . APP_URL . '/autenticarse');
+                    return;
+                }
+                $correo = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+                $codigo = trim($_POST['password'] ?? '');
+
+                $auth = Authmodel::loginUser($correo,'');
+                if(is_null($auth)){
+                    UtilsZone::instaMessage('error',"Error en la Verificación","Correo o Contraseña Incorrectos");
+                    header('Location: ' . APP_URL . '/autenticarse');
+                    return;
+                }
+
+                if(!password_verify($codigo,$auth['contrasena'])){
+                    UtilsZone::instaMessage('error',"Error en la Verificación","Correo o Contraseña Incorrectos");
+                    header('Location: ' . APP_URL . '/autenticarse');
+                    return;
+                }
+
+                $_SESSION['id_user'] = $auth['id'];
+                $_SESSION['nombre'] = $auth['nombre'];
+                $_SESSION['apellidos'] = $auth['apellidos'];
+                $_SESSION['correo'] = $auth['correo'];
+                $_SESSION['cedula'] = $auth['cedula'];
+                $_SESSION['rol'] = $auth['rol'];
+                $_SESSION['type_dni'] = $auth['type_dni'];
+                $_SESSION['imagen'] = $auth['foto_perfil'];
+                $_SESSION['imagen'] = $auth['foto_perfil'];
+                UtilsZone::instaMessage('success',"Verificación Completada","Bienvenid@ a MercaZone ".$_SESSION['nombre']);
+                header('Location: ' . APP_URL . '/dashboard');
+                return;
+
+            }else{
+                UtilsZone::instaMessage('error',"Error en la Verificación","Ha ocurrido un error intentalo mas tarde.");
+                header('Location: ' . APP_URL . '/autenticarse');
+                return;
+            }
         }
 
         public function vldc4rnt(){

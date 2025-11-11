@@ -20,8 +20,8 @@
                 </h1>
                     <div class="auth-header-buttons">
                         <button class="selected" id="login"><span class="material-symbols-outlined">account_circle</span>Iniciar Sesión</button>
-                    |
-                        <button id="register"><span class="material-symbols-outlined">person_add</span>Registrarse</button>
+                    <!-- |
+                        <button id="register"><span class="material-symbols-outlined">person_add</span>Registrarse</button> -->
                     </div>
                     <p id="textform">Inicia sesión para continuar</p>
                 </div>
@@ -44,7 +44,7 @@
                     ?>
                 </div>
             <div class="auth-forms">
-                <form id="auth-login" class="auth-form auth-login" action="<?= APP_URL ?>/auth/login" method="POST">
+                <form id="auth-login" class="auth-form auth-login" action="<?= APP_URL ?>/autenticarse/login" method="POST">
                     <div class="auth-input-group">
                         <label for="email" class="auth-label"></label>
                         <span class="material-symbols-outlined">email</span>
@@ -57,9 +57,9 @@
                         <input type="text" id="codigo" name="password" class="auth-input" placeholder="Ingresa tu contraseña">
                     </div>
 
-                    <div class="auth-forgot" id="forgot-link">
+                    <!-- <div class="auth-forgot" id="forgot-link">
                         <a href="/auth/forgot-password">¿Olvidaste tu contraseña?</a>
-                    </div>
+                    </div> -->
 
                     <button name="iniciarsesion" type="submit" class="login-button" id="login-btn">Iniciar sesión</button>
                     <button type="button" id="resend-btn" class="auth-button" style="display: none;">
@@ -100,6 +100,7 @@
                 </form>
         </div>
     </main>
-    <script src="<?= APP_URL ?>/assets/js/auth.js"></script>
+    <?php require_once "./app/core/alerts.php";?>
+    <!-- <script src="<?= APP_URL ?>/assets/js/auth.js"></script> -->
 </body>
 </html>

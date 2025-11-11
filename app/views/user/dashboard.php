@@ -190,6 +190,10 @@
         <section class="dashboard-orders hidden" id="dashboard-orders">
             <header class="dashboard-products-header">  
                 <input type="text" class="dashboard-products-search" placeholder="Buscar Pedido..." />
+                <button class="header-action-btn" id="export-sell">
+                    <span class="material-symbols-outlined">file_export</span>
+                    <span>Exportar Pedidos</span>
+                </button>
                 <select class="dashboard-products-filter">
                     <option value="todos">Todos</option>
                     <option value="disponibles">Disponibles</option>
