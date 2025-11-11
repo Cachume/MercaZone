@@ -249,3 +249,39 @@
     color: #555;
     margin: 10px 0;
 }
+
+@media only screen and (max-width: 770px) {
+
+    .products-container{
+        width: 100%;
+    }
+
+    .products-items{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .products-categorys{
+        display: none;
+    }
+
+    .products-title{
+        flex-wrap: wrap ;
+    }
+
+    .modal-product-info{
+        flex-direction: column;
+    }
+
+    .product-info-img img{
+        width: 300px;
+        height: 200px;
+    }
+
+    .modal-universal-body{
+        width: 300px;
+    }
+
+    .product-info-description{
+        width: auto;
+    }
+}

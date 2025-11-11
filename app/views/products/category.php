@@ -57,7 +57,8 @@
                     <div class="product-info-status">Disponible</div>
                     <p class="product-info-description"></p>
                     <p class="product-info-seller">Vendido por: <a href="" class="product-info-nameuser">Tiendas XYZ</a></p>
-                    <div class="add-to-cart-form" >
+                    <?php if (isset($_SESSION['id_user'])): ?>
+                        <div class="add-to-cart-form" >
                         <label for="quantity">Cantidad:</label>
                         <select class="quantity-select" name="quantity" id="quantity">
                             <option value="1">1</option>
@@ -68,6 +69,7 @@
                         </select>
                         <button type="submit" id="buy-product" class="add-to-cart-button">Adquirir Producto</button>
                     </div>
+                    <?php endif; ?>
                     <button class="report-product-button">Reportar producto</button>
                 </div>
             </div>
@@ -76,7 +78,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="<?= APP_URL ?>/assets/js/jquery.js"></script>
     <script src="<?= APP_URL ?>/assets/js/products.js"></script>
-    <script src="<?= APP_URL ?>/assets/js/main.js"></script>
-    
+    <script src="<?= APP_URL ?>/assets/js/main.js?v=<?php echo time();?>"></script>
 </body>
 </html>

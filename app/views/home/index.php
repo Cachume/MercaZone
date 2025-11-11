@@ -19,52 +19,37 @@
                 </div>
             </div>
         </div>
-        <section class="principal-products">
-            <div class="principal-categorys">
-                <div class="principal-categorys-group">
-                    <div class="categorys-item">
-                        <a class="categorys-item-link" href="">
-                            <div class="categorys-item-icon">
-                                <span class="material-symbols-outlined">laptop</span>
-                            </div>
-                            <p>Computadoras y Laptops</p>
-                        </a>
-                    </div>
-                    <div class="categorys-item">
-                        <a class="categorys-item-link" href="">
-                            <div class="categorys-item-icon">
-                                <span class="material-symbols-outlined">mobile_2</span>
-                            </div>
-                            <p>SmartPhones</p>
-                        </a>
-                    </div>
-                    <div class="categorys-item">
-                        <a class="categorys-item-link" href="">
-                            <div class="categorys-item-icon">
-                                <span class="material-symbols-outlined">sports_soccer</span>
-                            </div>
-                            <p>Deportes</p>
-                        </a>
-                    </div>
-                    <div class="categorys-item">
-                        <a class="categorys-item-link" href="">
-                            <div class="categorys-item-icon">
-                                <span class="material-symbols-outlined">steps</span>
-                            </div>
-                            <p>Ropa y Calzado</p>
-                        </a>
-                    </div>
-                    <div class="categorys-item">
-                        <a class="categorys-item-link" href="">
-                            <div class="categorys-item-icon">
-                                <span class="material-symbols-outlined">headphones</span>
-                            </div>
-                            <p>Accesorios</p>
-                        </a>
-                    </div>
-                </div>
+        <div class="categorys">
+            <h2>¿Que estas buscando?</h2>
+            <div class="categorys-item">
+                <a href="/producto/categoria/3" class="category-item">
+                    <span class="material-symbols-outlined">laptop</span>
+                    <p>Computadoras y Laptops</p>
+                </a>
+                <a href="/producto/categoria/4" class="category-item">
+                    <span class="material-symbols-outlined">mobile_2</span>
+                    <p>SmartPhones</p>
+                </a>
+                <a href="/producto/categoria/1" class="category-item">
+                    <span class="material-symbols-outlined">headphones</span>
+                    <p>Accesorios</p>
+                </a>
+                <a href="#" class="category-item">
+                    <span class="material-symbols-outlined">watch</span>
+                    <p>Relojes</p>
+                </a>
+
+                <a href="#" class="category-item">
+                    <span class="material-symbols-outlined">tv</span>
+                    <p>Televisores</p>
+                </a>
+
+                <a href="/producto/categoria/2" class="category-item">
+                    <span class="material-symbols-outlined">videogame_asset</span>
+                    <p>Consolas</p>
+                </a>
             </div>
-        </section>
+        </div>
         <h1>La Mejor Seleccion para Ti</h1>
         <section class="principal-descubre">
             <div class="descubre-item">
@@ -147,7 +132,7 @@
             </div>
         </section>
     </main>
-    <script src="<?= APP_URL ?>/assets//js/main.js"></script>
+    <script src="<?= APP_URL ?>/assets//js/main.js?v=<?php echo time();?>"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="<?= APP_URL ?>/assets/js/carousel.js"></script>

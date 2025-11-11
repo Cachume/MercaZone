@@ -16,10 +16,9 @@ use Google\Service\AdMob\App;
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/normalize.css">
-    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/index.css">
-    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/products.css">
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/index.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/products.css?v=<?php echo time();?>">
     <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/dashboard.css">
-    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/oldindex.css">
     <link rel="icon" type="image/png" href="<?= APP_URL ?>/assets/img/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="<?= APP_URL ?>/assets/img/favicon/favicon.svg" />
     <link rel="shortcut icon" href="<?= APP_URL ?>/assets/img/favicon/favicon.ico" />
@@ -59,7 +58,7 @@ use Google\Service\AdMob\App;
                     </div>
 
                 </div>
-                        <?php else: ?>
+                    <?php else: ?>
                         <a href="<?= APP_URL ?>/autenticarse">Iniciar Sesion</a>
                         <a href="<?= APP_URL ?>/autenticarse/registrarme">Registrarme</a>
                     <?php endif; ?>
@@ -81,16 +80,40 @@ use Google\Service\AdMob\App;
                 </ul>
             </div>
         </div>
-        <div class="sidebar">
+        <div class="header-mobile">
+            <div class="header-mobile-top">
+                <span class="material-symbols-outlined" id="btn-menu">menu</span>
+                <h1>
+                    <span style="color:#00b45d">Merca<span style="color:#014651">Zone</span></span>
+                </h1>
+                <?php if (isset($_SESSION['id_user'])): ?>
+                <?php if(!empty($_SESSION['imagen'])) {
+                                echo '<img src="'.APP_URL."/" . htmlspecialchars($_SESSION['imagen']) . '" alt="User" />';
+                            }else {
+                                echo '<img src="'.APP_URL.'/assets/uploads/sf.jpg" alt="User" />';
+                            }?>
+                <?php else: ?>
+                        <a href="/autenticarse"><img src="../../assets/uploads/sf.jpg" alt=""></a>
+                <?php endif; ?>
+            </div>
+            <div class="header-mobile-buttom">
+                <input type="search" name="searchmz" id="" placeholder="Busca en MercaZone">
+                <button><span class="material-symbols-outlined">search</span></button>
+            </div>
+        </div>
+        <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
-                <span class="material-symbols-outlined">close</span>
+                <span id="btn-close" class="material-symbols-outlined">close</span>
                 <h2>Menú</h2>
             </div>
             <ul class="sidebar-list">
-                <li class="header-buttom-nav-item"><span class="material-symbols-outlined">home</span><a href="#">Inicio</a></li>
-                <li class="header-buttom-nav-item"><span class="material-symbols-outlined">percent</span><a href="#">Ofertas</a></li>
-                <li class="header-buttom-nav-item"><span class="material-symbols-outlined">category</span><a href="#">Categorías</a></li>
-                <li class="header-buttom-nav-item"><span class="material-symbols-outlined">account_circle</span><a href="#">Mi cuenta</a></li>
+                <li class="header-buttom-nav-item"><a href="#">Inicio</a></li>
+                <?php foreach($categories as $category): ?>
+                        <li class="header-buttom-nav-item"><a href="<?= APP_URL ?>/producto/categoria/<?= $category['id'] ?>"><?= $category['nombre'] ?></a></li>
+                <?php endforeach; ?>
+                <?php if (isset($_SESSION['id_user'])): ?>
+                        <li class="header-buttom-nav-item"><a href="<?= APP_URL ?>/dashboard">Mi Cuenta</a></li>
+                <?php endif; ?>
             </ul>
         </div>
     </header>
