@@ -84,17 +84,105 @@
             </div>
         </header>
         <section class="dashboard-main" id="dashboard-main">
-            <div class="dashboard-main-cards">
-                <div class="card_buyer">
-                    <div class="dashboard-main-card">
-                    <h3>Compras Realizadas</h3>
-                    <canvas id="comprasDiaChart"></canvas>
+            <button id="update">Actualizar</button>
+            <div class="dashboard-datas">
+                <div class="dashboard-main-lef">
+                <div class="dashboard-main-cards">
+                    <div class="dashboard-main-card yellow">
+                        <h3>Compras Realizadas</h3>
+                        <div class="dashboard-main-card-data">
+                            <p id="compras">43</p>
+                            <p>Compras en el mes</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-main-card blue">
+                        <h3>Ventas Realizadas</h3>
+                        <div class="dashboard-main-card-data">
+                            <p id="ventas">0</p>
+                            <p>Ventas en el mes</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-main-card green">
+                        <h3>Dinero Ganado</h3>
+                        <div class="dashboard-main-card-data">
+                            <p id="ganado">20$</p>
+                            <p>Ganancias en el mes</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="dashboard-main-card">
-                    <h3>Dinero Gastado</h3>
-                    <canvas id="dineroGastadoChart"></canvas>
-                </div><br>
+                <div class="last-sellers">
+                    <h3>Ventas Recientes</h3>
+                    <table class="dashboard-products-table">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Comprador</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ventas-recientes-body" class="dashboard-products-table-body">
+                                <tr>
+                                    <td>Iphone 17</td>
+                                    <td>Albert Quintero</td>
+                                </tr>
+                        </tbody>
+                    </table>
                 </div>
+            </div>
+            <div class="dashboard-main-rig">
+                <div class="rig-top-sellers">
+                    <h3>Top Compradores</h3>
+                    <table class="dashboard-products-table">
+                        <thead>
+                            <tr>
+                                <th>Comprador</th>
+                                <th>Cantidad</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-table-body" class="dashboard-products-table-body">
+                                <tr>
+                                    <td>
+                                        <div class="buyer-info">
+                                            <strong>María González</strong><br>
+                                            <small>maria.gonzalez@example.com</small>
+                                        </div>
+                                    </td>
+                                    <td>18 compras</td>
+                                    <td>
+                                        <button class="header-action-btn-table">
+                                            <span class="material-symbols-outlined">percent</span>
+                                        </button>   
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="buyer-info">
+                                            <strong>Carlos Ruiz</strong><br>
+                                            <small>carlos.ruiz@example.com</small>
+                                        </div>
+                                    </td>
+                                    <td>12 compras</td>
+                                    <td><button class="header-action-btn-table">
+                                            <span class="material-symbols-outlined">percent</span>
+                                        </button>  </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="buyer-info">
+                                            <strong>Alejandra Pérez</strong><br>
+                                            <small>ale.perez@example.com</small>
+                                        </div>
+                                    </td>
+                                    <td>10 compras</td>
+                                    <td><button class="header-action-btn-table">
+                                            <span class="material-symbols-outlined">percent</span>
+                                        </button>  </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
             </div>
         </section>
         <section class="dashboard-products">

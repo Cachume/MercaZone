@@ -10,12 +10,12 @@ class dashboard{
     public $mensaje;
 
     public function __construct(){
-        if(isset($_SESSION["id_user"]) == false){
-            header("Location: /autenticarse");
-            exit();
-        }
-        $userId = $_SESSION['id_user'];
-        $this->vef= Dashboardmodel::getUserVef($userId);
+        // if(isset($_SESSION["id_user"]) == false){
+        //     header("Location: /autenticarse");
+        //     exit();
+        // }
+        // $userId = $_SESSION['id_user'];
+        // $this->vef= Dashboardmodel::getUserVef($userId);
     }
     public function default() {
         $this->data = Dashboardmodel::getCategories();
@@ -204,6 +204,59 @@ class dashboard{
             header('Location: ' . APP_URL . '/dashboard/verificacion');
             exit;
         }
+    }
+
+    public function getMaindata(){
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Headers: *");
+        header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+        header('Content-Type: application/json');
+        $userId = 8;
+        $data = Dashboardmodel::getDashData($userId);
+        echo json_encode(["success" => true, "data"=>$data]);
+
+    }
+
+    public function applydiscountuser(){
+        header('Content-Type: application/json');
+        $usuario_id = $_SESSION['id_user'] ?? null;
+        $data = [
+            'admin'=>$usuario_id,
+            'user'=> $_POST['userId'],
+            'discount'=> $_POST['porcentaje'],
+            'note' => $_POST['nota']
+        ];
+        $descu= Dashboardmodel::setDiscount($data);
+        if($descu){
+            $message = "
+                <div style='text-align: center; font-family: Arial, sans-serif; padding: 50px 80px; width: 400px; margin: auto; border-radius: 10px; background-color: #f9f9f9;'>
+                    <h1>
+                        <span style=\"color:#00b45d;\">Merca<span style=\"color:#014651;\">Zone</span></span>
+                    </h1>
+
+                    <span style='text-decoration:none; font-weight: bold;'>¡Buenas noticias!</span>
+
+                    <p><strong> ".$_SESSION['nombre']." ".$_SESSION['apellidos']."</strong> de MercaZone te ha otorgado un <strong>descuento especial</strong>.</p>
+
+                    <p>
+                        <strong>Descuento:</strong> {$data['discount']}% <br>
+                        <strong>Concepto:</strong> {$data['note']}
+                    </p>
+
+                    <p>Este descuento es <strong>válido para un solo uso</strong> y podrás aplicarlo al momento de pagar en tu próxima compra.</p>
+
+                    <p><strong>Si no solicitaste este descuento o crees que se aplicó por error, contáctanos.</strong></p>
+
+                    <p>Att: Equipo de MercaZone</p>
+                </div>
+                ";
+            MercaMail::sendMail($_POST['useremail'],"MercaZone | Has recibido un Descuento Especial",$message);
+            echo json_encode(["success" => true]);
+        }else{
+            echo json_encode(["success" => false]);
+        }
+        
+
     }
 
     private function guardarArchivo($campo, $upload_dir) {

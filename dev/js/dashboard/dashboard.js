@@ -28,6 +28,10 @@ $(document).ready(function() {
         }
     });
 
+    $("#update") .on("click", function(){
+        loadDataMain();
+    });
+
     $("#toggle-aside-close-btn") .on("click", function(){
         if($("aside").css("left") === "0px"){
             $("aside").css("left", "-250px");
@@ -47,6 +51,7 @@ $(document).ready(function() {
     $('#close-details-btn').on('click', function() {
         $('.modal-details').hide();
     });
+    loadDataMain();
 });
 
 function ChangeNameDashboard(name){
@@ -117,3 +122,93 @@ function loadProducts(){
             }).then(() => {location.reload();});
         });
 }
+
+function loadDataMain(){
+    fetch('http://localhost/dashboard/getMaindata')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            $("#compras").text(data.data.compras_mes);
+            $("#ventas").text(data.data.ventas_mes);
+            $("#ganado").text(data.data.dinero_ganado + "$");
+            const recientes = $("#ventas-recientes-body");
+            recientes.empty();
+
+            $.each(data.data.ventas_recientes, function (i, v) {
+                recientes.append(`
+                    <tr>
+                        <td>${v.producto}</td>
+                        <td>${v.comprador}</td>
+                    </tr>
+                `);
+            });
+
+            const top = $("#products-table-body");
+            top.empty();
+
+            $.each(data.data.top_compradores, function (i, c) {
+                top.append(`
+                    <tr>
+                        <td>
+                            <div class="buyer-info">
+                                <strong>${c.name}</strong><br>
+                                <small>${c.email}</small>
+                            </div>
+                        </td>
+                        <td>${c.cantidad} compras</td>
+                        <td>
+                            <button onclick="aplicarDescuento(${c.id},'${c.name}')" class="header-action-btn-table">
+                                <span class="material-symbols-outlined">percent</span>
+                            </button>
+                        </td>
+                    </tr>
+                `);
+            });
+            
+        })
+
+}
+
+function aplicarDescuento(userId, userName) {
+
+    Swal.fire({
+        title: `Aplicar descuento a ${userName}`,
+        html: `
+            <div style="display:flex; flex-direction:column; gap:12px;">
+
+                <label style="text-align:left">Porcentaje de descuento (%)</label>
+                <input id="swal-valor" type="number" class="swal2-input" placeholder="Ej: 10">
+
+                <label style="text-align:left">Comentario (opcional)</label>
+                <textarea id="swal-nota" class="swal2-textarea" placeholder="Motivo del descuento..."></textarea>
+            </div>
+        `,
+        width: 420,
+        confirmButtonText: "Aplicar descuento",
+        cancelButtonText: "Cancelar",
+        showCancelButton: true,
+        focusConfirm: false,
+        preConfirm: () => {
+
+            const valor = parseInt($("#swal-valor").val());
+            const nota  = $("#swal-nota").val();
+
+            if (isNaN(valor) || valor <= 0 || valor > 100) {
+                Swal.showValidationMessage("El descuento debe ser entre 1% y 100%");
+                return false;
+            }
+
+            return { valor, nota };
+        }
+    }).then(res => {
+
+        if (res.isConfirmed) {
+            const data = new FormData();
+            data.append("userId", userId);
+            data.append("porcentaje", res.value.valor);
+            data.append("nota", res.value.nota);
+
+        }
+    });
+}
+

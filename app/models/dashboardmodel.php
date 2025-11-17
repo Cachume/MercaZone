@@ -3,6 +3,101 @@
     class Dashboardmodel extends MzDB {
 
 
+
+        public static function getDashData($userId){
+            $db = MzDB::conectar();       
+            if (!$db) {
+                return false;
+            } else {
+                $stmt = $db->prepare("
+                    SELECT COUNT(*) AS total
+                    FROM compras
+                    WHERE MONTH(creado_en) = MONTH(CURRENT_DATE()) AND id_comprador= :userId;
+                ");
+                $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+                $stmt->execute();
+                $compras_mes = $stmt->fetch(PDO::FETCH_ASSOC)["total"];
+
+                $stmt = $db->prepare("
+                    SELECT COUNT(*) AS total 
+                    FROM compras c 
+                    JOIN productos p on p.id = c.id_producto 
+                    WHERE MONTH(creado_en) = MONTH(CURRENT_DATE()) AND p.id_user= :userId;");
+                $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+                $stmt->execute();
+                $ventas_mes = $stmt->fetch(PDO::FETCH_ASSOC)["total"];
+
+                $stmt = $db->prepare("
+                    SELECT SUM(p.price * c.cantidad) AS total
+                    FROM compras c
+                    JOIN productos p ON p.id = c.id_producto
+                    WHERE MONTH(c.creado_en) = MONTH(CURRENT_DATE())
+                    AND id_user = :userId
+                ");
+                $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+                $stmt->execute();
+                $dinero_ganado = $stmt->fetch(PDO::FETCH_ASSOC)["total"] ?? 0;
+
+                $stmt = $db->prepare("
+                    SELECT 
+                        p.name AS producto,
+                        CONCAT(u.nombre, ' ', u.apellidos) AS comprador
+                    FROM compras c
+                    JOIN productos p ON p.id = c.id_producto
+                    JOIN usuarios u ON u.id = c.id_comprador
+                    WHERE id_user = :userId
+                    ORDER BY c.creado_en DESC
+                    LIMIT 5;
+                ");
+                $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+                $stmt->execute();
+                $ventas_recientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                $stmt = $db->prepare("
+                    SELECT 
+                        CONCAT(u.nombre, ' ', u.apellidos) AS name,
+                        u.correo AS email,
+                        u.id,
+                        COUNT(*) AS cantidad
+                    FROM compras c
+                    JOIN usuarios u ON u.id = c.id_comprador
+                    JOIN productos p ON p.id = c.id_producto
+                    WHERE p.id_user = :userId
+                    GROUP BY c.id_comprador
+                    ORDER BY cantidad DESC
+                    LIMIT 5;
+                ");
+                $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+                $stmt->execute();
+                $top_compradores = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                return [
+                    "compras_mes"      => $compras_mes,
+                    "ventas_mes"       => $ventas_mes,
+                    "dinero_ganado"    => $dinero_ganado,
+                    "ventas_recientes" => $ventas_recientes,
+                    "top_compradores"  => $top_compradores
+                    ];
+            }
+        }
+
+        public static function setDiscount($data){
+            $db = MzDB::conectar();   
+            $stmt = $db->prepare("
+                INSERT INTO descuentos (id_user, id_adm, porcentaje,comentario)
+            VALUES (:user, :admin, :discount, :note)
+            ");
+            $stmt->bindParam(':user', $data['user'], PDO::PARAM_INT);
+            $stmt->bindParam(':admin', $data['admin'], PDO::PARAM_INT);
+            $stmt->bindParam(':discount', $data['discount'], PDO::PARAM_INT);
+            $stmt->bindParam(':note', $data['note'], PDO::PARAM_INT);
+            $stmt->execute();
+            if($stmt){
+                return true;
+            }else{
+                return false;
+            }
+        }
         public static function  getMyPurchases($userId){
             $db = MzDB::conectar();       
             if (!$db) {

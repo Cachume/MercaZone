@@ -154,7 +154,7 @@
 
 .dashboard-userdata-name{
     font-weight: bold;
-    font-size: 15px;
+    font-size: 12px;
 }
 
 .dashboard-userdata-secondary{
@@ -173,41 +173,65 @@
 
 /* Dashboard Main */
 
-.dashboard-main{
+.dashboard-datas{
+    font-family: "Roboto", sans-serif;
+    display: grid;
+    grid-template-columns: repeat(5, 200px);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 15px;
     margin-top: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+}
+    
+.dashboard-main-lef {
+    grid-column: span 3 / span 3;
+    grid-row: span 5 / span 5;
+    font-family: "Roboto", sans-serif;
 }
 
+.dashboard-main-rig {
+    grid-column: span 2 / span 2;
+    grid-row: span 5 / span 5;
+    grid-column-start: 4;
+    font-family: "Roboto", sans-serif;
+}
+
+.rig-top-sellers{
+    text-align: center;
+}
+
+.rig-top-sellers h3{
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+.buyer-info{
+    text-align: left;
+}
+
+.header-action-btn-table{
+    background: #ff1900;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 .dashboard-main-cards{
     display: flex;
     flex-wrap: wrap;
+    gap: 20px;
     align-items: center;
     justify-content: center;
-    gap: 20px;
 }
-
-.card_buyer{
-    margin-top: 20px;
-    display: flex;
-    gap: 40px;
-}
-
-.card_buyer .hidden{
-    display: none;
-}
-
 
 .dashboard-main-card{
-    background: white;
+    background: #E74C3C;
     border-radius: 10px;
     padding: 20px;
-    color: #00b45d;
-    font-weight: bold;
+    color: white;
     font-family: "Roboto", sans-serif;
-    width: 420px;
+    width: 10px;
+    flex: 1;
 }
 
 .dashboard-main-card.blue{
@@ -288,12 +312,22 @@
     border-radius: 20px;
 }
 
+.header-action-btn-chat{
+    background: #2ECC71;
+    border: none;
+    color: white;
+    padding: 6px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .header-action-btn-edit{
     background: #F39C12;
     border: none;
     color: white;
     padding: 6px;
     border-radius: 5px;
+    cursor: pointer;
 }
 .header-action-btn-delete{
     background: #E74C3C;
@@ -301,6 +335,7 @@
     color: white;
     padding: 6px;
     border-radius: 5px;
+    cursor: pointer;
 }
 /* .header-action-btn:hover{
     background: darken(var(--primary-color), 5%);
@@ -330,7 +365,6 @@
     border-radius: 10px;
     padding: 20px;
 }
-
 .modal-product-header{
     padding: 20px;
     border-radius: 10px;
@@ -638,14 +672,27 @@
     margin: 0;
 }
 
+/* Dashboard Orders */
+.dashboard-orders{
+    display: none;
+    flex-direction: column;
+}
+
+.buyer-image{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
 /* Chat */
 .chat-list{
-    display: flex;
     flex-direction: column;
     gap: 10px;
     margin-top: 2vh;
     background: white;
-    width: 60%;
+    width: 85%;
     height: 500px;
     box-shadow: grey 10px 20px 5px rgba(0, 0, 0, 0.1);
     padding: 0px 20px 20px 20px;
@@ -695,6 +742,7 @@
     font-family: "Roboto", sans-serif;
 }
 .chat-message{
+    
     margin-bottom: 15px;
     max-width: 70%;
     padding: 10px 15px;
@@ -734,6 +782,7 @@
     gap: 10px;
     margin-top: 10px;
     width: 100%;
+    
 }
 .chat-input input[type="text"]{
     flex: 1;
@@ -791,7 +840,6 @@
     color: #E74C3C;
 }
 
-
 .noverified-main h2{
     margin: 0;
     color: #3498DB;
@@ -815,6 +863,8 @@
     color: #00a81c;
 }
 
+
+/* Responsive Design */
 @media only screen and (max-width: 820px) {
     .aside-dashboard{
         left: -250px;
