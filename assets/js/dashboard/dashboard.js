@@ -205,6 +205,8 @@ function loadPurchases(){
                 const purchasesdiv = $('#purchases-list');
                 purchasesdiv.empty(); // Limpiar la tabla antes de agregar nuevos productos
                 data.purchases.forEach(purchase => {
+
+                    var descuento = (purchase.porcentaje != null) ? `<p>Precio Total con Descuento: <strong>$${purchase.price-(purchase.price*(purchase.porcentaje/100))}</strong></p>`: "";
                     const purchaseRow = `
                 <div class="purchases-list-item">
                     <div class="purchase-item-image">
@@ -214,6 +216,7 @@ function loadPurchases(){
                         <h3>${purchase.name}</h3>
                         <p>Cantidad: ${purchase.cantidad} Unds</p>
                         <p>Precio: $${purchase.price}</p>
+                        ${descuento}
                         <p>Fecha de compra: ${purchase.creado_en}</p>
                         <p>Estado: <span class="status ${purchase.status}">${purchase.estado.charAt(0).toUpperCase() + purchase.estado.slice(1)}</span></p>
                         <div class="purchase-item-actions">

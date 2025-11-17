@@ -9,7 +9,8 @@
         public function categoria($id=null){
             if($id!=null){
                 $nombre = "Consolas";
-                $products = Productmodel::getProductsByCategory($id);
+                $user = $_SESSION['id_user'] ?? null;
+                $products = Productmodel::getProductsByCategory($id, $user);
                 $totalProducts = Productmodel::getProductsByCategorycount($id);
                 $nombre = $products[0]['categoria'] ?? 'Categoría';
                 require_once './app/views/products/category.php';

@@ -103,7 +103,11 @@
             if (!$db) {
                 return false;
             } else {
-                $stmt= $db->prepare("SELECT c.id AS compraid,c.cantidad,c.estado,c.creado_en ,p.* FROM compras c JOIN productos p ON p.id = c.id_producto WHERE id_comprador=:userId;");
+                $stmt= $db->prepare("SELECT c.id AS compraid,c.cantidad,c.estado,c.creado_en ,p.*,d.porcentaje 
+                FROM compras c 
+                JOIN productos p ON p.id = c.id_producto 
+                LEFT JOIN descuentos d ON d.id=c.descuento
+                WHERE id_comprador=:userId;");
                 $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
                 $stmt->execute();
                 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
