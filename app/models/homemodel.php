@@ -38,6 +38,37 @@
             }
         }
 
+        public static function  getrecomendados($id){
+            $db = MzDB::conectar();       
+            if (!$db) {
+                return false;
+            } else {
+                $stmt= $db->prepare("SELECT p.id, p.name, p.category
+                FROM compras c
+                JOIN productos p ON p.id = c.id_producto
+                WHERE c.id_comprador = :user
+                ORDER BY c.creado_en DESC
+                LIMIT 1");
+                $stmt->bindParam(":user", $id, PDO::PARAM_INT);
+                $stmt->execute();
+                $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                $stmt= $db->prepare("SELECT p2.id, p2.name,p2.category ,COUNT(*) AS frecuencia, p2.image, p2.price
+                FROM compras c1
+                JOIN compras c2 ON c1.id_comprador = c2.id_comprador
+                JOIN productos p2 ON p2.id = c2.id_producto
+                WHERE c1.id_producto = :produc
+                AND c2.id_producto <> c1.id_producto
+                GROUP BY p2.id
+                ORDER BY frecuencia DESC
+                LIMIT 5;");
+                $stmt->bindParam(":produc", $resultado['id'], PDO::PARAM_INT);
+                $stmt->execute();
+                $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $resultado;
+            }
+        }
+
         public static function getProductsByCategory($categoryId, $user) {
             $db = MzDB::conectar();
             if (!$db) {
