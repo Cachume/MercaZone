@@ -122,6 +122,16 @@ body{
     font-weight: bolder;
 }
 
+.mas-vendidos{
+    width: 95%;
+    margin: 20px;
+}
+
+.productos-vendidos{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 @media (min-width: 1024px) {
     .slider-image{
         width: 100%;

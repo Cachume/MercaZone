@@ -54,6 +54,12 @@ $(document).ready(function() {
             popup.close();
         }, 3000);
     })
+    $('#export-sellcategory').on('click', function (){  
+        const popup = window.open("/reportes/ventasporcategoria", "_blank");
+        setTimeout(() => {
+            popup.close();
+        }, 3000);
+    })
     loadDataMain();
 
 });
@@ -291,6 +297,24 @@ function loadDataMain(){
             });
             
         })
+
+    fetch('/dashboard/getProductosVendidos')
+        .then(res => res.json())
+        .then(data => {
+            const labels = data.map(item => item.name);
+            const values = data.map(item => item.total_vendidos);
+
+            new Chart(document.getElementById('productosMasVendidos'), {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: values,
+                        backgroundColor: ['#03d26f','#014651','#cef431','#161514','#f1f1f1']
+                    }]
+                }
+            });
+        });
 
 }
 

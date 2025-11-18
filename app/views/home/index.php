@@ -50,6 +50,23 @@
                 </a>
             </div>
         </div>
+        <div class="mas-vendidos">
+            <h2>Productos Mas Vendidos</h2>
+            <div class="productos-vendidos">
+                <?php foreach($this->products_more as $product): ?>
+                    <div class="product-item" data-productid="<?= $product['id'] ?>" id="product-item">
+                        <span class="sales"><?= $product['total_vendido']?> Vendidos</span>
+                        <div class="product-item-img" >
+                            <img class="product-img" src="<?= APP_URL ?>/assets/img/products/<?= $product['image'] ?>" alt="">
+                        </div>
+                        <div class="product-item-info">
+                                <h3 class="product-item-title"><?= $product['name'] ?></h3>
+                                <p class="product-item-price">$<?= $product['price'] ?> / <?= $product['price']*250 ?>Bs</p>
+                        </div>
+                    </div>
+                <?php endforeach;?>
+            </div>
+        </div>
         <h1>La Mejor Seleccion para Ti</h1>
         <section class="principal-descubre">
             <div class="descubre-item">

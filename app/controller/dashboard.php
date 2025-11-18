@@ -211,10 +211,17 @@ class dashboard{
         header("Access-Control-Allow-Headers: *");
         header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
         header('Content-Type: application/json');
-        $userId = 8;
+        $userId = $_SESSION['id_user'];
         $data = Dashboardmodel::getDashData($userId);
         echo json_encode(["success" => true, "data"=>$data]);
 
+    }
+
+    public function getProductosVendidos(){
+        header('Content-Type: application/json');
+        $userId = $_SESSION['id_user'];
+        $data = Dashboardmodel::getSolds($userId);
+        echo json_encode($data);
     }
 
     public function applydiscountuser(){

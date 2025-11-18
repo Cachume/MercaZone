@@ -35,6 +35,14 @@
     padding: 5px 5px;
 }
 
+.sales{
+    background-color: rgb(4, 117, 29);
+    width: 100px;
+    color: white;
+    font-weight: bolder;
+    padding: 5px 5px;
+}
+
 .product-item{
     display: flex;
     flex-direction: column;
@@ -267,4 +275,18 @@
     border: none;
     font-size: 24px;
     cursor: pointer;
+}
+
+.product-main{
+    margin-top: 40px;
+}
+
+.product-info-data{
+    background: white;
+    padding: 30px;
+}
+
+.modal-product-info.main{
+    border: 2px solid white;
+    border-radius: 10px;
 }

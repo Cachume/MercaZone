@@ -115,6 +115,26 @@
             }
         }
 
+        public static function getSolds($userId){
+            $db = MzDB::conectar();       
+            if (!$db) {
+                return false;
+            } else {
+                $stmt= $db->prepare("
+                SELECT p.name, SUM(oi.cantidad) AS total_vendidos
+                FROM compras oi
+                JOIN productos p ON p.id = oi.id_producto
+                WHERE p.id_user = :userId
+                GROUP BY oi.id_producto
+                ORDER BY total_vendidos DESC
+                LIMIT 5;");
+                $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+                $stmt->execute();
+                $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $resultado;
+            }
+        }
+
         public static function getMyProducts($userId){
             $db = MzDB::conectar();       
             if (!$db) {

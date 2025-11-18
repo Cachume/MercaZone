@@ -36,6 +36,14 @@
     margin-bottom: 5px;
 }
 
+.sales{
+    background-color: rgb(4, 117, 29);
+    width: 100px;
+    color: white;
+    font-weight: bolder;
+    padding: 5px 5px;
+}
+
 .product-item{
     display: flex;
     flex-direction: column;
@@ -280,6 +288,20 @@
     font-size: 14px;
     color: #555;
     margin: 10px 0;
+}
+
+.product-main{
+    margin-top: 40px;
+}
+
+.product-info-data{
+    background: white;
+    padding: 30px;
+}
+
+.modal-product-info.main{
+    border: 2px solid white;
+    border-radius: 10px;
 }
 
 @media only screen and (max-width: 770px) {

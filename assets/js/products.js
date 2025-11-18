@@ -1,7 +1,8 @@
+var productId = 0;
 $(document).ready(function() {
     const baseURL = `${window.location.protocol}//${window.location.hostname}/MercaZone/`;
     $('.product-item').on('click', function() {
-        var productId = $(this).data('productid');
+        productId = $(this).data('productid');
         console.log('Product ID:', productId);
         fetch(`/producto/get_product?producto=` + productId)
             .then(response => response.json())
@@ -39,7 +40,6 @@ $(document).ready(function() {
     });
 
     $('#buy-product').on('click', function() {
-        var productId = $('.product-item').data('productid');
         var quantity = $('#quantity').val();
 
         fetch(`/producto/buyProduct`,

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/products.css">
+    <title>MercaZone | Pagina Principal</title>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-mobile">
+            <div class="header-mobile-top">
+                <span class="material-symbols-outlined">menu</span>
+                <h1>
+                    <span style="color:#00b45d">Merca<span style="color:#014651">Zone</span></span>
+                </h1>
+                <img src="../../assets/uploads/usersgoogle/user_b2e8266f3fc8ba2f4a254bdf33ca8300.jpg" alt="">
+            </div>
+            <div class="header-mobile-buttom">
+                <input type="search" name="searchmz" id="" placeholder="Busca en MercaZone">
+                <button><span class="material-symbols-outlined">search</span></button>
+            </div>
+        </div>
+    </header>
+    <main class="main-main">
+        <div class="product-main">
+            <div class="modal-product-info main">
+                <div class="product-info-img">
+                    <img src="../img/controller.png" alt="">
+                </div>
+                <div class="product-info-data">
+                    <div class="product-info-sold">Vendidos: 100</div>
+                    <h3 class="product-info-title">Xbox Controller Edicion Limitada</h3>
+                    <p class="product-info-price">$60 / 43.234Bs <span class="product-info-price-old">$80 / 55.234Bs</span></p>
+                    <div class="product-info-status">Disponible</div>
+                    <p class="product-info-description">Xbox Wireless Controller, Color Gris</p>
+                    <p class="product-info-seller">Vendido por: <a href="">Tiendas XYZ</a></p>
+                    <form class="add-to-cart-form" action="">
+                        <label for="quantity">Cantidad:</label>
+                        <select name="quantity" id="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <button type="submit" class="add-to-cart-button">Agregar al carrito</button>
+                    </form>
+                    <button class="report-product-button">Reportar producto</button>
+                </div>
+            </div>
+        </div>
+        <div class="otros-tambien">
+            <h2>Clientes que compraron este producto también compraron</h2>
+            <div class="productos-vendidos">
+                <?php foreach($this->products_more as $product): ?>
+                    <div class="product-item" data-productid="<?= $product['id'] ?>" id="product-item">
+                        <span class="sales"><?= $product['total_vendido']?> Vendidos</span>
+                        <div class="product-item-img" >
+                            <img class="product-img" src="<?= APP_URL ?>/assets/img/products/<?= $product['image'] ?>" alt="">
+                        </div>
+                        <div class="product-item-info">
+                                <h3 class="product-item-title"><?= $product['name'] ?></h3>
+                                <p class="product-item-price">$<?= $product['price'] ?> / <?= $product['price']*250 ?>Bs</p>
+                        </div>
+                    </div>
+                <?php endforeach;?>
+            </div>
+        </div>
+    </main>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="../js/carousel.js"></script>
+</body>
+</html>

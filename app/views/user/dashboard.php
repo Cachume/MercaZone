@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/verificacion.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>MercaZone - Dashboard</title>
+    <title>MercaZone - Tu cuenta</title>
 </head>
 <body>
     <aside class="aside-dashboard">
@@ -73,7 +73,7 @@
                     <span class="material-symbols-outlined">menu</span>
             </button>
             <div class="header-dashboard-title">
-                <h1 id="dashboard-title">Dashboard</h1>
+                <h1 id="dashboard-title">Tu cuenta</h1>
                 <span>28 de Agosto del 2025</span>
             </div>
             <div class="header-dashboard-actions">
@@ -193,6 +193,13 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="rig-top-sellers">
+                    <br><br>
+                    <h3>Productos mas vendidos</h3>
+                    <div style="width: 400px; margin: 0 auto;">
+                        <canvas id="productosMasVendidos"></canvas>
+                    </div>
+                </div>
             </div>
             
             </div>
@@ -200,6 +207,10 @@
         <section class="dashboard-products">
             <header class="dashboard-products-header">  
                 <input type="text" class="dashboard-products-search" placeholder="Buscar producto..." />
+                <button class="header-action-btn" id="export-sellcategory">
+                    <span class="material-symbols-outlined">file_export</span>
+                    <span>Exportar Estadistica</span>
+                </button>
                 <select class="dashboard-products-filter">
                     <option value="todos">Todos</option>
                     <option value="disponibles">Disponibles</option>
@@ -512,11 +523,13 @@
             </div> 
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="<?= APP_URL ?>/assets/js/jquery.js"></script>
     <script src="<?= APP_URL ?>/assets/js/dashboard/chat.js"></script>
     <script src="<?= APP_URL ?>/assets/js/dashboard/dashboard.js"></script>
     <script src="<?= APP_URL ?>/assets/js/dashboard/products.js"></script>
     <script src="<?= APP_URL ?>/assets/js/dashboard/verification.js"></script>
+
     <?php require_once "./app/core/alerts.php";?>
     <?php
         if(isset($this->comando) && isset($this->comando['iscommand']) && $this->comando['iscommand']){

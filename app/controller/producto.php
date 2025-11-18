@@ -1,9 +1,16 @@
 <?php
     require_once("./app/models/productmodel.php");
     class Producto{
+        public $product_data;
 
         public function default(){
-            header("location:/Mercazone/");
+            header("location:/");
+            // $url = $_GET['url'] ?? 'home/default';
+            // $urlParts = explode('/', trim($url, '/'));
+            // $producto = $urlParts[1];
+            // $this->product_data = Productmodel::getOneProduct($producto);
+            // var_dump($this->product_data);    
+            // require_once './app/views/products/producto.php';
         }
 
         public function categoria($id=null){
@@ -15,7 +22,7 @@
                 $nombre = $products[0]['categoria'] ?? 'Categoría';
                 require_once './app/views/products/category.php';
             }else{
-                echo "todo nulo";
+                header("location:/");
             }
         }
 
@@ -51,7 +58,6 @@
             }
             echo json_encode(['success'=>false,'message'=>'Función en desarrollo']);
         }
-
     }
 
 ?>

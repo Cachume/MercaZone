@@ -567,6 +567,16 @@ body{
     font-weight: bolder;
 }
 
+.mas-vendidos{
+    width: 95%;
+    margin: 20px;
+}
+
+.productos-vendidos{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 
 /* //Responsivo */
 @media only screen and (max-width: 770px) {
