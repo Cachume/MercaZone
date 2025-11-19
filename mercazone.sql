@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2025 a las 15:18:43
+-- Tiempo de generación: 19-11-2025 a las 13:44:27
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -174,7 +174,7 @@ INSERT INTO `descuentos` (`id`, `id_user`, `id_adm`, `porcentaje`, `comentario`,
 (1, 12, 8, 12, '0', 1, '2025-11-17 17:01:37'),
 (2, 13, 8, 23, '0', 1, '2025-11-17 17:02:04'),
 (3, 12, 8, 23, NULL, 1, '2025-11-17 17:02:49'),
-(7, 8, 8, 50, '0', 1, '2025-11-17 17:16:23'),
+(7, 8, 8, 50, '0', 0, '2025-11-17 17:16:23'),
 (8, 12, 8, 25, '0', 0, '2025-11-17 22:30:49');
 
 -- --------------------------------------------------------
@@ -214,6 +214,99 @@ INSERT INTO `productos` (`id`, `id_user`, `name`, `category`, `price`, `stock`, 
 (11, 8, 'Sony PlayStation 4 (renovada)', 2, 300.00, 12, 'play4.jpeg', 0, 0, 'Mejor consola de la generacion pasada', 'Sony PlayStation 4 de 500 GB'),
 (12, 8, 'Redmi 13C 256GB', 4, 180.00, 22, 'redmi13c.jpeg', 0, 0, 'Es una variante de la serie Redmi 13 con una pantalla HD+ de 6.74 con tasa de refresco de 90Hz y potenciado por un procesador MediaTek Helio G85 con hasta 8GB de RAM y 256GB de almacenamiento. ', 'Redmi 13C 256GB'),
 (13, 8, 'iPhone 15 Plus', 4, 550.00, 23, 'iphone15.png', 0, 0, 'Si eres de los que buscan mayores dimensiones para mejor visualización, el iPhone 15 Plus es tu mejor elección. Destaca por su pantalla grande y brillante, su potente chip A16 Bionic, su diseño sofisticado y su increíble cámara. ', 'iPhone 15 Plus');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productos_tags`
+--
+
+CREATE TABLE `productos_tags` (
+  `id` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL,
+  `tag` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `productos_tags`
+--
+
+INSERT INTO `productos_tags` (`id`, `id_producto`, `tag`) VALUES
+(76, 1, 'xbox'),
+(77, 1, 'control inalámbrico'),
+(78, 1, 'mando xbox'),
+(79, 1, 'gamers'),
+(80, 1, 'edición limitada'),
+(81, 1, 'joystick'),
+(82, 2, 'xbox'),
+(83, 2, 'series x'),
+(84, 2, 'galaxy edition'),
+(85, 2, 'consola'),
+(86, 2, 'gaming'),
+(87, 2, 'nueva generación'),
+(88, 2, 'videojuegos'),
+(89, 3, 'xbox one'),
+(90, 3, 'one s'),
+(91, 3, 'consola'),
+(92, 3, 'gaming'),
+(93, 3, 'videojuegos'),
+(94, 3, 'microsoft'),
+(95, 4, 'xbox 360'),
+(96, 4, 'slim'),
+(97, 4, 'retro gaming'),
+(98, 4, 'consola'),
+(99, 4, 'videojuegos'),
+(100, 5, 'dell'),
+(101, 5, 'optiplex'),
+(102, 5, 'computadora'),
+(103, 5, 'pc de escritorio'),
+(104, 5, 'oficina'),
+(105, 5, 'intel'),
+(106, 6, 'laptop'),
+(107, 6, 'hp'),
+(108, 6, 'portátil'),
+(109, 6, 'core i7'),
+(110, 6, 'computadora'),
+(111, 6, 'oficina'),
+(112, 6, 'estudios'),
+(113, 7, 'laptop'),
+(114, 7, 'dell'),
+(115, 7, 'inspiron'),
+(116, 7, 'portátil'),
+(117, 7, 'core i5'),
+(118, 7, 'estudiante'),
+(119, 7, 'trabajo'),
+(120, 8, 'asus'),
+(121, 8, 'notebook'),
+(122, 8, 'ultraportátil'),
+(123, 8, 'estudiantes'),
+(124, 8, 'liviana'),
+(125, 8, 'económica'),
+(126, 9, 'ps5'),
+(127, 9, 'playstation 5'),
+(128, 9, 'sony'),
+(129, 9, 'gaming'),
+(130, 9, 'pro'),
+(131, 9, 'videojuegos'),
+(132, 9, '2tb'),
+(133, 10, 'ps4'),
+(134, 10, 'playstation 4'),
+(135, 10, 'sony'),
+(136, 10, 'renovada'),
+(137, 10, 'gaming'),
+(138, 10, 'videojuegos'),
+(139, 11, 'xiaomi'),
+(140, 11, 'redmi 13c'),
+(141, 11, 'smartphone'),
+(142, 11, 'android'),
+(143, 11, '256gb'),
+(144, 11, 'teléfono'),
+(145, 12, 'iphone'),
+(146, 12, 'iphone 15 plus'),
+(147, 12, 'apple'),
+(148, 12, 'smartphone premium'),
+(149, 12, 'ios'),
+(150, 12, 'celular');
 
 -- --------------------------------------------------------
 
@@ -339,6 +432,12 @@ ALTER TABLE `productos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `productos_tags`
+--
+ALTER TABLE `productos_tags`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `rol`
 --
 ALTER TABLE `rol`
@@ -397,6 +496,12 @@ ALTER TABLE `descuentos`
 --
 ALTER TABLE `productos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT de la tabla `productos_tags`
+--
+ALTER TABLE `productos_tags`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
