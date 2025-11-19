@@ -18,6 +18,7 @@
                 $nombre = "Consolas";
                 $user = $_SESSION['id_user'] ?? null;
                 $products = Productmodel::getProductsByCategory($id, $user);
+                var_dump($products);
                 $totalProducts = Productmodel::getProductsByCategorycount($id);
                 $nombre = $products[0]['categoria'] ?? 'Categoría';
                 require_once './app/views/products/category.php';

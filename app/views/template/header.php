@@ -38,8 +38,12 @@ use Google\Service\AdMob\App;
                 </h1>
             </div>
             <form class="header-top-center">
-                <input type="search" placeholder="Buscar productos, marcas y más...">
+                <input type="search" id="searchInput" placeholder="Buscar productos, marcas y más...">
                 <button><span class="material-symbols-outlined">search</span></button>
+                <div class="sugerencias" id="suggestionsContainer" style="display: none;">
+                    <a href="">Zapatos</a>
+                    <a href="">Zapatos</a>
+                </div>
             </form>
             <div class="header-top-right">
                 <?php if (isset($_SESSION['id_user'])): ?>
@@ -99,6 +103,7 @@ use Google\Service\AdMob\App;
             <div class="header-mobile-buttom">
                 <input type="search" name="searchmz" id="" placeholder="Busca en MercaZone">
                 <button><span class="material-symbols-outlined">search</span></button>
+
             </div>
         </div>
         <div class="sidebar" id="sidebar">

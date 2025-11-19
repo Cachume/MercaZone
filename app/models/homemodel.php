@@ -131,6 +131,32 @@
                 return $resultado;
             }
         }
+
+        public static function buscar($texto) {
+            $db = MzDB::conectar();
+             if (!$db) {
+                return false;
+            } else {
+                $q = "%" . strtolower($texto) . "%";
+                $sql = "SELECT DISTINCT 
+                            p.id,
+                            p.name,
+                            p.price,
+                            p.image,
+                            p.category
+                        FROM productos p
+                        LEFT JOIN productos_tags t ON t.id_producto = p.id
+                        WHERE 
+                            LOWER(p.name) LIKE :q
+                            OR LOWER(t.tag) LIKE :q
+                        ORDER BY p.name ASC
+                        LIMIT 8";
+                $stmt = $db->prepare($sql);
+                $stmt->bindParam(":q", $q, PDO::PARAM_STR);
+                $stmt->execute();
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+        }
     }
 
 ?>

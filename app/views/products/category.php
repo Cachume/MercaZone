@@ -19,14 +19,14 @@
                     else:
                     foreach($products as $product): ?>
                     <div class="product-item" data-productid="<?= $product['id'] ?>" id="product-item">
-                        <?php if($product['precio_descuento'] != null):?>
+                        <?php if( isset($product['precio_descuento'] )&&$product['precio_descuento'] != null):?>
                         <span class="discount"><?= $product['descuento_porcentaje']?>% OFF</span>
                         <?php endif; ?>
                         <div class="product-item-img" >
                             <img class="product-img" src="<?= APP_URL ?>/assets/img/products/<?= $product['image'] ?>" alt="">
                         </div>
                         <div class="product-item-info">
-                            <?php if($product['precio_descuento'] != null):?>
+                            <?php if(isset($product['precio_descuento'] ) && $product['precio_descuento'] != null):?>
                             <h3 class="product-item-title"><?= $product['name'] ?></h3>
                             <p class='product-item-price'>
                                 <span class='old-price'>$<?= $product['price'] ?> / <?= $product['price']*250 ?>Bs</span>
@@ -89,5 +89,6 @@
     <script src="<?= APP_URL ?>/assets/js/jquery.js"></script>
     <script src="<?= APP_URL ?>/assets/js/products.js"></script>
     <script src="<?= APP_URL ?>/assets/js/main.js?v=<?php echo time();?>"></script>
+    <script src="<?= APP_URL ?>/assets/js/busqueda.js"></script>
 </body>
 </html>

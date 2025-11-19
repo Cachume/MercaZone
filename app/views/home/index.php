@@ -167,9 +167,11 @@
             </div>
         </section>
     </main>
-    <script src="<?= APP_URL ?>/assets//js/main.js?v=<?php echo time();?>"></script>
+    <script src="<?= APP_URL ?>/assets/js/jquery.js"></script>
+    <script src="<?= APP_URL ?>/assets/js/main.js?v=<?php echo time();?>"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="<?= APP_URL ?>/assets/js/carousel.js"></script>
+    <script src="<?= APP_URL ?>/assets/js/busqueda.js"></script>
 </body>
 </html>

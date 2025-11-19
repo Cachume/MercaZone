@@ -12,5 +12,17 @@
             
             require_once("./app/views/home/index.php");
         }
+
+        public function buscar() {
+            $input = json_decode(file_get_contents("php://input"), true);
+            $texto = $input["texto"];
+
+            $productos = homeModel::buscar($texto);
+
+            echo json_encode([
+                "success" => true,
+                "data" => $productos
+            ]);
+        }
     }
 ?>
